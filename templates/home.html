@@ -1,48 +1,204 @@
 {% extends 'base.html' %}
 
-{% block title %}홈 - ShortDeal{% endblock %}
+{% block title %}Home - ShortDeal{% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col-12 text-center my-5">
-        <h1 class="display-4">ShortDeal</h1>
-        <p class="lead">숏폼 콘텐츠 거래 플랫폼</p>
-        <hr class="my-4">
-
-        {% if user.is_authenticated %}
-            <p>환영합니다, {{ user.username }}님! ({{ user.get_role_display }})</p>
-            <a href="{% url 'admin:index' %}" class="btn btn-primary">관리자 페이지</a>
-        {% else %}
-            <p>로그인하여 ShortDeal을 시작하세요.</p>
-            <a href="{% url 'admin:index' %}" class="btn btn-primary">로그인</a>
-        {% endif %}
+<!-- Hero Section -->
+<div class="hero-section mt-5 mb-5">
+    <div class="row align-items-center">
+        <div class="col-lg-6">
+            <h1 class="display-3 fw-bold mb-4">
+                <span style="color: #007bff;">Short-form</span> Content Trading Platform
+            </h1>
+            <p class="lead text-muted mb-4">
+                A safe and transparent short-form content marketplace connecting creators and buyers.
+            </p>
+            
+            {% if user.is_authenticated %}
+                <p class="mb-4">
+                    Welcome, <strong>{{ user.username }}</strong>! 
+                    {% if user.get_role_display %}
+                        <span class="badge bg-primary">{{ user.get_role_display }}</span>
+                    {% endif %}
+                </p>
+                <a href="{% url 'admin:index' %}" class="btn btn-primary btn-lg me-3">
+                    Go to Dashboard
+                </a>
+                <a href="#" class="btn btn-outline-primary btn-lg">
+                    View Tutorial
+                </a>
+            {% else %}
+                <a href="{% url 'accounts:login' %}" class="btn btn-primary btn-lg me-3">
+                    Sign In
+                </a>
+                <a href="{% url 'accounts:signup' %}" class="btn btn-outline-primary btn-lg">
+                    Sign Up
+                </a>
+            {% endif %}
+        </div>
+        <div class="col-lg-6 d-none d-lg-block text-center">
+            <div style="
+                background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+                border-radius: 12px;
+                height: 300px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 4rem;
+            ">
+                🎬
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="row mt-5">
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">제작사</h5>
-                <p class="card-text">숏폼 콘텐츠를 등록하고 판매하세요.</p>
+<!-- Features Section -->
+<div class="features-section mb-5">
+    <h2 class="text-center mb-5">Why ShortDeal?</h2>
+    
+    <div class="row g-4">
+        <!-- Feature 1: Producers -->
+        <div class="col-md-4">
+            <div class="card booth-card h-100">
+                <div class="card-body">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎥</div>
+                    <h5 class="card-title">For Creators</h5>
+                    <p class="card-text">
+                        Easily upload your short-form content and sell to interested buyers.
+                    </p>
+                    <ul class="list-unstyled small">
+                        <li>✓ Create and manage your booth</li>
+                        <li>✓ Sell your content</li>
+                        <li>✓ Track sales in real-time</li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">바이어</h5>
-                <p class="card-text">다양한 숏폼 콘텐츠를 구매하세요.</p>
+
+        <!-- Feature 2: Buyers -->
+        <div class="col-md-4">
+            <div class="card booth-card h-100">
+                <div class="card-body">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🛒</div>
+                    <h5 class="card-title">For Buyers</h5>
+                    <p class="card-text">
+                        Find and purchase high-quality short-form content all in one place.
+                    </p>
+                    <ul class="list-unstyled small">
+                        <li>✓ Advanced search and filters</li>
+                        <li>✓ Secure transactions</li>
+                        <li>✓ Instant downloads</li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">거래</h5>
-                <p class="card-text">안전하고 투명한 거래를 진행하세요.</p>
+
+        <!-- Feature 3: Transaction -->
+        <div class="col-md-4">
+            <div class="card booth-card h-100">
+                <div class="card-body">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🤝</div>
+                    <h5 class="card-title">Safe Trading</h5>
+                    <p class="card-text">
+                        Transparent offer system and automated contracts for peace of mind.
+                    </p>
+                    <ul class="list-unstyled small">
+                        <li>✓ Structured offers</li>
+                        <li>✓ Auto-generated LOI</li>
+                        <li>✓ Deal management</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- How It Works Section -->
+<div class="how-it-works bg-light py-5 rounded-lg mb-5">
+    <h2 class="text-center mb-5">How It Works</h2>
+    
+    <div class="row">
+        <div class="col-md-3 text-center mb-4">
+            <div style="
+                background-color: #007bff;
+                color: white;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5rem;
+                font-weight: bold;
+                margin: 0 auto 1rem;
+            ">1</div>
+            <h5>Create Account</h5>
+            <p class="small">Sign up as a creator or buyer</p>
+        </div>
+        <div class="col-md-3 text-center mb-4">
+            <div style="
+                background-color: #28a745;
+                color: white;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5rem;
+                font-weight: bold;
+                margin: 0 auto 1rem;
+            ">2</div>
+            <h5>Upload or Search</h5>
+            <p class="small">Upload content or find what you need</p>
+        </div>
+        <div class="col-md-3 text-center mb-4">
+            <div style="
+                background-color: #ffc107;
+                color: white;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5rem;
+                font-weight: bold;
+                margin: 0 auto 1rem;
+            ">3</div>
+            <h5>Make Offers</h5>
+            <p class="small">Send and negotiate offers</p>
+        </div>
+        <div class="col-md-3 text-center mb-4">
+            <div style="
+                background-color: #dc3545;
+                color: white;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5rem;
+                font-weight: bold;
+                margin: 0 auto 1rem;
+            ">4</div>
+            <h5>Complete Deal</h5>
+            <p class="small">Sign contract and finalize</p>
+        </div>
+    </div>
+</div>
+
+<!-- CTA Section -->
+{% if not user.is_authenticated %}
+<div class="cta-section text-center py-5 rounded-lg" style="background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); color: white;">
+    <h2 class="mb-3">Ready to Get Started?</h2>
+    <p class="lead mb-4">Experience a new way to trade short-form content on ShortDeal</p>
+    <a href="{% url 'accounts:signup' %}" class="btn btn-light btn-lg">
+        Get Started Now
+    </a>
+</div>
+{% endif %}
+
 {% endblock %}
