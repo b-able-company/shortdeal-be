@@ -80,6 +80,37 @@ shortdeal/
 - ❌ 조기 최적화
 - ❌ GraphQL (REST만)
 
+## Development Workflow
+
+### Before Implementing Any P0 Feature
+
+Always perform these 3 validations BEFORE writing code:
+
+1. **Edge Case Analysis**
+   - List all possible error scenarios for this feature
+   - Consider: invalid inputs, state conflicts, permission issues, race conditions
+   - Document edge cases that need handling
+
+2. **Documentation Consistency Check**
+   - Verify against `/docs/ia.md`: URL structure, access permissions, page flow
+   - Verify against `/docs/func-spec.md`: Feature ID, input fields, validation rules, business logic
+   - Verify against `/docs/api-spec.md`: API endpoints, request/response formats, status codes
+   - Report any conflicts or missing information between documents
+
+3. **Data Model Validation**
+   - Check `/docs/db-schema.md` matches feature requirements
+   - Verify all required fields, relationships, and constraints exist
+   - Confirm field types, max lengths, and validation rules align
+
+**Only after all 3 validations pass → Start implementation**
+
+### Implementation Order
+1. Models (if needed)
+2. Serializers/Forms
+3. Views/ViewSets
+4. URLs
+5. Tests
+
 ## References
 - DB Schema: docs/db-schema.md
 - API Spec: docs/api-spec.md
