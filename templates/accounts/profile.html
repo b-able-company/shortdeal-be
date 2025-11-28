@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile - ShortDeal{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="mb-4">My Profile</h2>
+
+                <div class="row mb-3">
+                    <div class="col-md-3 text-muted">Username</div>
+                    <div class="col-md-9"><strong>{{ user.username }}</strong></div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-3 text-muted">Email</div>
+                    <div class="col-md-9">{{ user.email }}</div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-3 text-muted">Role</div>
+                    <div class="col-md-9">
+                        <span class="badge bg-primary">{{ user.get_role_display }}</span>
+                    </div>
+                </div>
+
+                {% if user.company_name %}
+                <div class="row mb-3">
+                    <div class="col-md-3 text-muted">Company</div>
+                    <div class="col-md-9">{{ user.company_name }}</div>
+                </div>
+                {% endif %}
+
+                {% if user.phone %}
+                <div class="row mb-3">
+                    <div class="col-md-3 text-muted">Phone</div>
+                    <div class="col-md-9">{{ user.phone }}</div>
+                </div>
+                {% endif %}
+
+                <div class="row mb-3">
+                    <div class="col-md-3 text-muted">Joined</div>
+                    <div class="col-md-9">{{ user.created_at|date:"F d, Y" }}</div>
+                </div>
+
+                <hr class="my-4">
+
+                <div class="d-flex gap-2">
+                    <a href="#" class="btn btn-outline-primary">Edit Profile</a>
+                    <a href="{% url 'accounts:logout' %}" class="btn btn-outline-secondary">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
