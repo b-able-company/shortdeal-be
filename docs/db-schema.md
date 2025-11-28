@@ -23,7 +23,7 @@
 DESIGN_PRINCIPLES = {
     "P0 기능만": "MVP 범위 내 필수 테이블만 구현",
     "정규화 우선": "3NF 기준, 성능 필요 시 비정규화",
-    "Soft Delete": "deleted_at으로 복구 가능하게",
+    "Soft Delete": "status 필드로 복구 가능하게 (public/deleted)",
     "Audit Trail": "created_at, updated_at 모든 테이블",
     "확장 가능": "Phase 2 추가 고려한 구조",
 }
@@ -61,7 +61,7 @@ DESIGN_PRINCIPLES = {
 | `company_name` | VARCHAR(200) |  | 회사명 | ONB-001, ONB-010: 2-100자 |
 | `logo_url` | VARCHAR(500) |  | 로고 이미지 URL | ONB-002: S3 업로드 경로 |
 | `country` | VARCHAR(100) |  | 국가 | ONB-003, ONB-011: ISO 국가명 |
-| `genre_tags` | TEXT |  | 장르 태그 (JSON) | ONB-004: 제작사만, 최대 3개 |
+| `genre_tags` | VARCHAR(50)[] |  | 장르 태그 배열 | ONB-004: 제작사만, 최대 3개 |
 | `booth_slug` | VARCHAR(100) | UNIQUE | 부스 URL slug | ONB-005: 회사명 기반 자동생성 |
 | `is_active` | BOOLEAN | DEFAULT TRUE | 계정 활성화 | 관리자가 비활성화 가능 |
 | `created_at` | TIMESTAMP | DEFAULT NOW() | 가입일 |  |
@@ -185,7 +185,7 @@ def create_booth_for_producer(sender, instance, created, **kwargs):
 | `content_link` | VARCHAR(500) | NOT NULL | 외부 콘텐츠 링크 | UPL-005: URL 검증 |
 | `target_price` | DECIMAL(12,2) | NOT NULL | 희망가 | UPL-004: >0 |
 | `currency` | VARCHAR(3) | DEFAULT 'USD' | 통화 | USD/KRW/EUR |
-| `genre_tags` | TEXT |  | 장르 태그 (JSON) | UPL-006: 1-3개 |
+| `genre_tags` | VARCHAR(50)[] |  | 장르 태그 배열 | UPL-006: 1-3개 |
 | `status` | VARCHAR(20) | DEFAULT 'public' | 공개 상태 | 'public', 'deleted' |
 | `view_count` | INTEGER | DEFAULT 0 | 조회수 |  |
 | `created_at` | TIMESTAMP | DEFAULT NOW() | 등록일 |  |
@@ -280,7 +280,7 @@ INDEX idx_expires ON offers(expires_at);              -- 만료 처리용
 
 ### **비즈니스 규칙**
 
-1. **중복 방지**: OFR-006에 따라 동일 콘텐츠에 pending 오퍼 1개만 가능
+1. **중복 방지**: OFR-006에 따라 동일 바이어가 동일 콘텐츠에 pending 오퍼 1개만 가능 (다른 바이어는 별도 오퍼 제출 가능)
 2. **자동 만료**: Celery 스케줄러로 `expires_at` 지난 pending 오퍼를 'expired'로 변경
 3. **LOI 자동 생성**: OFR-042에서 수락 시 Django signal로 LOI 생성
 4. **상태 전이**:
@@ -424,7 +424,7 @@ offers            1 ──── 1  loi_documents
 
 ### **4.5 Arrays (PostgreSQL)**
 
-- `genre_tags`: `VARCHAR(50)[]` 또는 JSON
+- `genre_tags`: `VARCHAR(50)[]` (PostgreSQL array)
 - Django: `ArrayField` 사용
 
 ---
