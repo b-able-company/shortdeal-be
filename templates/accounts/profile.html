@@ -7,7 +7,17 @@
     <div class="col-md-8 mx-auto">
         <div class="card">
             <div class="card-body">
-                <h2 class="mb-4">My Profile</h2>
+                <div class="d-flex align-items-center mb-4">
+                    {% if user.logo %}
+                        <img src="{{ user.logo.url }}" alt="Company Logo" class="rounded me-3" style="width: 80px; height: 80px; object-fit: cover;">
+                    {% endif %}
+                    <div>
+                        <h2 class="mb-1">{{ user.company_name|default:user.username }}</h2>
+                        <span class="badge bg-primary">{{ user.get_role_display }}</span>
+                    </div>
+                </div>
+
+                <hr>
 
                 <div class="row mb-3">
                     <div class="col-md-3 text-muted">Username</div>
@@ -19,17 +29,28 @@
                     <div class="col-md-9">{{ user.email }}</div>
                 </div>
 
-                <div class="row mb-3">
-                    <div class="col-md-3 text-muted">Role</div>
-                    <div class="col-md-9">
-                        <span class="badge bg-primary">{{ user.get_role_display }}</span>
-                    </div>
-                </div>
-
                 {% if user.company_name %}
                 <div class="row mb-3">
-                    <div class="col-md-3 text-muted">Company</div>
+                    <div class="col-md-3 text-muted">Company Name</div>
                     <div class="col-md-9">{{ user.company_name }}</div>
+                </div>
+                {% endif %}
+
+                {% if user.country %}
+                <div class="row mb-3">
+                    <div class="col-md-3 text-muted">Country</div>
+                    <div class="col-md-9">{{ user.country }}</div>
+                </div>
+                {% endif %}
+
+                {% if user.genre_tags %}
+                <div class="row mb-3">
+                    <div class="col-md-3 text-muted">Genres</div>
+                    <div class="col-md-9">
+                        {% for genre in user.genre_tags %}
+                            <span class="badge bg-secondary me-1">{{ genre|title }}</span>
+                        {% endfor %}
+                    </div>
                 </div>
                 {% endif %}
 
@@ -41,7 +62,7 @@
                 {% endif %}
 
                 <div class="row mb-3">
-                    <div class="col-md-3 text-muted">Joined</div>
+                    <div class="col-md-3 text-muted">Member Since</div>
                     <div class="col-md-9">{{ user.created_at|date:"F d, Y" }}</div>
                 </div>
 

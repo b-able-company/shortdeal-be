@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import SignUpForm, LoginForm
+from .forms import SignUpForm, LoginForm, ProducerOnboardingForm, BuyerOnboardingForm
 
 
 def signup_view(request):
@@ -18,11 +18,11 @@ def signup_view(request):
             login(request, user)
             messages.success(request, f'Welcome to ShortDeal, {user.username}!')
 
-            # Redirect based on role
+            # Redirect to onboarding based on role
             if user.role == 'creator':
-                return redirect('accounts:profile')
+                return redirect('accounts:onboarding_producer')
             elif user.role == 'buyer':
-                return redirect('accounts:profile')
+                return redirect('accounts:onboarding_buyer')
             else:
                 return redirect('home')
     else:
@@ -67,6 +67,67 @@ def logout_view(request):
 @login_required
 def profile_view(request):
     """User profile view"""
+    # Redirect to onboarding if not completed
+    if not request.user.is_onboarded:
+        if request.user.role == 'creator':
+            return redirect('accounts:onboarding_producer')
+        elif request.user.role == 'buyer':
+            return redirect('accounts:onboarding_buyer')
+
     return render(request, 'accounts/profile.html', {
         'user': request.user
     })
+
+
+@login_required
+def onboarding_producer_view(request):
+    """Producer onboarding view"""
+    # Check if already onboarded
+    if request.user.is_onboarded:
+        messages.info(request, 'You have already completed onboarding.')
+        return redirect('accounts:profile')
+
+    # Check if user is a producer
+    if request.user.role != 'creator':
+        messages.error(request, 'This page is only for producers.')
+        return redirect('home')
+
+    if request.method == 'POST':
+        form = ProducerOnboardingForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.is_onboarded = True
+            user.save()
+            messages.success(request, 'Onboarding completed successfully!')
+            return redirect('accounts:profile')
+    else:
+        form = ProducerOnboardingForm(instance=request.user)
+
+    return render(request, 'accounts/onboarding_producer.html', {'form': form})
+
+
+@login_required
+def onboarding_buyer_view(request):
+    """Buyer onboarding view"""
+    # Check if already onboarded
+    if request.user.is_onboarded:
+        messages.info(request, 'You have already completed onboarding.')
+        return redirect('accounts:profile')
+
+    # Check if user is a buyer
+    if request.user.role != 'buyer':
+        messages.error(request, 'This page is only for buyers.')
+        return redirect('home')
+
+    if request.method == 'POST':
+        form = BuyerOnboardingForm(request.POST, instance=request.user)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.is_onboarded = True
+            user.save()
+            messages.success(request, 'Onboarding completed successfully!')
+            return redirect('accounts:profile')
+    else:
+        form = BuyerOnboardingForm(instance=request.user)
+
+    return render(request, 'accounts/onboarding_buyer.html', {'form': form})
