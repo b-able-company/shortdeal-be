@@ -85,3 +85,80 @@
 - **[공통] LOI 상세 `/loi/:loiId`** — IsAuthenticated+IsRelatedParty; LOI-010~012; APIs: GET `/api/v1/loi/{id}/`, GET `/api/v1/loi/{id}/download/`; handle PDF generating/403 states.
 - **설정 `/settings`** — IsAuthenticated; SET-001~003; APIs: GET/PATCH `/api/v1/settings/profile/`, POST `/api/v1/settings/change-password/`, POST `/api/v1/auth/logout/`; role-aware fields (producer vs buyer).
 - **[관리자] 대시보드 `/admin`** — IsAuthenticated+IsAdmin; ADM-001~005; API: GET `/api/v1/admin/dashboard/`; period toggle (7d/30d) and recent lists.
+
+## Code Architecture Conventions
+
+### 1. 앱 구조
+각 주요 도메인은 독립 앱으로 구성하며, apps/<domain>/ 형태를 따른다.
+
+apps/
+  accounts/
+  content/
+  offer/
+  loi/
+  notification/
+  settings/
+  adminpanel/
+
+앱 간 import는 상위 공통 모듈(apps.common)를 제외하고 순환참조를 만들지 않는다.
+
+### 2. 파일 구조
+각 앱은 아래 구조를 기본으로 한다:
+
+apps/<domain>/
+  models.py
+  serializers.py
+  views/
+    __init__.py
+    <feature>_views.py
+  services/
+    <feature>_service.py
+  permissions.py
+  urls.py
+
+### 3. View 원칙
+- 목록: ListAPIView  
+- 생성: CreateAPIView  
+- 단일조회: RetrieveAPIView  
+- 수정: UpdateAPIView  
+- 복합동작: APIView 또는 GenericAPIView를 사용  
+
+View 내부에서 비즈니스 로직을 작성하지 않는다 → services로 분리.
+
+### 4. Service Layer 원칙
+services/ 폴더에 “도메인 로직”을 분리한다.
+- DB 트랜잭션
+- 상태 전환
+- 조건 검증
+- 통지/후처리
+
+View는 서비스의 입력/출력만 연결한다.
+
+### 5. Serializer 원칙
+- 입력용 Serializer(InputSerializer)와 출력용 Serializer(OutputSerializer)를 분리한다.
+- ModelSerializer는 database I/O가 필요한 곳에서만 사용한다.
+- Validation은 Serializer에서 담당한다.
+
+### 6. 모델(Model) 원칙
+- 모든 모델은 created_at / updated_at / is_deleted 필드를 포함한다.
+- QuerySet 커스텀 로직은 managers.py를 만들어 분리한다.
+- UUID primary key 또는 auto-increment 중 프로젝트 표준을 따른다.
+
+### 7. URL & 네이밍 규칙
+- URL path는 kebab-case를 사용한다 (/offer-request/)
+- View class 이름은 <Feature><Action>View 형태를 사용한다.
+  예: OfferRequestCreateView
+
+### 8. 의존성 주입/Helper
+공용 유틸리티는 apps/common/에 넣으며  
+어느 앱에서도 import 가능하도록 한다.
+
+### 9. DB 트랜잭션
+아래 상황에서는 atomic()을 사용한다:
+- 상태 변경
+- 생성 + 연관 데이터 생성
+- Offer/LOI처럼 "도메인 이벤트"가 있는 작업
+
+### 10. Logging
+- 중요한 도메인 이벤트는 logger.info로 기록
+- 예외 발생 시 logger.error로 full traceback 기록
