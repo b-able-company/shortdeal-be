@@ -105,12 +105,6 @@ Always perform these 3 validations BEFORE writing code:
 
 **Only after all 3 validations pass → Start implementation**
 
-## References
-- DB Schema: docs/db-schema.md
-- API Spec: docs/api-spec.md
-- Permissions: docs/permissions.md
-- Notion IA: docs/ia.md
-- Functional Spec: docs/func-spec.md
 
 ## Quality Standards
 
