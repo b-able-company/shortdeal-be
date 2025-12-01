@@ -108,6 +108,21 @@ class LOI(models.Model):
 
         return f'LOI-{year}-{next_num:04d}'
 
+    def generate_pdf(self):
+        """Generate PDF file for this LOI"""
+        from django.core.files.base import ContentFile
+        from django.utils import timezone
+        from .pdf_generator import generate_loi_pdf
+
+        # Generate PDF content
+        pdf_data = generate_loi_pdf(self)
+
+        # Save PDF file
+        filename = f"{self.document_number}.pdf"
+        self.pdf_file.save(filename, ContentFile(pdf_data), save=False)
+        self.pdf_generated_at = timezone.now()
+        self.save(update_fields=['pdf_file', 'pdf_generated_at'])
+
     @classmethod
     def create_from_offer(cls, offer):
         """Create LOI from accepted offer"""
@@ -129,5 +144,8 @@ class LOI(models.Model):
             producer_company=offer.content.producer.company_name or offer.content.producer.username,
             producer_country=offer.content.producer.country or 'Unknown'
         )
+
+        # Generate PDF immediately (for now; can be async later)
+        loi.generate_pdf()
 
         return loi

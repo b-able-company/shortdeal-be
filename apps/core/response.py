@@ -22,10 +22,10 @@ def success_response(data=None, message="Success", status_code=status.HTTP_200_O
     return Response(response_data, status=status_code)
 
 
-def error_response(message="Error occurred", errors=None, status_code=status.HTTP_400_BAD_REQUEST, **kwargs):
+def error_response(message="Error occurred", errors=None, error_code=None, status_code=status.HTTP_400_BAD_REQUEST, **kwargs):
     """
     Standard error response envelope
-    {success: false, data: null, message: "...", errors: {...}}
+    {success: false, data: null, message: "...", errors: {...}, error: {code: "...", message: "..."}}
     """
     response_data = {
         'success': False,
@@ -35,6 +35,12 @@ def error_response(message="Error occurred", errors=None, status_code=status.HTT
 
     if errors:
         response_data['errors'] = errors
+
+    if error_code:
+        response_data['error'] = {
+            'code': error_code,
+            'message': message
+        }
 
     # Add optional fields
     response_data.update(kwargs)
