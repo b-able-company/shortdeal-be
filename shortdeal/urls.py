@@ -9,12 +9,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
 
-    # App URLs
+    # API URLs (JWT-based)
+    path('api/v1/auth/', include('apps.accounts.api_urls')),
+
+    # Template-based URLs (session-based, for testing)
     path('accounts/', include('apps.accounts.urls')),
-    path('contents/', include('apps.contents.urls')),
-    path('offers/', include('apps.offers.urls')),
-    path('loi/', include('apps.loi.urls')),
-    path('notifications/', include('apps.notifications.urls')),
 ]
 
 # Debug toolbar (개발환경)
