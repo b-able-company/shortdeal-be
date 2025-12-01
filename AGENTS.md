@@ -105,13 +105,6 @@ Always perform these 3 validations BEFORE writing code:
 
 **Only after all 3 validations pass → Start implementation**
 
-### Implementation Order
-1. Models (if needed)
-2. Serializers/Forms
-3. Views/ViewSets
-4. URLs
-5. Tests
-
 ## References
 - DB Schema: docs/db-schema.md
 - API Spec: docs/api-spec.md
