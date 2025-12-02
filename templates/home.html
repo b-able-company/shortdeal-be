@@ -16,13 +16,13 @@
             
             {% if user.is_authenticated %}
                 <p class="mb-4">
-                    Welcome, <strong>{{ user.username }}</strong>! 
+                    Welcome, <strong>{{ user.username }}</strong>!
                     {% if user.get_role_display %}
                         <span class="badge bg-primary">{{ user.get_role_display }}</span>
                     {% endif %}
                 </p>
-                <a href="{% url 'admin:index' %}" class="btn btn-primary btn-lg me-3">
-                    Go to Dashboard
+                <a href="{% url 'contents:browse' %}" class="btn btn-primary btn-lg me-3">
+                    Hot Content
                 </a>
                 <a href="#" class="btn btn-outline-primary btn-lg">
                     View Tutorial
