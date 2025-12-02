@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import SignUpForm, LoginForm, ProducerOnboardingForm, BuyerOnboardingForm
+from .forms import SignUpForm, LoginForm, ProducerOnboardingForm, BuyerOnboardingForm, ProfileUpdateForm, PasswordChangeForm
 
 
 def signup_view(request):
@@ -131,3 +131,51 @@ def onboarding_buyer_view(request):
         form = BuyerOnboardingForm(instance=request.user)
 
     return render(request, 'accounts/onboarding_buyer.html', {'form': form})
+
+
+@login_required
+def settings_view(request):
+    """
+    Settings page with profile update and password change
+    Screen 18: /settings
+    """
+    # Redirect to onboarding if not completed
+    if not request.user.is_onboarded:
+        if request.user.role == 'creator':
+            return redirect('accounts:onboarding_producer')
+        elif request.user.role == 'buyer':
+            return redirect('accounts:onboarding_buyer')
+
+    # Handle profile update
+    if request.method == 'POST' and 'action' in request.POST:
+        if request.POST['action'] == 'update_profile':
+            profile_form = ProfileUpdateForm(
+                request.POST,
+                request.FILES,
+                instance=request.user
+            )
+            password_form = PasswordChangeForm(request.user)
+
+            if profile_form.is_valid():
+                profile_form.save()
+                messages.success(request, 'Profile updated successfully!')
+                return redirect('accounts:settings')
+
+        elif request.POST['action'] == 'change_password':
+            profile_form = ProfileUpdateForm(instance=request.user)
+            password_form = PasswordChangeForm(request.user, request.POST)
+
+            if password_form.is_valid():
+                password_form.save()
+                # Update session to prevent logout after password change
+                update_session_auth_hash(request, request.user)
+                messages.success(request, 'Password changed successfully!')
+                return redirect('accounts:settings')
+    else:
+        profile_form = ProfileUpdateForm(instance=request.user)
+        password_form = PasswordChangeForm(request.user)
+
+    return render(request, 'accounts/settings.html', {
+        'profile_form': profile_form,
+        'password_form': password_form,
+    })

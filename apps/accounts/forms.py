@@ -195,3 +195,139 @@ class BuyerOnboardingForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('company_name', 'country')
+
+
+class ProfileUpdateForm(forms.ModelForm):
+    """Profile update form for settings page"""
+
+    username = forms.CharField(
+        max_length=150,
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Username'
+        })
+    )
+
+    email = forms.EmailField(
+        max_length=255,
+        required=True,
+        widget=forms.EmailInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Email address'
+        })
+    )
+
+    company_name = forms.CharField(
+        max_length=200,
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Company name'
+        }),
+        label='Company Name'
+    )
+
+    country = forms.CharField(
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Country'
+        }),
+        label='Country'
+    )
+
+    logo = forms.ImageField(
+        required=False,
+        widget=forms.FileInput(attrs={
+            'class': 'form-control',
+            'accept': 'image/*'
+        }),
+        label='Company Logo',
+        help_text='Upload your company logo (JPG or PNG, max 2MB)'
+    )
+
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'company_name', 'country', 'logo')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Remove logo field for buyers (they don't have logo)
+        if self.instance and self.instance.role == 'buyer':
+            self.fields.pop('logo', None)
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if User.objects.filter(email=email).exclude(pk=self.instance.pk).exists():
+            raise forms.ValidationError('This email is already in use.')
+        return email
+
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        if User.objects.filter(username=username).exclude(pk=self.instance.pk).exists():
+            raise forms.ValidationError('This username is already taken.')
+        return username
+
+    def clean_logo(self):
+        logo = self.cleaned_data.get('logo')
+        if logo:
+            if logo.size > 2 * 1024 * 1024:  # 2MB
+                raise forms.ValidationError('Logo file size must be under 2MB.')
+        return logo
+
+
+class PasswordChangeForm(forms.Form):
+    """Password change form for settings page"""
+
+    old_password = forms.CharField(
+        label='Current Password',
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter current password'
+        })
+    )
+
+    new_password1 = forms.CharField(
+        label='New Password',
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter new password (minimum 8 characters)'
+        }),
+        min_length=8
+    )
+
+    new_password2 = forms.CharField(
+        label='Confirm New Password',
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Confirm new password'
+        })
+    )
+
+    def __init__(self, user, *args, **kwargs):
+        self.user = user
+        super().__init__(*args, **kwargs)
+
+    def clean_old_password(self):
+        old_password = self.cleaned_data.get('old_password')
+        if not self.user.check_password(old_password):
+            raise forms.ValidationError('Your current password is incorrect.')
+        return old_password
+
+    def clean(self):
+        cleaned_data = super().clean()
+        new_password1 = cleaned_data.get('new_password1')
+        new_password2 = cleaned_data.get('new_password2')
+
+        if new_password1 and new_password2 and new_password1 != new_password2:
+            raise forms.ValidationError('The two password fields must match.')
+
+        return cleaned_data
+
+    def save(self):
+        password = self.cleaned_data.get('new_password1')
+        self.user.set_password(password)
+        self.user.save()
+        return self.user
