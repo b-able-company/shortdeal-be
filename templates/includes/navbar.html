@@ -32,10 +32,12 @@
                         </li>
                     {% endif %}
 
-                    <!-- Common authenticated menu -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'loi:list' %}">LOI Documents</a>
-                    </li>
+                    <!-- Common authenticated menu (Producer & Buyer only) -->
+                    {% if user.role == 'creator' or user.role == 'buyer' %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'loi:list' %}">LOI Documents</a>
+                        </li>
+                    {% endif %}
 
                     <!-- Admin menu -->
                     {% if user.role == 'admin' %}
