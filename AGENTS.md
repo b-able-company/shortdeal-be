@@ -58,13 +58,18 @@ IsAdmin              # 관리자만
 ## File Structure
 ```
 shortdeal/
-├─ accounts/        # User, auth, onboarding
-├─ booths/          # Producer booths
-├─ contents/        # Content items
-├─ offers/          # Offers
-├─ loi/             # LOI documents
-├─ core/            # Permissions, utils
-└─ shortdeal/       # Settings
+├─ apps/                  # Django apps live under this package
+│  ├─ accounts/           # User, auth, onboarding
+│  ├─ booths/             # Producer booths
+│  ├─ contents/           # Content items
+│  ├─ offers/             # Offers
+│  ├─ loi/                # LOI documents
+│  ├─ core/               # Permissions, utils
+│  └─ notifications/      # Email helpers (NTF-001~004 triggers)
+├─ shortdeal/settings/    # Project settings
+├─ templates/             # HTML templates (Bootstrap 5.3)
+├─ static/                # Static assets (css/js)
+└─ media/                 # Uploaded files (logos/thumbnails)
 ```
 
 ## Naming
