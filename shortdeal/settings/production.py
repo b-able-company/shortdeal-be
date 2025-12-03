@@ -33,7 +33,11 @@ DATABASES = {
 }
 
 # Security settings for production
-SECURE_SSL_REDIRECT = os.getenv('SECURE_SSL_REDIRECT', 'True') == 'True'
+# Railway handles HTTPS, so disable Django's SSL redirect
+SECURE_SSL_REDIRECT = False
+# Trust Railway's proxy headers
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_BROWSER_XSS_FILTER = True
