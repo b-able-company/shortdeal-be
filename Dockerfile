@@ -18,10 +18,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy project
 COPY . .
 
-# Collect static files (use production settings for Railway)
-RUN python manage.py collectstatic --noinput --settings=shortdeal.settings.production || true
+# Make entrypoint script executable
+RUN chmod +x entrypoint.sh
 
 EXPOSE 8000
 
-# Use gunicorn for production, bind to Railway's $PORT
-CMD gunicorn shortdeal.wsgi:application --bind 0.0.0.0:${PORT:-8000}
+# Use entrypoint script to run migrations and start server
+CMD ["./entrypoint.sh"]
