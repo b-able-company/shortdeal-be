@@ -7,6 +7,12 @@ from .base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+# Add WhiteNoise middleware for production static file serving
+MIDDLEWARE.insert(
+    MIDDLEWARE.index('django.middleware.security.SecurityMiddleware') + 1,
+    'whitenoise.middleware.WhiteNoiseMiddleware'
+)
+
 # ALLOWED_HOSTS configuration
 ALLOWED_HOSTS = [
     '.railway.app',
@@ -53,6 +59,12 @@ X_FRAME_OPTIONS = 'DENY'
 # Use CompressedStaticFilesStorage instead of CompressedManifestStaticFilesStorage
 # to avoid errors with missing source map files
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
+# Media files configuration for production
+# WARNING: Without Railway Volume, uploaded files will be lost on redeploy
+# To persist media files, add a Railway Volume mounted at /app/media
+MEDIA_ROOT = os.getenv('MEDIA_ROOT', BASE_DIR / 'media')
+MEDIA_URL = '/media/'
 
 # Email configuration
 EMAIL_BACKEND = os.getenv(
