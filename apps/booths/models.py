@@ -60,3 +60,8 @@ class Booth(models.Model):
             return False
         from django.utils import timezone
         return timezone.now() < self.boost_expires_at
+
+    def increment_view_count(self):
+        """Increment view count atomically"""
+        from django.db.models import F
+        Booth.objects.filter(pk=self.pk).update(view_count=F('view_count') + 1)

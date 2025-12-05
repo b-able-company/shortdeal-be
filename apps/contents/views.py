@@ -100,7 +100,17 @@ def content_detail_view(request, content_id):
     # Check if user can submit offer (CNT-004)
     can_submit_offer = False
     if request.user.is_authenticated and request.user.role == 'buyer':
-        can_submit_offer = True
+        # Check if there's already an accepted offer for this content
+        from apps.offers.models import Offer
+        from apps.core.constants import OFFER_STATUS_ACCEPTED
+
+        has_accepted_offer = Offer.objects.filter(
+            content=content,
+            status=OFFER_STATUS_ACCEPTED
+        ).exists()
+
+        # Can submit offer only if no accepted offer exists
+        can_submit_offer = not has_accepted_offer
 
     context = {
         'content': content,
@@ -117,6 +127,9 @@ def booth_view(request, slug):
     - 권한: AllowAny (전체 공개)
     """
     booth = get_object_or_404(Booth.objects.select_related('producer'), slug=slug)
+
+    # Increment booth view count
+    booth.increment_view_count()
 
     # Get producer's public contents (BTH-002)
     contents = Content.objects.filter(
@@ -207,10 +220,13 @@ def studio_content_create_view(request):
         # Get form data
         title = request.POST.get('title', '').strip()
         description = request.POST.get('description', '').strip()
-        thumbnail = request.FILES.get('thumbnail')
+        poster = request.FILES.get('poster')
+        rating = request.POST.get('rating', 'all')
         price = request.POST.get('price')
         currency = request.POST.get('currency', 'USD')
         video_url = request.POST.get('video_url', '').strip()
+        screener_url = request.POST.get('screener_url', '').strip()
+        release_target = request.POST.get('release_target', '').strip()
         duration_seconds = request.POST.get('duration_seconds', '0')
         genre_tags = request.POST.getlist('genre_tags')
 
@@ -223,10 +239,11 @@ def studio_content_create_view(request):
         if not description or len(description) > 2000:
             errors.append('Description is required and must be 2000 characters or less.')
 
-        if not thumbnail:
-            errors.append('Thumbnail is required.')
-        elif thumbnail.size > 5 * 1024 * 1024:  # 5MB
-            errors.append('Thumbnail must be 5MB or less.')
+        if poster and poster.size > 5 * 1024 * 1024:  # 5MB
+            errors.append('Poster must be 5MB or less.')
+
+        if rating not in ['all', '12', '15', '19']:
+            errors.append('Invalid rating selected.')
 
         try:
             price = float(price)
@@ -257,10 +274,13 @@ def studio_content_create_view(request):
                 producer=request.user,
                 title=title,
                 description=description,
-                thumbnail=thumbnail,
+                poster=poster,
+                rating=rating,
                 price=price,
                 currency=currency,
                 video_url=video_url,
+                screener_url=screener_url,
+                release_target=release_target if release_target else None,
                 duration_seconds=duration_seconds,
                 genre_tags=genre_tags,
                 status=CONTENT_STATUS_PUBLIC  # UPL-007: public
@@ -320,10 +340,13 @@ def studio_content_edit_view(request, content_id):
             # Get form data
             title = request.POST.get('title', '').strip()
             description = request.POST.get('description', '').strip()
-            thumbnail = request.FILES.get('thumbnail')
+            poster = request.FILES.get('poster')
+            rating = request.POST.get('rating', 'all')
             price = request.POST.get('price')
             currency = request.POST.get('currency', 'USD')
             video_url = request.POST.get('video_url', '').strip()
+            screener_url = request.POST.get('screener_url', '').strip()
+            release_target = request.POST.get('release_target', '').strip()
             duration_seconds = request.POST.get('duration_seconds')
             genre_tags = request.POST.getlist('genre_tags')
 
@@ -336,8 +359,11 @@ def studio_content_edit_view(request, content_id):
             if not description or len(description) > 2000:
                 errors.append('Description is required and must be 2000 characters or less.')
 
-            if thumbnail and thumbnail.size > 5 * 1024 * 1024:  # 5MB
-                errors.append('Thumbnail must be 5MB or less.')
+            if poster and poster.size > 5 * 1024 * 1024:  # 5MB
+                errors.append('Poster must be 5MB or less.')
+
+            if rating not in ['all', '12', '15', '19']:
+                errors.append('Invalid rating selected.')
 
             try:
                 price = float(price)
@@ -366,11 +392,14 @@ def studio_content_edit_view(request, content_id):
                 # Update content
                 content.title = title
                 content.description = description
-                if thumbnail:
-                    content.thumbnail = thumbnail
+                if poster:
+                    content.poster = poster
+                content.rating = rating
                 content.price = price
                 content.currency = currency
                 content.video_url = video_url
+                content.screener_url = screener_url
+                content.release_target = release_target if release_target else None
                 content.duration_seconds = duration_seconds
                 content.genre_tags = genre_tags
                 content.save()

@@ -11,7 +11,9 @@ from apps.core.constants import (
     CONTENT_STATUS_DELETED,
     CONTENT_STATUS_CHOICES,
     CURRENCY_USD,
-    CURRENCY_CHOICES
+    CURRENCY_CHOICES,
+    RATING_ALL,
+    RATING_CHOICES
 )
 
 
@@ -34,11 +36,12 @@ class Content(models.Model):
     description = models.TextField(
         verbose_name='Description'
     )
-    thumbnail = models.ImageField(
-        upload_to='thumbnails/',
+    poster = models.ImageField(
+        upload_to='posters/',
         blank=True,
         null=True,
-        verbose_name='Thumbnail'
+        verbose_name='Poster',
+        help_text='Vertical poster image for content'
     )
 
     # Genre tags (1-3 required, using ArrayField for PostgreSQL)
@@ -47,6 +50,15 @@ class Content(models.Model):
         size=3,
         verbose_name='Genre tags',
         help_text='1-3 genre tags'
+    )
+
+    # Content rating
+    rating = models.CharField(
+        max_length=3,
+        choices=RATING_CHOICES,
+        default=RATING_ALL,
+        verbose_name='Age rating',
+        help_text='Content age restriction'
     )
 
     # Pricing
@@ -72,6 +84,18 @@ class Content(models.Model):
         blank=True,
         verbose_name='Video URL',
         help_text='URL to video preview or full video'
+    )
+    screener_url = models.URLField(
+        max_length=500,
+        blank=True,
+        verbose_name='Screener URL',
+        help_text='Internal screener video with watermark'
+    )
+    release_target = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name='Target release date',
+        help_text='Desired release date for the content'
     )
 
     # Status and visibility

@@ -101,14 +101,6 @@ class Offer(models.Model):
             models.Index(fields=['content', 'status']),
             models.Index(fields=['status', 'expires_at']),
         ]
-        constraints = [
-            # Only one pending offer per content/buyer combination
-            models.UniqueConstraint(
-                fields=['content', 'buyer'],
-                condition=models.Q(status=OFFER_STATUS_PENDING),
-                name='unique_pending_offer_per_content_buyer'
-            )
-        ]
 
     def __str__(self):
         return f"Offer by {self.buyer.username} for {self.content.title} - {self.status}"

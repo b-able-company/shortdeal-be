@@ -34,6 +34,8 @@ if settings.DEBUG:
     urlpatterns = [
         path('__debug__/', include(debug_toolbar.urls)),
     ] + urlpatterns
-    
-    # Media 파일 서빙
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Media 파일 서빙 (개발 및 프로덕션)
+# 프로덕션에서는 gunicorn이 직접 서빙
+# Railway Volume을 사용하면 재배포 시에도 파일 유지
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

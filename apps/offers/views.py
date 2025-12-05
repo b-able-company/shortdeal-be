@@ -30,19 +30,18 @@ def offer_create_view(request, content_id):
         status=CONTENT_STATUS_PUBLIC
     )
 
-    # Check for existing pending offer (OFR-006)
-    existing_offer = Offer.objects.filter(
+    # Check if content already has an accepted offer
+    from apps.core.constants import OFFER_STATUS_ACCEPTED
+    has_accepted_offer = Offer.objects.filter(
         content=content,
-        buyer=request.user,
-        status=OFFER_STATUS_PENDING
-    ).first()
+        status=OFFER_STATUS_ACCEPTED
+    ).exists()
 
     if request.method == 'POST':
-        if existing_offer:
+        if has_accepted_offer:
             messages.error(
                 request,
-                'You already have a pending offer for this content. '
-                'Please wait for the producer\'s response or withdraw your existing offer.'
+                'This content already has an accepted offer and is no longer available.'
             )
             return redirect('contents:detail', content_id=content_id)
 
@@ -94,16 +93,16 @@ def offer_create_view(request, content_id):
                 return redirect('offers:buyer_detail', offer_id=offer.id)
 
             except IntegrityError:
-                # Duplicate pending offer (should be caught above, but double-check)
+                # This shouldn't happen, but handle gracefully
                 messages.error(
                     request,
-                    'You already have a pending offer for this content.'
+                    'An error occurred while creating your offer. Please try again.'
                 )
                 return redirect('contents:detail', content_id=content_id)
 
     context = {
         'content': content,
-        'existing_offer': existing_offer,
+        'has_accepted_offer': has_accepted_offer,
         'validity_choices': [
             {'days': 7, 'label': '7 days'},
             {'days': 14, 'label': '14 days'},

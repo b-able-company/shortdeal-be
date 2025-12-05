@@ -2,7 +2,7 @@
 Custom validators for file uploads and data validation
 """
 from django.core.exceptions import ValidationError
-from .constants import MAX_LOGO_SIZE, MAX_THUMBNAIL_SIZE, ALLOWED_IMAGE_TYPES
+from .constants import MAX_LOGO_SIZE, MAX_POSTER_SIZE, ALLOWED_IMAGE_TYPES
 
 
 def validate_logo_size(file):
@@ -11,10 +11,11 @@ def validate_logo_size(file):
         raise ValidationError(f'Logo file size must be under {MAX_LOGO_SIZE / (1024*1024)}MB.')
 
 
-def validate_thumbnail_size(file):
-    """Validate thumbnail file size (max 5MB)"""
-    if file.size > MAX_THUMBNAIL_SIZE:
-        raise ValidationError(f'Thumbnail file size must be under {MAX_THUMBNAIL_SIZE / (1024*1024)}MB.')
+def validate_poster_size(file):
+    """Validate poster file size (max 5MB)"""
+    if file.size > MAX_POSTER_SIZE:
+        max_mb = MAX_POSTER_SIZE / (1024*1024)
+        raise ValidationError(f'Poster file size must be under {max_mb}MB.')
 
 
 def validate_image_type(file):

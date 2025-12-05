@@ -12,15 +12,15 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4">
-                        {% if content.thumbnail %}
-                            <img src="{{ content.thumbnail.url }}"
+                        {% if content.poster %}
+                            <img src="{{ content.poster.url }}"
                                  class="img-fluid rounded"
                                  alt="{{ content.title }}"
-                                 style="aspect-ratio: 16/9; object-fit: cover;">
+                                 style="aspect-ratio: 2/3; object-fit: cover;">
                         {% else %}
                             <div class="bg-secondary rounded d-flex align-items-center justify-content-center"
-                                 style="aspect-ratio: 16/9;">
-                                <span class="text-white">No Image</span>
+                                 style="aspect-ratio: 2/3;">
+                                <span class="text-white">No Poster</span>
                             </div>
                         {% endif %}
                     </div>
@@ -43,17 +43,14 @@
             </div>
         </div>
 
-        <!-- Existing Offer Warning (OFR-006) -->
-        {% if existing_offer %}
+        <!-- Content Unavailable Warning -->
+        {% if has_accepted_offer %}
         <div class="alert alert-warning">
             <h5 class="alert-heading">
-                <i class="bi bi-exclamation-triangle"></i> Existing Offer
+                <i class="bi bi-exclamation-triangle"></i> Content Not Available
             </h5>
             <p class="mb-0">
-                You already have a pending offer for this content
-                (submitted on {{ existing_offer.created_at|date:"Y-m-d" }}).
-                Please wait for the producer's response or
-                <a href="{% url 'offers:buyer_detail' existing_offer.id %}">view your offer</a>.
+                This content already has an accepted offer and is no longer available for new offers.
             </p>
         </div>
         {% else %}

@@ -39,7 +39,20 @@ CURRENCY_CHOICES = [
     (CURRENCY_JPY, 'Japanese Yen'),
 ]
 
+# Content rating (age restriction)
+RATING_ALL = 'all'
+RATING_12 = '12'
+RATING_15 = '15'
+RATING_19 = '19'
+
+RATING_CHOICES = [
+    (RATING_ALL, 'All ages'),
+    (RATING_12, '12+'),
+    (RATING_15, '15+'),
+    (RATING_19, '19+'),
+]
+
 # File upload limits
 MAX_LOGO_SIZE = 2 * 1024 * 1024  # 2MB
-MAX_THUMBNAIL_SIZE = 5 * 1024 * 1024  # 5MB
+MAX_POSTER_SIZE = 5 * 1024 * 1024  # 5MB (for vertical posters)
 ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/jpg']

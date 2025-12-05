@@ -5,73 +5,77 @@
 {% block content %}
 <div class="row">
     <div class="col-lg-8">
-        <!-- Thumbnail (CNT-001) -->
-        <div class="card mb-4">
-            {% if content.thumbnail %}
-                <img src="{{ content.thumbnail.url }}"
-                     class="card-img-top"
-                     alt="{{ content.title }}"
-                     style="width: 100%; aspect-ratio: 16/9; object-fit: cover;">
-            {% else %}
-                <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center"
-                     style="aspect-ratio: 16/9;">
-                    <span class="text-white fs-4">No Thumbnail</span>
-                </div>
-            {% endif %}
-        </div>
-
-        <!-- Title and Basic Info (CNT-001) -->
         <div class="card mb-4">
             <div class="card-body">
-                <h1 class="card-title mb-3">{{ content.title }}</h1>
+                <div class="row">
+                    <!-- Poster Column -->
+                    <div class="col-md-4">
+                        {% if content.poster %}
+                            <img src="{{ content.poster.url }}"
+                                 class="img-fluid rounded"
+                                 alt="{{ content.title }}"
+                                 style="width: 100%; object-fit: cover;">
+                        {% else %}
+                            <div class="bg-secondary d-flex align-items-center justify-content-center rounded"
+                                 style="aspect-ratio: 2/3; width: 100%;">
+                                <span class="text-white">No Poster</span>
+                            </div>
+                        {% endif %}
+                    </div>
 
-                <!-- Genre Tags -->
-                <div class="mb-3">
-                    {% for genre in content.genre_tags %}
-                    <span class="badge bg-primary">{{ genre }}</span>
-                    {% endfor %}
+                    <!-- Info Column -->
+                    <div class="col-md-8">
+                        <h1 class="mb-3">{{ content.title }}</h1>
+
+                        <!-- Genre Tags and Rating -->
+                        <div class="mb-3">
+                            {% for genre in content.genre_tags %}
+                            <span class="badge bg-primary">{{ genre }}</span>
+                            {% endfor %}
+                            <span class="badge bg-warning text-dark">{{ content.get_rating_display }}</span>
+                        </div>
+
+                        <!-- Duration -->
+                        <div class="mb-3">
+                            <small class="text-muted">Duration:</small>
+                            <p class="mb-0">{{ content.duration_seconds }} seconds</p>
+                        </div>
+
+                        <!-- Release Target -->
+                        {% if content.release_target %}
+                        <div class="mb-3">
+                            <small class="text-muted">Target Release Date:</small>
+                            <p class="mb-0">{{ content.release_target|date:"Y-m-d" }}</p>
+                        </div>
+                        {% endif %}
+
+                        <!-- Published & Views -->
+                        <div class="mb-3">
+                            <small class="text-muted">Published:</small>
+                            <p class="mb-0">{{ content.created_at|date:"Y-m-d" }}</p>
+                        </div>
+
+                        <div class="mb-3">
+                            <small class="text-muted">Views:</small>
+                            <p class="mb-0">{{ content.view_count }}</p>
+                        </div>
+
+                        <!-- Content Link (CNT-003) -->
+                        {% if content.video_url %}
+                        <div class="mb-3">
+                            <a href="{{ content.video_url }}" target="_blank" class="btn btn-outline-primary">
+                                <i class="bi bi-play-circle"></i> Watch Preview
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
                 </div>
 
-                <!-- Metadata -->
-                <div class="row mb-3">
-                    <div class="col-sm-6">
-                        <small class="text-muted">Price:</small>
-                        <p class="mb-0">
-                            <strong class="fs-4 text-primary">${{ content.price|floatformat:0 }} {{ content.currency }}</strong>
-                        </p>
-                    </div>
-                    <div class="col-sm-6">
-                        <small class="text-muted">Published:</small>
-                        <p class="mb-0">{{ content.created_at|date:"Y-m-d" }}</p>
-                    </div>
-                </div>
-
-                <!-- Duration and Views -->
-                <div class="row mb-3">
-                    <div class="col-sm-6">
-                        <small class="text-muted">Duration:</small>
-                        <p class="mb-0">{{ content.duration_seconds }} seconds</p>
-                    </div>
-                    <div class="col-sm-6">
-                        <small class="text-muted">Views:</small>
-                        <p class="mb-0">{{ content.view_count }}</p>
-                    </div>
-                </div>
-
-                <!-- Description/Synopsis (CNT-001) -->
-                <div class="mb-3">
+                <!-- Description/Synopsis (Full Width Below) -->
+                <div class="mt-4">
                     <h5>Synopsis</h5>
                     <p class="text-justify" style="white-space: pre-wrap;">{{ content.description }}</p>
                 </div>
-
-                <!-- Content Link (CNT-003) -->
-                {% if content.video_url %}
-                <div class="mb-3">
-                    <a href="{{ content.video_url }}" target="_blank" class="btn btn-outline-primary">
-                        <i class="bi bi-play-circle"></i> Watch Preview
-                    </a>
-                </div>
-                {% endif %}
             </div>
         </div>
     </div>

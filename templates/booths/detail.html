@@ -65,17 +65,17 @@
                 {% for content in page_obj %}
                 <div class="col">
                     <div class="card h-100 content-card">
-                        <!-- Thumbnail -->
+                        <!-- Poster -->
                         <a href="{% url 'contents:detail' content.id %}" class="text-decoration-none">
-                            {% if content.thumbnail %}
-                                <img src="{{ content.thumbnail.url }}"
+                            {% if content.poster %}
+                                <img src="{{ content.poster.url }}"
                                      class="card-img-top"
                                      alt="{{ content.title }}"
-                                     style="aspect-ratio: 16/9; object-fit: cover;">
+                                     style="aspect-ratio: 2/3; object-fit: cover;">
                             {% else %}
                                 <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center"
-                                     style="aspect-ratio: 16/9;">
-                                    <span class="text-white">No Image</span>
+                                     style="aspect-ratio: 2/3;">
+                                    <span class="text-white">No Poster</span>
                                 </div>
                             {% endif %}
                         </a>
@@ -98,11 +98,6 @@
                                 <span class="badge bg-light text-dark">+{{ content.genre_tags|length|add:"-2" }}</span>
                                 {% endif %}
                             </div>
-
-                            <!-- Price -->
-                            <p class="card-text mb-0">
-                                <strong class="text-primary">${{ content.price|floatformat:0 }} {{ content.currency }}</strong>
-                            </p>
                         </div>
                     </div>
                 </div>

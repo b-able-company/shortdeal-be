@@ -17,9 +17,9 @@ class ContentPublicSerializer(serializers.ModelSerializer):
     class Meta:
         model = Content
         fields = (
-            'id', 'title', 'description', 'thumbnail',
+            'id', 'title', 'description', 'poster', 'rating',
             'genre_tags', 'price', 'currency', 'duration_seconds',
-            'view_count', 'created_at',
+            'release_target', 'view_count', 'created_at',
             'producer_name', 'producer_username', 'booth_slug'
         )
         read_only_fields = fields
@@ -35,9 +35,10 @@ class ContentDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Content
         fields = (
-            'id', 'title', 'description', 'thumbnail',
+            'id', 'title', 'description', 'poster', 'rating',
             'genre_tags', 'price', 'currency', 'duration_seconds',
-            'video_url', 'view_count', 'created_at', 'updated_at',
+            'video_url', 'screener_url', 'release_target',
+            'view_count', 'created_at', 'updated_at',
             'producer_name', 'producer_username', 'booth_slug'
         )
         read_only_fields = fields
@@ -49,10 +50,10 @@ class ContentProducerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Content
         fields = (
-            'id', 'title', 'description', 'thumbnail',
+            'id', 'title', 'description', 'poster', 'rating',
             'genre_tags', 'price', 'currency', 'duration_seconds',
-            'video_url', 'status', 'view_count',
-            'created_at', 'updated_at'
+            'video_url', 'screener_url', 'release_target',
+            'status', 'view_count', 'created_at', 'updated_at'
         )
         read_only_fields = ('id', 'view_count', 'created_at', 'updated_at')
 
@@ -85,9 +86,9 @@ class ContentCreateUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Content
         fields = (
-            'title', 'description', 'thumbnail',
+            'title', 'description', 'poster', 'rating',
             'genre_tags', 'price', 'currency', 'duration_seconds',
-            'video_url', 'status'
+            'video_url', 'screener_url', 'release_target', 'status'
         )
 
     def validate_genre_tags(self, value):

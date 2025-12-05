@@ -477,7 +477,8 @@ genre_tags: ["Drama", "Reality", "Documentary"]  // 최대 3개
     {
       "id": 1,
       "title": "Corporate Training Video Series",
-      "thumbnail_url": "<https://s3>.../thumb.jpg",
+      "poster_url": "<https://s3>.../poster.jpg",
+      "rating": "all",
       "synopsis": "10-episode professional training...",
       "target_price": 5000.00,
       "currency": "USD",
@@ -542,9 +543,12 @@ genre_tags: ["Drama", "Reality", "Documentary"]  // 최대 3개
   "data": {
     "id": 1,
     "title": "Corporate Training Video Series",
-    "thumbnail_url": "<https://s3>.../thumb.jpg",
+    "poster_url": "<https://s3>.../poster.jpg",
+    "rating": "all",
     "synopsis": "10-episode professional training content for enterprise clients. Each episode covers essential workplace skills including communication, leadership, and teamwork...",
     "content_link": "<https://vimeo.com/12345>",
+    "screener_url": "<https://internal.shortdeal.com/screener/1>",
+    "release_target": "2025-03-01",
     "target_price": 5000.00,
     "currency": "USD",
     "genre_tags": ["Education", "Business"],
@@ -612,7 +616,7 @@ genre_tags: ["Drama", "Reality", "Documentary"]  // 최대 3개
       {
         "id": 1,
         "title": "Corporate Training Video Series",
-        "thumbnail_url": "<https://s3>.../thumb.jpg",
+        "poster_url": "<https://s3>.../thumb.jpg",
         "target_price": 5000.00,
         "currency": "USD",
         "genre_tags": ["Education", "Business"],
@@ -655,7 +659,7 @@ genre_tags: ["Drama", "Reality", "Documentary"]  // 최대 3개
     {
       "id": 1,
       "title": "Corporate Training Video Series",
-      "thumbnail_url": "<https://s3>.../thumb.jpg",
+      "poster_url": "<https://s3>.../thumb.jpg",
       "target_price": 5000.00,
       "currency": "USD",
       "genre_tags": ["Education", "Business"],
@@ -686,9 +690,12 @@ genre_tags: ["Drama", "Reality", "Documentary"]  // 최대 3개
 
 ```
 title: "New Content Title"
-thumbnail: [File]
+poster: [File]  // Optional
+rating: "15"  // all/12/15/19
 synopsis: "Detailed description..."
 content_link: "<https://vimeo.com/12345>"
+screener_url: "<https://internal.shortdeal.com/screener/12345>"  // Optional
+release_target: "2025-06-15"  // Optional
 target_price: 5000.00
 currency: "USD"
 genre_tags: ["Drama", "Romance"]  // 1-3개
@@ -698,9 +705,12 @@ genre_tags: ["Drama", "Romance"]  // 1-3개
 **Validation:**
 
 - `title`: 2-200자, 필수
-- `thumbnail`: JPG/PNG, 최대 5MB, 16:9 권장, 필수
+- `poster`: JPG/PNG, 최대 5MB, 세로형 권장, 선택
+- `rating`: all/12/15/19 중 선택, 필수
 - `synopsis`: 최대 2000자, 필수
-- `content_link`: 유효한 URL, 필수
+- `content_link`: 유효한 URL, 필수 (외부 링크)
+- `screener_url`: 유효한 URL, 선택 (내부 워터마크 스크리너)
+- `release_target`: YYYY-MM-DD 형식, 선택
 - `target_price`: >0, 필수
 - `currency`: USD/KRW/EUR, 필수
 - `genre_tags`: 1-3개, 미리 정의된 목록, 필수
@@ -713,9 +723,12 @@ genre_tags: ["Drama", "Romance"]  // 1-3개
   "data": {
     "id": 10,
     "title": "New Content Title",
-    "thumbnail_url": "<https://s3>.../new-thumb.jpg",
+    "poster_url": "<https://s3>.../new-poster.jpg",
+    "rating": "15",
     "synopsis": "Detailed description...",
     "content_link": "<https://vimeo.com/12345>",
+    "screener_url": "<https://internal.shortdeal.com/screener/12345>",
+    "release_target": "2025-06-15",
     "target_price": 5000.00,
     "currency": "USD",
     "genre_tags": ["Drama", "Romance"],
@@ -755,7 +768,7 @@ genre_tags: ["Drama", "Romance"]  // 1-3개
   "data": {
     "id": 1,
     "title": "Corporate Training Video Series",
-    "thumbnail_url": "<https://s3>.../thumb.jpg",
+    "poster_url": "<https://s3>.../thumb.jpg",
     "synopsis": "Full synopsis text...",
     "content_link": "<https://vimeo.com/12345>",
     "target_price": 5000.00,
@@ -950,7 +963,7 @@ target_price: 4500.00
       "content": {
         "id": 1,
         "title": "Corporate Training Video Series",
-        "thumbnail_url": "<https://s3>.../thumb.jpg",
+        "poster_url": "<https://s3>.../thumb.jpg",
         "producer_name": "MediaCraft Studios"
       },
       "offer_price": 4500.00,
@@ -984,7 +997,7 @@ target_price: 4500.00
     "content": {
       "id": 1,
       "title": "Corporate Training Video Series",
-      "thumbnail_url": "<https://s3>.../thumb.jpg",
+      "poster_url": "<https://s3>.../thumb.jpg",
       "target_price": 5000.00,
       "producer": {
         "company_name": "MediaCraft Studios",
@@ -1046,7 +1059,7 @@ target_price: 4500.00
       "content": {
         "id": 1,
         "title": "Corporate Training Video Series",
-        "thumbnail_url": "<https://s3>.../thumb.jpg",
+        "poster_url": "<https://s3>.../thumb.jpg",
         "target_price": 5000.00
       },
       "buyer": {
@@ -1092,7 +1105,7 @@ target_price: 4500.00
     "content": {
       "id": 1,
       "title": "Corporate Training Video Series",
-      "thumbnail_url": "<https://s3>.../thumb.jpg",
+      "poster_url": "<https://s3>.../thumb.jpg",
       "target_price": 5000.00,
       "currency": "USD"
     },
