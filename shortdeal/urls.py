@@ -1,8 +1,9 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
+from django.views.static import serve
 
 
 urlpatterns = [
@@ -36,6 +37,14 @@ if settings.DEBUG:
     ] + urlpatterns
 
 # Media 파일 서빙 (개발 및 프로덕션)
-# 프로덕션에서는 gunicorn이 직접 서빙
-# Railway Volume을 사용하면 재배포 시에도 파일 유지
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    # 개발환경: static() 헬퍼 사용
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+else:
+    # 프로덕션: 명시적 URL 패턴으로 서빙
+    # Railway Volume을 사용하면 재배포 시에도 파일 유지
+    urlpatterns += [
+        re_path(r'^media/(?P<path>.*)$', serve, {
+            'document_root': settings.MEDIA_ROOT,
+        }),
+    ]
