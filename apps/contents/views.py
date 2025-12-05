@@ -221,6 +221,7 @@ def studio_content_create_view(request):
         title = request.POST.get('title', '').strip()
         description = request.POST.get('description', '').strip()
         poster = request.FILES.get('poster')
+        teaser_video = request.FILES.get('teaser_video')
         rating = request.POST.get('rating', 'all')
         price = request.POST.get('price')
         currency = request.POST.get('currency', 'USD')
@@ -241,6 +242,9 @@ def studio_content_create_view(request):
 
         if poster and poster.size > 5 * 1024 * 1024:  # 5MB
             errors.append('Poster must be 5MB or less.')
+
+        if teaser_video and teaser_video.size > 200 * 1024 * 1024:  # 200MB
+            errors.append('Teaser video must be 200MB or less.')
 
         if rating not in ['all', '12', '15', '19']:
             errors.append('Invalid rating selected.')
@@ -275,6 +279,7 @@ def studio_content_create_view(request):
                 title=title,
                 description=description,
                 poster=poster,
+                teaser_video=teaser_video,
                 rating=rating,
                 price=price,
                 currency=currency,
@@ -341,6 +346,7 @@ def studio_content_edit_view(request, content_id):
             title = request.POST.get('title', '').strip()
             description = request.POST.get('description', '').strip()
             poster = request.FILES.get('poster')
+            teaser_video = request.FILES.get('teaser_video')
             rating = request.POST.get('rating', 'all')
             price = request.POST.get('price')
             currency = request.POST.get('currency', 'USD')
@@ -361,6 +367,9 @@ def studio_content_edit_view(request, content_id):
 
             if poster and poster.size > 5 * 1024 * 1024:  # 5MB
                 errors.append('Poster must be 5MB or less.')
+
+            if teaser_video and teaser_video.size > 200 * 1024 * 1024:  # 200MB
+                errors.append('Teaser video must be 200MB or less.')
 
             if rating not in ['all', '12', '15', '19']:
                 errors.append('Invalid rating selected.')
@@ -394,6 +403,8 @@ def studio_content_edit_view(request, content_id):
                 content.description = description
                 if poster:
                     content.poster = poster
+                if teaser_video:
+                    content.teaser_video = teaser_video
                 content.rating = rating
                 content.price = price
                 content.currency = currency
