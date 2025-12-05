@@ -18,6 +18,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy project
 COPY . .
 
+# Create media directory for Railway Volume mount
+RUN mkdir -p /app/media && chmod 755 /app/media
+
 # Make entrypoint script executable
 RUN chmod +x entrypoint.sh
 
