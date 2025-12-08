@@ -130,7 +130,9 @@ def generate_loi_pdf(loi):
         textColor=colors.grey,
         alignment=TA_CENTER
     )
-    footer_text = f"Generated on {loi.pdf_generated_at.strftime('%B %d, %Y at %I:%M %p') if loi.pdf_generated_at else 'N/A'}"
+    from django.utils import timezone
+    current_time = timezone.now()
+    footer_text = f"Generated on {current_time.strftime('%B %d, %Y at %I:%M %p')}"
     elements.append(Paragraph(footer_text, footer_style))
 
     # Build PDF

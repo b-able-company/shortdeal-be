@@ -112,7 +112,14 @@ class LOI(models.Model):
         """Generate PDF file for this LOI"""
         from django.core.files.base import ContentFile
         from django.utils import timezone
+        from django.conf import settings
         from .pdf_generator import generate_loi_pdf
+        import os
+
+        # Ensure media directory exists
+        media_root = settings.MEDIA_ROOT
+        loi_pdf_dir = os.path.join(media_root, 'loi_pdfs')
+        os.makedirs(loi_pdf_dir, exist_ok=True)
 
         # Generate PDF content
         pdf_data = generate_loi_pdf(self)

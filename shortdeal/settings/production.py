@@ -61,9 +61,15 @@ X_FRAME_OPTIONS = 'DENY'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # Media files configuration for production
-# WARNING: Without Railway Volume, uploaded files will be lost on redeploy
-# To persist media files, add a Railway Volume mounted at /app/media
-MEDIA_ROOT = os.getenv('MEDIA_ROOT', BASE_DIR / 'media')
+# Railway Volume should be mounted at /app/media
+# If MEDIA_ROOT env var is not set, use /app/media for Railway
+import sys
+if 'railway' in os.getenv('RAILWAY_ENVIRONMENT', '').lower() or os.path.exists('/app'):
+    # Running on Railway
+    MEDIA_ROOT = os.getenv('MEDIA_ROOT', '/app/media')
+else:
+    # Running locally or other environment
+    MEDIA_ROOT = os.getenv('MEDIA_ROOT', BASE_DIR / 'media')
 MEDIA_URL = '/media/'
 
 # File upload settings for large video files (teaser videos up to 200MB)

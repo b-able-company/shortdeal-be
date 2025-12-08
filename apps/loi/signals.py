@@ -25,6 +25,8 @@ def create_loi_on_offer_accept(sender, instance, **kwargs):
             except Exception:
                 pass  # Don't fail LOI creation if email fails
 
-        except Exception:
-            # LOI already exists or creation failed
-            pass
+        except Exception as e:
+            # Log the error for debugging
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.error(f"Failed to create LOI for offer {instance.id}: {str(e)}", exc_info=True)
