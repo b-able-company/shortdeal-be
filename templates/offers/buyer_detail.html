@@ -27,14 +27,14 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4">
-                        {% if offer.content.thumbnail %}
-                            <img src="{{ offer.content.thumbnail.url }}"
+                        {% if offer.content.poster %}
+                            <img src="{{ offer.content.poster.url }}"
                                  class="img-fluid rounded"
                                  alt="{{ offer.content.title }}"
-                                 style="aspect-ratio: 16/9; object-fit: cover;">
+                                 style="aspect-ratio: 2/3; object-fit: cover;">
                         {% else %}
                             <div class="bg-secondary rounded d-flex align-items-center justify-content-center"
-                                 style="aspect-ratio: 16/9;">
+                                 style="aspect-ratio: 2/3;">
                                 <span class="text-white">No Image</span>
                             </div>
                         {% endif %}
