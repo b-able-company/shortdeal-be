@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-09 12:50+0900\n"
+"POT-Creation-Date: 2025-12-09 17:29+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,7 +40,7 @@ msgid "Sign up"
 msgstr "立即注册"
 
 msgid "Buyer Onboarding"
-msgstr "采购方入门指南"
+msgstr "内容采购方入门指南"
 
 msgid "Complete Your Buyer Profile"
 msgstr "完成您的内容采购方资料"
@@ -55,7 +55,7 @@ msgid "You can update this information later in your profile settings"
 msgstr "您可以稍后在您的个人资料设置中更新此信息"
 
 msgid "Producer Onboarding"
-msgstr "内容创作者入驻流程"
+msgstr "内容创作者入驻指南"
 
 msgid "Complete Your Producer Profile"
 msgstr "完成您的内容创作者个人资料"
@@ -94,7 +94,7 @@ msgid "Edit Profile"
 msgstr "编辑个人资料"
 
 msgid "Log Out"
-msgstr "登出"
+msgstr "退出"
 
 msgid "Settings"
 msgstr "设置"
@@ -127,7 +127,7 @@ msgid "New Password"
 msgstr "新密码"
 
 msgid "Minimum 8 characters"
-msgstr "Minimum 8 characters"
+msgstr "最少8个字符"
 
 msgid "Confirm New Password"
 msgstr "确认新密码"
@@ -181,7 +181,7 @@ msgid "Create Account"
 msgstr "创建账户"
 
 msgid "Already have an account?"
-msgstr "已经有账户了吗？"
+msgstr "已经有账号了吗？"
 
 msgid "Log in"
 msgstr "登录"
@@ -190,7 +190,7 @@ msgid "ShortDeal"
 msgstr "短视频交易"
 
 msgid "Producer Booth"
-msgstr "内容创作者展位"
+msgstr "创作者展位"
 
 msgid "Specializes in:"
 msgstr "擅长领域："
@@ -225,7 +225,7 @@ msgid "No content yet"
 msgstr "暂无内容"
 
 msgid "This producer hasn't uploaded any content yet"
-msgstr "这位内容创作者还未上传任何短视频内容"
+msgstr "该内容创作者尚未上传任何短视频内容"
 
 msgid "Back to Browse"
 msgstr "返回浏览"
@@ -249,10 +249,10 @@ msgid "Sort By"
 msgstr "按照排序"
 
 msgid "Newest First"
-msgstr "按最新排序"
+msgstr "最新的在前"
 
 msgid "Oldest First"
-msgstr "按时间从早到晚"
+msgstr "按时间升序"
 
 msgid "Apply Filters"
 msgstr "应用筛选器"
@@ -267,10 +267,10 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "No content found"
-msgstr "No content found"
+msgstr "未找到内容"
 
 msgid "Try adjusting your search or filter criteria"
-msgstr "尝试调整您的搜索或过滤条件"
+msgstr "尝试调整您的搜索或筛选条件"
 
 msgid "Clear Filters"
 msgstr "清除筛选条件"
@@ -292,7 +292,7 @@ msgid "Views:"
 msgstr "浏览量："
 
 msgid "Teaser Video"
-msgstr "预告视频"
+msgstr "预告片视频"
 
 msgid "Your browser does not support the video tag."
 msgstr "Your browser does not support the video tag."
@@ -307,7 +307,7 @@ msgid "Upload Content"
 msgstr "上传内容"
 
 msgid "Studio"
-msgstr "Studio"
+msgstr "创作工作室"
 
 msgid "Upload New Content"
 msgstr "上传新的内容"
@@ -319,13 +319,13 @@ msgid "2-200 characters"
 msgstr "2-200个字符"
 
 msgid "Poster (Vertical)"
-msgstr "海报（纵向）"
+msgstr "海报（竖版）"
 
 msgid "JPG/PNG, max 5MB, vertical format recommended"
-msgstr "JPG/PNG，最大5MB，建议使用竖式格式"
+msgstr "JPG/PNG，最大5MB，建议使用竖版格式"
 
 msgid "MP4/WebM recommended, max 200MB"
-msgstr "推荐使用MP4/WebM格式，最大不超过200MB"
+msgstr "MP4/WebM recommended, max 200MB"
 
 msgid "Max 2000 characters"
 msgstr "最多2000个字符"
@@ -352,10 +352,10 @@ msgid "Desired release date"
 msgstr "期望发布日期"
 
 msgid "Select 1-3 genres"
-msgstr "选择1-3个类型"
+msgstr "选择1-3种类型"
 
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "取消"
 
 msgid "Edit"
 msgstr "编辑"
@@ -364,7 +364,7 @@ msgid "Edit Content"
 msgstr "编辑内容"
 
 msgid "Leave empty to keep current poster"
-msgstr "若要保留当前海报，请留空"
+msgstr "保持为空以保留当前海报"
 
 msgid "MP4/WebM recommended, max 200MB (leave empty to keep current)"
 msgstr "推荐使用MP4/WebM格式，最大不超过200MB（如不更改请留空）"
@@ -413,7 +413,7 @@ msgid "Public"
 msgstr "公开"
 
 msgid "Upload your first content to get started"
-msgstr "上传您的第一份短视频内容以开始使用"
+msgstr "上传您的首个短视频内容以开始使用"
 
 msgid "Admin Dashboard"
 msgstr "管理员控制面板"
@@ -443,11 +443,11 @@ msgid "Pending:"
 msgstr "待处理："
 
 msgid "Total LOIs"
-msgstr "总意向书"
+msgstr "总的意向书"
 
 #, python-format
 msgid "Period Statistics (%(period)s)"
-msgstr "\"%(period)s\"期间统计"
+msgstr "%(period)s期间统计"
 
 msgid "New Users"
 msgstr "新用户"
@@ -462,7 +462,7 @@ msgid "New LOIs"
 msgstr "新的意向书"
 
 msgid "Recent Users (Last 10)"
-msgstr "近期用户（最后10位）"
+msgstr "最近的用户（最后10位）"
 
 msgid "ID"
 msgstr "身份证号"
@@ -477,13 +477,13 @@ msgid "No users yet"
 msgstr "暂无用户"
 
 msgid "Recent Contents (Last 10)"
-msgstr "最新内容（最后10个）"
+msgstr "最近的内容（最后10个）"
 
 msgid "No contents yet"
 msgstr "暂无内容"
 
 msgid "Recent Offers (Last 10)"
-msgstr "最近的报价（最后10个）"
+msgstr "近期报价（最后10个）"
 
 msgid "Accepted"
 msgstr "已接受"
@@ -492,7 +492,7 @@ msgid "Rejected"
 msgstr "已拒绝"
 
 msgid "Expired"
-msgstr "Expired"
+msgstr "已过期"
 
 msgid "No offers yet"
 msgstr "暂无报价"
@@ -506,7 +506,7 @@ msgstr "<span style=\"color: #ff6b6b;\">短视频</span>内容交易平台"
 msgid ""
 "A safe and transparent short-form content marketplace connecting producers "
 "and buyers."
-msgstr "一个安全透明的短视频内容市场，连接内容创作者和内容采购方。"
+msgstr "“一个安全透明的短视频内容市场，连接内容创作者和内容采购方。”"
 
 #, python-format
 msgid "Welcome, <strong>%(username)s</strong>!"
@@ -540,7 +540,7 @@ msgid "✓ Track sales in real-time"
 msgstr "✓ 实时跟踪销售情况"
 
 msgid "For Buyers"
-msgstr "供采购方参考"
+msgstr "供采购方"
 
 msgid "Find and purchase high-quality short-form content all in one place."
 msgstr "在同一平台上寻找并购买高质量的短视频内容。"
@@ -558,13 +558,13 @@ msgid "Safe Trading"
 msgstr "安全交易"
 
 msgid "Transparent offer system and automated contracts for peace of mind."
-msgstr "透明的报价系统和自动化合同让您安心无忧。"
+msgstr "Transparent offer system and automated contracts for peace of mind."
 
 msgid "✓ Deal management"
 msgstr "✓ 交易管理"
 
 msgid "How It Works"
-msgstr "“操作流程”"
+msgstr "操作流程"
 
 msgid "Sign up as a producer or buyer"
 msgstr "作为内容创作者或内容采购方立即注册"
@@ -573,7 +573,7 @@ msgid "Upload or Search"
 msgstr "上传或搜索"
 
 msgid "Upload content or find what you need"
-msgstr "上传内容或寻找您所需的内容"
+msgstr "上传内容或寻找您所需的"
 
 msgid "Discover and explore available content"
 msgstr "发现并探索可用的内容"
@@ -588,7 +588,7 @@ msgid "Ready to Get Started?"
 msgstr "准备好开始了吗？"
 
 msgid "Experience a new way to trade short-form content on ShortDeal"
-msgstr "在ShortDeal上体验全新的短视频内容交易方式"
+msgstr "在ShortDeal上体验短视频内容交易的新方式"
 
 msgid "Get Started Now"
 msgstr "立即开始"
@@ -601,3 +601,153 @@ msgstr "我的内容"
 
 msgid "Sign Out"
 msgstr "登出"
+
+msgid "How to Use ShortDeal"
+msgstr "How to Use ShortDeal"
+
+msgid ""
+"Welcome to ShortDeal! This guide will help you get started with our short-"
+"form content trading platform."
+msgstr "欢迎来到ShortDeal！本指南将帮助您开始使用我们的短视频内容交易平台。"
+
+msgid "🚀 Getting Started"
+msgstr "🚀 开始使用"
+
+msgid "1. Create Your Account"
+msgstr "1. 创建您的账户"
+
+msgid "First, you need to sign up for a ShortDeal account. Choose your role:"
+msgstr "首先，您需要为ShortDeal账户立即注册。请选择您的角色："
+
+msgid "<strong>Producer:</strong> If you want to sell your short-form content"
+msgstr "<strong>内容创作者：</strong>如果您想要销售您的短视频内容"
+
+msgid "<strong>Buyer:</strong> If you want to purchase short-form content"
+msgstr "<strong>内容采购方：</strong>如果您想购买短视频内容"
+
+msgid "Sign Up Now"
+msgstr "Sign Up Now"
+
+msgid "🎥 For Producers"
+msgstr "🎥 对于内容创作者"
+
+msgid "Step 1: Complete Your Onboarding"
+msgstr "步骤1：完成您的入职流程"
+
+msgid "After signing up as a Producer, you'll need to complete onboarding:"
+msgstr "作为内容创作者注册后，您需要完成入职流程："
+
+msgid "Enter your company name"
+msgstr "Enter your company name"
+
+msgid "Add a description of your business"
+msgstr "添加您的业务描述"
+
+msgid "Set up your booth (your storefront on ShortDeal)"
+msgstr "在ShortDeal上设置您的创作者展位（您的店面）"
+
+msgid ""
+"This information helps buyers understand who you are and what content you "
+"create."
+msgstr "“这些信息有助于内容采购方了解您是谁以及您创作的内容。”"
+
+msgid "Step 2: Upload Your Content"
+msgstr "步骤二：上传您的内容"
+
+msgid ""
+"Go to <strong>My Content</strong> in the navigation menu and click "
+"<strong>Upload New Content</strong>:"
+msgstr "在导航菜单中前往<strong>我的内容</strong>，然后点击<strong>上传新内容</strong>："
+
+msgid "Add a compelling title and description"
+msgstr "添加一个引人入胜的标题和描述"
+
+msgid "Upload your video file"
+msgstr "上传您的视频文件"
+
+msgid "Add a thumbnail image (optional)"
+msgstr "添加缩略图（可选）"
+
+msgid "Choose categories/tags"
+msgstr "选择类别/标签"
+
+msgid "Set content status (Draft or Public)"
+msgstr "设置内容状态（草稿或公开）"
+
+msgid ""
+"You can upload multiple pieces of content and manage them all from your "
+"dashboard."
+msgstr "您可以上传多个短视频内容，并通过您的工作台进行统一管理。"
+
+msgid "🛒 For Buyers"
+msgstr "🛒 为内容采购方"
+
+msgid "After signing up as a Buyer, complete your profile:"
+msgstr "作为内容采购方注册后，完成您的个人资料："
+
+msgid "Describe your business and content needs"
+msgstr "描述您的业务和内容需求"
+
+msgid "This helps producers understand who they're working with."
+msgstr "这有助于内容创作者了解他们正在与谁合作。"
+
+msgid "Step 2: Browse and Search Content"
+msgstr "步骤2：浏览并搜索内容"
+
+msgid "Find the perfect content for your needs:"
+msgstr "找到完美满足您需求的内容："
+
+msgid "Browse all content from <strong>Browse Content</strong>"
+msgstr "从<strong>浏览内容</strong>查看所有内容"
+
+msgid "Use search and filters to find specific content"
+msgstr "使用搜索和筛选功能查找特定内容"
+
+msgid "Click on content to view details"
+msgstr "点击内容查看详情"
+
+msgid "Visit producer booths to see their portfolio"
+msgstr "访问创作者展位查看他们的作品集"
+
+msgid ""
+"You can browse content even without logging in, but you'll need an account "
+"to make offers."
+msgstr "即使未登录，您也可以浏览内容，但您需要一个账户才能提出报价。"
+
+msgid "🌟 Key Features"
+msgstr "🌟 主要特性"
+
+msgid "🔍 Advanced Search"
+msgstr "🔍 高级搜索"
+
+msgid ""
+"Use filters to find exactly what you're looking for - by category, price "
+"range, producer, and more."
+msgstr "使用筛选器准确找到您正在寻找的内容 - 按类别、价格范围、内容创作者等进行搜索。"
+
+msgid "🏪 Producer Booths"
+msgstr "🏪 创作者展位"
+
+msgid ""
+"Each producer has their own booth showcasing all their content in one place."
+msgstr "每位内容创作者都有自己的创作者展位，一站式展示他们所有的短视频内容。"
+
+msgid "❓ Frequently Asked Questions"
+msgstr "❓ 常见问题解答"
+
+msgid "Can I be both a Producer and a Buyer?"
+msgstr "我可以同时成为内容创作者和内容采购方吗？"
+
+msgid ""
+"Currently, each account can only have one role (Producer or Buyer). If you "
+"need both functions, you'll need to create separate accounts."
+msgstr "目前，每个账户只能拥有一个角色（内容创作者或内容采购方）。如果您需要两种功能，您需要创建单独的账户。"
+
+msgid "Can I edit my content after uploading?"
+msgstr "我可以在上传后编辑我的内容吗？"
+
+msgid "Yes! Producers can edit their content details at any time from the \\"
+msgstr "是的！内容创作者可以随时在工作台编辑他们的短视频内容详情。"
+
+msgid "Join ShortDeal today and start trading short-form content!"
+msgstr "立即加入ShortDeal，开始交易短视频内容！"

@@ -10,7 +10,8 @@
       "Bash(docker volume rm:*)",
       "Bash(timeout 10 uv run:*)",
       "Bash(pkill:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(export PATH=\"/opt/homebrew/opt/gettext/bin:$PATH\")",
     ],
     "deny": [],
     "ask": []
