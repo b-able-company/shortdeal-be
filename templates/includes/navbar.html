@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand fw-bold" href="{% url 'home' %}">
@@ -11,14 +12,14 @@
             <ul class="navbar-nav me-auto">
                 <!-- Browse menu for all users -->
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'contents:browse' %}">Browse Content</a>
+                    <a class="nav-link" href="{% url 'contents:browse' %}">{% trans "Browse Content" %}</a>
                 </li>
 
                 {% if user.is_authenticated %}
                     <!-- Producer specific menu -->
                     {% if user.role == 'creator' %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'contents:studio_list' %}">My Content</a>
+                            <a class="nav-link" href="{% url 'contents:studio_list' %}">{% trans "My Content" %}</a>
                         </li>
                         <!-- HIDDEN: Offer/LOI feature -->
                         <!--
@@ -54,13 +55,49 @@
                     <!-- Admin menu -->
                     {% if user.role == 'admin' %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'core:admin_dashboard' %}">Admin Dashboard</a>
+                            <a class="nav-link" href="{% url 'core:admin_dashboard' %}">{% trans "Admin Dashboard" %}</a>
                         </li>
                     {% endif %}
                 {% endif %}
             </ul>
 
             <ul class="navbar-nav ms-auto">
+                <!-- Language Switcher -->
+                <li class="nav-item dropdown me-3">
+                    <a class="nav-link dropdown-toggle" href="#" id="languageDropdown"
+                       role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-globe"></i>
+                        {% get_current_language as LANGUAGE_CODE %}
+                        {% if LANGUAGE_CODE == 'zh-hans' %}
+                            简体中文
+                        {% else %}
+                            English
+                        {% endif %}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                        <li>
+                            <form action="{% url 'set_language' %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <input name="next" type="hidden" value="{{ request.path }}">
+                                <button type="submit" name="language" value="en"
+                                        class="dropdown-item {% if LANGUAGE_CODE == 'en' %}active{% endif %}">
+                                    English
+                                </button>
+                            </form>
+                        </li>
+                        <li>
+                            <form action="{% url 'set_language' %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <input name="next" type="hidden" value="{{ request.path }}">
+                                <button type="submit" name="language" value="zh-hans"
+                                        class="dropdown-item {% if LANGUAGE_CODE == 'zh-hans' %}active{% endif %}">
+                                    简体中文
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+
                 {% if user.is_authenticated %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -70,18 +107,18 @@
                             {% endif %}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{% url 'accounts:profile' %}">Profile</a></li>
-                            <li><a class="dropdown-item" href="{% url 'accounts:settings' %}">Settings</a></li>
+                            <li><a class="dropdown-item" href="{% url 'accounts:profile' %}">{% trans "Profile" %}</a></li>
+                            <li><a class="dropdown-item" href="{% url 'accounts:settings' %}">{% trans "Settings" %}</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">Sign Out</a></li>
+                            <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">{% trans "Sign Out" %}</a></li>
                         </ul>
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'accounts:login' %}">Sign In</a>
+                        <a class="nav-link" href="{% url 'accounts:login' %}">{% trans "Sign In" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary text-white ms-2" href="{% url 'accounts:signup' %}">Sign Up</a>
+                        <a class="nav-link btn btn-primary text-white ms-2" href="{% url 'accounts:signup' %}">{% trans "Sign Up" %}</a>
                     </li>
                 {% endif %}
             </ul>

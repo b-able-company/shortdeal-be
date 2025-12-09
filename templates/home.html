@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{% load i18n %}
 
-{% block title %}Home - ShortDeal{% endblock %}
+{% block title %}{% trans "Home" %} - {% trans "ShortDeal" %}{% endblock %}
 
 {% block content %}
 <!-- Hero Section -->
@@ -10,31 +11,31 @@
     <div class="row align-items-center">
         <div class="col-lg-6">
             <h1 class="display-3 fw-bold mb-4">
-                <span style="color: #ff6b6b;">Short-form</span> Content Trading Platform
+                {% blocktrans %}<span style="color: #ff6b6b;">Short-form</span> Content Trading Platform{% endblocktrans %}
             </h1>
             <p class="lead text-muted mb-4">
-                A safe and transparent short-form content marketplace connecting producers and buyers.
+                {% trans "A safe and transparent short-form content marketplace connecting producers and buyers." %}
             </p>
             
             {% if user.is_authenticated %}
                 <p class="mb-4">
-                    Welcome, <strong>{{ user.username }}</strong>!
+                    {% blocktrans with username=user.username %}Welcome, <strong>{{ username }}</strong>!{% endblocktrans %}
                     {% if user.get_role_display %}
                         <span class="badge bg-primary">{{ user.get_role_display }}</span>
                     {% endif %}
                 </p>
                 <a href="{% url 'contents:browse' %}" class="btn btn-primary btn-lg me-3">
-                    Hot Content
+                    {% trans "Hot Content" %}
                 </a>
                 <a href="{% url 'core:tutorial' %}" class="btn btn-outline-primary btn-lg">
-                    View Tutorial
+                    {% trans "View Tutorial" %}
                 </a>
             {% else %}
                 <a href="{% url 'accounts:login' %}" class="btn btn-primary btn-lg me-3">
-                    Sign In
+                    {% trans "Sign In" %}
                 </a>
                 <a href="{% url 'core:tutorial' %}" class="btn btn-outline-primary btn-lg">
-                    View Tutorial
+                    {% trans "View Tutorial" %}
                 </a>
             {% endif %}
         </div>
@@ -47,7 +48,7 @@
 
 <!-- Features Section -->
 <div class="features-section mb-5">
-    <h2 class="text-center mb-5">Why ShortDeal?</h2>
+    <h2 class="text-center mb-5">{% trans "Why ShortDeal?" %}</h2>
     
     <div class="row g-4">
         <!-- Feature 1: Producers -->
@@ -55,14 +56,14 @@
             <div class="card booth-card h-100">
                 <div class="card-body">
                     <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎥</div>
-                    <h5 class="card-title">For Producers</h5>
+                    <h5 class="card-title">{% trans "For Producers" %}</h5>
                     <p class="card-text">
-                        Easily upload your short-form content and sell to interested buyers.
+                        {% trans "Easily upload your short-form content and sell to interested buyers." %}
                     </p>
                     <ul class="list-unstyled small">
-                        <li>✓ Create and manage your booth</li>
-                        <li>✓ Sell your content</li>
-                        <li>✓ Track sales in real-time</li>
+                        <li>{% trans "✓ Create and manage your booth" %}</li>
+                        <li>{% trans "✓ Sell your content" %}</li>
+                        <li>{% trans "✓ Track sales in real-time" %}</li>
                     </ul>
                 </div>
             </div>
@@ -73,14 +74,14 @@
             <div class="card booth-card h-100">
                 <div class="card-body">
                     <div style="font-size: 2.5rem; margin-bottom: 1rem;">🛒</div>
-                    <h5 class="card-title">For Buyers</h5>
+                    <h5 class="card-title">{% trans "For Buyers" %}</h5>
                     <p class="card-text">
-                        Find and purchase high-quality short-form content all in one place.
+                        {% trans "Find and purchase high-quality short-form content all in one place." %}
                     </p>
                     <ul class="list-unstyled small">
-                        <li>✓ Advanced search and filters</li>
-                        <li>✓ Secure transactions</li>
-                        <li>✓ Instant downloads</li>
+                        <li>{% trans "✓ Advanced search and filters" %}</li>
+                        <li>{% trans "✓ Secure transactions" %}</li>
+                        <li>{% trans "✓ Instant downloads" %}</li>
                     </ul>
                 </div>
             </div>
@@ -91,16 +92,16 @@
             <div class="card booth-card h-100">
                 <div class="card-body">
                     <div style="font-size: 2.5rem; margin-bottom: 1rem;">🤝</div>
-                    <h5 class="card-title">Safe Trading</h5>
+                    <h5 class="card-title">{% trans "Safe Trading" %}</h5>
                     <p class="card-text">
-                        Transparent offer system and automated contracts for peace of mind.
+                        {% trans "Transparent offer system and automated contracts for peace of mind." %}
                     </p>
                     <ul class="list-unstyled small">
                         <!-- HIDDEN: Offer/LOI feature -->
                         <!-- <li>✓ Structured offers</li> -->
                         <!-- <li>✓ Auto-generated LOI</li> -->
                         <!-- END HIDDEN -->
-                        <li>✓ Deal management</li>
+                        <li>{% trans "✓ Deal management" %}</li>
                     </ul>
                 </div>
             </div>
@@ -110,7 +111,7 @@
 
 <!-- How It Works Section -->
 <div class="how-it-works bg-light py-5 rounded-lg mb-5">
-    <h2 class="text-center mb-5">How It Works</h2>
+    <h2 class="text-center mb-5">{% trans "How It Works" %}</h2>
     
     <div class="row">
         <div class="col-md-3 text-center mb-4">
@@ -127,8 +128,8 @@
                 font-weight: bold;
                 margin: 0 auto 1rem;
             ">1</div>
-            <h5>Create Account</h5>
-            <p class="small">Sign up as a producer or buyer</p>
+            <h5>{% trans "Create Account" %}</h5>
+            <p class="small">{% trans "Sign up as a producer or buyer" %}</p>
         </div>
         <div class="col-md-3 text-center mb-4">
             <div style="
@@ -144,8 +145,8 @@
                 font-weight: bold;
                 margin: 0 auto 1rem;
             ">2</div>
-            <h5>Upload or Search</h5>
-            <p class="small">Upload content or find what you need</p>
+            <h5>{% trans "Upload or Search" %}</h5>
+            <p class="small">{% trans "Upload content or find what you need" %}</p>
         </div>
         <div class="col-md-3 text-center mb-4">
             <div style="
@@ -167,8 +168,8 @@
             <p class="small">Send and negotiate offers</p>
             -->
             <!-- END HIDDEN -->
-            <h5>Browse Content</h5>
-            <p class="small">Discover and explore available content</p>
+            <h5>{% trans "Browse Content" %}</h5>
+            <p class="small">{% trans "Discover and explore available content" %}</p>
         </div>
         <div class="col-md-3 text-center mb-4">
             <div style="
@@ -184,8 +185,8 @@
                 font-weight: bold;
                 margin: 0 auto 1rem;
             ">4</div>
-            <h5>Complete Deal</h5>
-            <p class="small">Sign contract and finalize</p>
+            <h5>{% trans "Complete Deal" %}</h5>
+            <p class="small">{% trans "Sign contract and finalize" %}</p>
         </div>
     </div>
 </div>
@@ -193,10 +194,10 @@
 <!-- CTA Section -->
 {% if not user.is_authenticated %}
 <div class="cta-section text-center py-5 rounded-lg" style="background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); color: white;">
-    <h2 class="mb-3">Ready to Get Started?</h2>
-    <p class="lead mb-4">Experience a new way to trade short-form content on ShortDeal</p>
+    <h2 class="mb-3">{% trans "Ready to Get Started?" %}</h2>
+    <p class="lead mb-4">{% trans "Experience a new way to trade short-form content on ShortDeal" %}</p>
     <a href="{% url 'accounts:signup' %}" class="btn btn-light btn-lg">
-        Get Started Now
+        {% trans "Get Started Now" %}
     </a>
 </div>
 {% endif %}
