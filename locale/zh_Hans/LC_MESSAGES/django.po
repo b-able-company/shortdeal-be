@@ -1,0 +1,603 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-09 12:50+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Log In"
+msgstr "登录"
+
+msgid "Welcome Back"
+msgstr "欢迎回来"
+
+msgid "Log in to your ShortDeal account"
+msgstr "登录您的ShortDeal账户"
+
+msgid "Username"
+msgstr "用户名"
+
+msgid "Password"
+msgstr "密码"
+
+msgid "Don't have an account?"
+msgstr "还没有账户？"
+
+msgid "Sign up"
+msgstr "立即注册"
+
+msgid "Buyer Onboarding"
+msgstr "采购方入门指南"
+
+msgid "Complete Your Buyer Profile"
+msgstr "完成您的内容采购方资料"
+
+msgid "Tell us about your company to start browsing content on ShortDeal"
+msgstr "告诉我们您的公司信息，开始在ShortDeal浏览短视频内容"
+
+msgid "Complete Onboarding"
+msgstr "完成入职流程"
+
+msgid "You can update this information later in your profile settings"
+msgstr "您可以稍后在您的个人资料设置中更新此信息"
+
+msgid "Producer Onboarding"
+msgstr "内容创作者入驻流程"
+
+msgid "Complete Your Producer Profile"
+msgstr "完成您的内容创作者个人资料"
+
+msgid "Tell us about your company to start selling content on ShortDeal"
+msgstr "告诉我们您的公司信息，开始在ShortDeal销售短视频内容"
+
+msgid "This will be displayed on your booth"
+msgstr "这将在您的创作者展位上显示"
+
+msgid "Profile"
+msgstr "个人资料"
+
+msgid "Company Logo"
+msgstr "公司标志"
+
+msgid "Email"
+msgstr "电子邮件"
+
+msgid "Company Name"
+msgstr "公司名称"
+
+msgid "Country"
+msgstr "国家"
+
+msgid "Genres"
+msgstr "类型"
+
+msgid "Phone"
+msgstr "电话"
+
+msgid "Member Since"
+msgstr "自成为会员以来"
+
+msgid "Edit Profile"
+msgstr "编辑个人资料"
+
+msgid "Log Out"
+msgstr "登出"
+
+msgid "Settings"
+msgstr "设置"
+
+msgid "Account Settings"
+msgstr "账户设置"
+
+msgid "Profile Information"
+msgstr "个人资料信息"
+
+msgid "Current logo"
+msgstr "当前标志"
+
+msgid "Role"
+msgstr "角色"
+
+msgid "Role cannot be changed"
+msgstr "角色无法更改"
+
+msgid "Update Profile"
+msgstr "更新个人资料"
+
+msgid "Change Password"
+msgstr "更改密码"
+
+msgid "Current Password"
+msgstr "当前密码"
+
+msgid "New Password"
+msgstr "新密码"
+
+msgid "Minimum 8 characters"
+msgstr "Minimum 8 characters"
+
+msgid "Confirm New Password"
+msgstr "确认新密码"
+
+msgid "Account Information"
+msgstr "账户信息"
+
+msgid "Account Created"
+msgstr "账户已创建"
+
+msgid "Last Login"
+msgstr "上次登录"
+
+msgid "Onboarding Status"
+msgstr "入职状态"
+
+msgid "Completed"
+msgstr "已完成"
+
+msgid "Pending"
+msgstr "待处理"
+
+msgid "Back to Profile"
+msgstr "返回个人资料"
+
+msgid "Sign Up"
+msgstr "立即注册"
+
+msgid "Join ShortDeal"
+msgstr "加入ShortDeal"
+
+msgid "Create your account and start trading short-form content"
+msgstr "创建您的账户并开始交易短视频内容"
+
+msgid "Producer"
+msgstr "内容创作者"
+
+msgid "Create and sell content"
+msgstr "创建并销售内容"
+
+msgid "Buyer"
+msgstr "内容采购方"
+
+msgid "Browse and purchase content"
+msgstr "浏览并购买内容"
+
+msgid "Confirm Password"
+msgstr "确认密码"
+
+msgid "Create Account"
+msgstr "创建账户"
+
+msgid "Already have an account?"
+msgstr "已经有账户了吗？"
+
+msgid "Log in"
+msgstr "登录"
+
+msgid "ShortDeal"
+msgstr "短视频交易"
+
+msgid "Producer Booth"
+msgstr "内容创作者展位"
+
+msgid "Specializes in:"
+msgstr "擅长领域："
+
+msgid "Content"
+msgid_plural "Contents"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Booth View"
+msgid_plural "Booth Views"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "Content from %(company)s"
+msgstr "%(company)s的内容"
+
+msgid "No Poster"
+msgstr "无海报"
+
+msgid "Page navigation"
+msgstr "页面导航"
+
+msgid "Previous"
+msgstr "上一步"
+
+msgid "Next"
+msgstr "下一步"
+
+msgid "No content yet"
+msgstr "暂无内容"
+
+msgid "This producer hasn't uploaded any content yet"
+msgstr "这位内容创作者还未上传任何短视频内容"
+
+msgid "Back to Browse"
+msgstr "返回浏览"
+
+msgid "Browse Content"
+msgstr "浏览内容"
+
+msgid "Filters"
+msgstr "筛选器"
+
+msgid "Search"
+msgstr "搜索"
+
+msgid "Title, producer, description"
+msgstr "标题，内容创作者，描述"
+
+msgid "Genre"
+msgstr "类型"
+
+msgid "Sort By"
+msgstr "按照排序"
+
+msgid "Newest First"
+msgstr "按最新排序"
+
+msgid "Oldest First"
+msgstr "按时间从早到晚"
+
+msgid "Apply Filters"
+msgstr "应用筛选器"
+
+msgid "Reset"
+msgstr "重置"
+
+#, python-format
+msgid "%(counter)s result"
+msgid_plural "%(counter)s results"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "No content found"
+msgstr "No content found"
+
+msgid "Try adjusting your search or filter criteria"
+msgstr "尝试调整您的搜索或过滤条件"
+
+msgid "Clear Filters"
+msgstr "清除筛选条件"
+
+msgid "Duration:"
+msgstr "时长："
+
+#, python-format
+msgid "%(seconds)s seconds"
+msgstr "%(seconds)s 秒"
+
+msgid "Target Release Date:"
+msgstr "目标发布日期："
+
+msgid "Published:"
+msgstr "已发布："
+
+msgid "Views:"
+msgstr "浏览量："
+
+msgid "Teaser Video"
+msgstr "预告视频"
+
+msgid "Your browser does not support the video tag."
+msgstr "Your browser does not support the video tag."
+
+msgid "Synopsis"
+msgstr "概述"
+
+msgid "Visit Producer Booth"
+msgstr "访问内容创作者展位"
+
+msgid "Upload Content"
+msgstr "上传内容"
+
+msgid "Studio"
+msgstr "Studio"
+
+msgid "Upload New Content"
+msgstr "上传新的内容"
+
+msgid "Title"
+msgstr "标题"
+
+msgid "2-200 characters"
+msgstr "2-200个字符"
+
+msgid "Poster (Vertical)"
+msgstr "海报（纵向）"
+
+msgid "JPG/PNG, max 5MB, vertical format recommended"
+msgstr "JPG/PNG，最大5MB，建议使用竖式格式"
+
+msgid "MP4/WebM recommended, max 200MB"
+msgstr "推荐使用MP4/WebM格式，最大不超过200MB"
+
+msgid "Max 2000 characters"
+msgstr "最多2000个字符"
+
+msgid "Age Rating"
+msgstr "年龄分级"
+
+msgid "All ages"
+msgstr "适合所有年龄"
+
+msgid "Asking Price"
+msgstr "要价"
+
+msgid "Currency"
+msgstr "货币"
+
+msgid "Duration (seconds)"
+msgstr "时长（秒）"
+
+msgid "Target Release Date"
+msgstr "目标发布日期"
+
+msgid "Desired release date"
+msgstr "期望发布日期"
+
+msgid "Select 1-3 genres"
+msgstr "选择1-3个类型"
+
+msgid "Cancel"
+msgstr "Cancel"
+
+msgid "Edit"
+msgstr "编辑"
+
+msgid "Edit Content"
+msgstr "编辑内容"
+
+msgid "Leave empty to keep current poster"
+msgstr "若要保留当前海报，请留空"
+
+msgid "MP4/WebM recommended, max 200MB (leave empty to keep current)"
+msgstr "推荐使用MP4/WebM格式，最大不超过200MB（如不更改请留空）"
+
+msgid "Update Content"
+msgstr "更新内容"
+
+msgid "Danger Zone"
+msgstr "危险区域"
+
+msgid "Once you delete this content, there is no going back."
+msgstr "一旦您删除了这个内容，就无法恢复。"
+
+msgid ""
+"Are you sure you want to delete this content? This action cannot be undone."
+msgstr "您确定要删除这个短视频内容吗？此操作无法撤销。"
+
+msgid "Delete Content"
+msgstr "删除内容"
+
+msgid "Manage Contents"
+msgstr "管理内容"
+
+msgid "My Contents"
+msgstr "我的内容"
+
+msgid "Price"
+msgstr "价格"
+
+msgid "Views"
+msgstr "浏览量"
+
+msgid "Offers"
+msgstr "优惠"
+
+msgid "Status"
+msgstr "状态"
+
+msgid "Created"
+msgstr "已创建"
+
+msgid "Actions"
+msgstr "操作"
+
+msgid "Public"
+msgstr "公开"
+
+msgid "Upload your first content to get started"
+msgstr "上传您的第一份短视频内容以开始使用"
+
+msgid "Admin Dashboard"
+msgstr "管理员控制面板"
+
+msgid "Last 7 Days"
+msgstr "过去7天"
+
+msgid "Last 30 Days"
+msgstr "过去30天"
+
+msgid "Total Users"
+msgstr "总用户数"
+
+msgid "Producers:"
+msgstr "内容创作者："
+
+msgid "Buyers:"
+msgstr "采购方："
+
+msgid "Total Contents"
+msgstr "总内容"
+
+msgid "Total Offers"
+msgstr "总计报价"
+
+msgid "Pending:"
+msgstr "待处理："
+
+msgid "Total LOIs"
+msgstr "总意向书"
+
+#, python-format
+msgid "Period Statistics (%(period)s)"
+msgstr "\"%(period)s\"期间统计"
+
+msgid "New Users"
+msgstr "新用户"
+
+msgid "New Contents"
+msgstr "新的内容"
+
+msgid "New Offers"
+msgstr "新的优惠"
+
+msgid "New LOIs"
+msgstr "新的意向书"
+
+msgid "Recent Users (Last 10)"
+msgstr "近期用户（最后10位）"
+
+msgid "ID"
+msgstr "身份证号"
+
+msgid "Company"
+msgstr "公司"
+
+msgid "Joined"
+msgstr "已加入"
+
+msgid "No users yet"
+msgstr "暂无用户"
+
+msgid "Recent Contents (Last 10)"
+msgstr "最新内容（最后10个）"
+
+msgid "No contents yet"
+msgstr "暂无内容"
+
+msgid "Recent Offers (Last 10)"
+msgstr "最近的报价（最后10个）"
+
+msgid "Accepted"
+msgstr "已接受"
+
+msgid "Rejected"
+msgstr "已拒绝"
+
+msgid "Expired"
+msgstr "Expired"
+
+msgid "No offers yet"
+msgstr "暂无报价"
+
+msgid "Home"
+msgstr "首页"
+
+msgid "<span style=\"color: #ff6b6b;\">Short-form</span> Content Trading Platform"
+msgstr "<span style=\"color: #ff6b6b;\">短视频</span>内容交易平台"
+
+msgid ""
+"A safe and transparent short-form content marketplace connecting producers "
+"and buyers."
+msgstr "一个安全透明的短视频内容市场，连接内容创作者和内容采购方。"
+
+#, python-format
+msgid "Welcome, <strong>%(username)s</strong>!"
+msgstr "欢迎，<strong>%(username)s</strong>！"
+
+msgid "Hot Content"
+msgstr "热门内容"
+
+msgid "View Tutorial"
+msgstr "查看教程"
+
+msgid "Sign In"
+msgstr "登录"
+
+msgid "Why ShortDeal?"
+msgstr "为什么选择ShortDeal？"
+
+msgid "For Producers"
+msgstr "供内容创作者使用"
+
+msgid "Easily upload your short-form content and sell to interested buyers."
+msgstr "轻松上传您的短视频内容，销售给感兴趣的内容采购方。"
+
+msgid "✓ Create and manage your booth"
+msgstr "✓ 创建并管理您的创作者展位"
+
+msgid "✓ Sell your content"
+msgstr "✓ 销售您的内容"
+
+msgid "✓ Track sales in real-time"
+msgstr "✓ 实时跟踪销售情况"
+
+msgid "For Buyers"
+msgstr "供采购方参考"
+
+msgid "Find and purchase high-quality short-form content all in one place."
+msgstr "在同一平台上寻找并购买高质量的短视频内容。"
+
+msgid "✓ Advanced search and filters"
+msgstr "✓ 高级搜索和筛选"
+
+msgid "✓ Secure transactions"
+msgstr "✓ 安全交易"
+
+msgid "✓ Instant downloads"
+msgstr "✓ 即刻下载"
+
+msgid "Safe Trading"
+msgstr "安全交易"
+
+msgid "Transparent offer system and automated contracts for peace of mind."
+msgstr "透明的报价系统和自动化合同让您安心无忧。"
+
+msgid "✓ Deal management"
+msgstr "✓ 交易管理"
+
+msgid "How It Works"
+msgstr "“操作流程”"
+
+msgid "Sign up as a producer or buyer"
+msgstr "作为内容创作者或内容采购方立即注册"
+
+msgid "Upload or Search"
+msgstr "上传或搜索"
+
+msgid "Upload content or find what you need"
+msgstr "上传内容或寻找您所需的内容"
+
+msgid "Discover and explore available content"
+msgstr "发现并探索可用的内容"
+
+msgid "Complete Deal"
+msgstr "完成交易"
+
+msgid "Sign contract and finalize"
+msgstr "签订合同并最终确定"
+
+msgid "Ready to Get Started?"
+msgstr "准备好开始了吗？"
+
+msgid "Experience a new way to trade short-form content on ShortDeal"
+msgstr "在ShortDeal上体验全新的短视频内容交易方式"
+
+msgid "Get Started Now"
+msgstr "立即开始"
+
+msgid "Close"
+msgstr "关闭"
+
+msgid "My Content"
+msgstr "我的内容"
+
+msgid "Sign Out"
+msgstr "登出"

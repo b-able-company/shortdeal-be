@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Profile - ShortDeal{% endblock %}
+{% block title %}{% trans "Profile" %} - ShortDeal{% endblock %}
 
 {% block content %}
 <div class="row">
@@ -9,7 +10,7 @@
             <div class="card-body">
                 <div class="d-flex align-items-center mb-4">
                     {% if user.logo %}
-                        <img src="{{ user.logo.url }}" alt="Company Logo" class="rounded me-3" style="width: 80px; height: 80px; object-fit: cover;">
+                        <img src="{{ user.logo.url }}" alt="{% trans 'Company Logo' %}" class="rounded me-3" style="width: 80px; height: 80px; object-fit: cover;">
                     {% endif %}
                     <div>
                         <h2 class="mb-1">{{ user.company_name|default:user.username }}</h2>
@@ -20,32 +21,32 @@
                 <hr>
 
                 <div class="row mb-3">
-                    <div class="col-md-3 text-muted">Username</div>
+                    <div class="col-md-3 text-muted">{% trans "Username" %}</div>
                     <div class="col-md-9"><strong>{{ user.username }}</strong></div>
                 </div>
 
                 <div class="row mb-3">
-                    <div class="col-md-3 text-muted">Email</div>
+                    <div class="col-md-3 text-muted">{% trans "Email" %}</div>
                     <div class="col-md-9">{{ user.email }}</div>
                 </div>
 
                 {% if user.company_name %}
                 <div class="row mb-3">
-                    <div class="col-md-3 text-muted">Company Name</div>
+                    <div class="col-md-3 text-muted">{% trans "Company Name" %}</div>
                     <div class="col-md-9">{{ user.company_name }}</div>
                 </div>
                 {% endif %}
 
                 {% if user.country %}
                 <div class="row mb-3">
-                    <div class="col-md-3 text-muted">Country</div>
+                    <div class="col-md-3 text-muted">{% trans "Country" %}</div>
                     <div class="col-md-9">{{ user.country }}</div>
                 </div>
                 {% endif %}
 
                 {% if user.genre_tags %}
                 <div class="row mb-3">
-                    <div class="col-md-3 text-muted">Genres</div>
+                    <div class="col-md-3 text-muted">{% trans "Genres" %}</div>
                     <div class="col-md-9">
                         {% for genre in user.genre_tags %}
                             <span class="badge bg-secondary me-1">{{ genre|title }}</span>
@@ -56,21 +57,21 @@
 
                 {% if user.phone %}
                 <div class="row mb-3">
-                    <div class="col-md-3 text-muted">Phone</div>
+                    <div class="col-md-3 text-muted">{% trans "Phone" %}</div>
                     <div class="col-md-9">{{ user.phone }}</div>
                 </div>
                 {% endif %}
 
                 <div class="row mb-3">
-                    <div class="col-md-3 text-muted">Member Since</div>
+                    <div class="col-md-3 text-muted">{% trans "Member Since" %}</div>
                     <div class="col-md-9">{{ user.created_at|date:"F d, Y" }}</div>
                 </div>
 
                 <hr class="my-4">
 
                 <div class="d-flex gap-2">
-                    <a href="#" class="btn btn-outline-primary">Edit Profile</a>
-                    <a href="{% url 'accounts:logout' %}" class="btn btn-outline-secondary">Log Out</a>
+                    <a href="#" class="btn btn-outline-primary">{% trans "Edit Profile" %}</a>
+                    <a href="{% url 'accounts:logout' %}" class="btn btn-outline-secondary">{% trans "Log Out" %}</a>
                 </div>
             </div>
         </div>

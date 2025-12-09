@@ -4,11 +4,15 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
 from django.views.static import serve
+from django.views.i18n import set_language
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
+
+    # Language switcher
+    path('i18n/setlang/', set_language, name='set_language'),
 
     # API URLs (JWT-based)
     path('api/v1/auth/', include('apps.accounts.api_urls')),

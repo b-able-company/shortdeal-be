@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}{{ content.title }} - ShortDeal{% endblock %}
+{% block title %}{{ content.title }} - {% trans "ShortDeal" %}{% endblock %}
 
 {% block content %}
 <div class="row">
@@ -18,7 +19,7 @@
                         {% else %}
                             <div class="bg-secondary d-flex align-items-center justify-content-center rounded"
                                  style="aspect-ratio: 2/3; width: 100%;">
-                                <span class="text-white">No Poster</span>
+                                <span class="text-white">{% trans "No Poster" %}</span>
                             </div>
                         {% endif %}
                     </div>
@@ -37,26 +38,26 @@
 
                         <!-- Duration -->
                         <div class="mb-3">
-                            <small class="text-muted">Duration:</small>
-                            <p class="mb-0">{{ content.duration_seconds }} seconds</p>
+                            <small class="text-muted">{% trans "Duration:" %}</small>
+                            <p class="mb-0">{% blocktrans with seconds=content.duration_seconds %}{{ seconds }} seconds{% endblocktrans %}</p>
                         </div>
 
                         <!-- Release Target -->
                         {% if content.release_target %}
                         <div class="mb-3">
-                            <small class="text-muted">Target Release Date:</small>
+                            <small class="text-muted">{% trans "Target Release Date:" %}</small>
                             <p class="mb-0">{{ content.release_target|date:"Y-m-d" }}</p>
                         </div>
                         {% endif %}
 
                         <!-- Published & Views -->
                         <div class="mb-3">
-                            <small class="text-muted">Published:</small>
+                            <small class="text-muted">{% trans "Published:" %}</small>
                             <p class="mb-0">{{ content.created_at|date:"Y-m-d" }}</p>
                         </div>
 
                         <div class="mb-3">
-                            <small class="text-muted">Views:</small>
+                            <small class="text-muted">{% trans "Views:" %}</small>
                             <p class="mb-0">{{ content.view_count }}</p>
                         </div>
                     </div>
@@ -67,17 +68,17 @@
                     <!-- Teaser Video Column -->
                     {% if content.teaser_video %}
                     <div class="col-md-6">
-                        <h5>Teaser Video</h5>
+                        <h5>{% trans "Teaser Video" %}</h5>
                         <video controls class="w-100 rounded" style="max-height: 400px;">
                             <source src="{{ content.teaser_video.url }}" type="video/mp4">
-                            Your browser does not support the video tag.
+                            {% trans "Your browser does not support the video tag." %}
                         </video>
                     </div>
                     {% endif %}
 
                     <!-- Synopsis Column -->
                     <div class="{% if content.teaser_video %}col-md-6{% else %}col-12{% endif %}">
-                        <h5>Synopsis</h5>
+                        <h5>{% trans "Synopsis" %}</h5>
                         <p class="text-justify" style="white-space: pre-wrap;">{{ content.description }}</p>
                     </div>
                 </div>
@@ -90,7 +91,7 @@
         <!-- Producer Info (CNT-002) -->
         <div class="card mb-4">
             <div class="card-header">
-                <h5 class="mb-0">Producer</h5>
+                <h5 class="mb-0">{% trans "Producer" %}</h5>
             </div>
             <div class="card-body">
                 <div class="d-flex align-items-center mb-3">
@@ -114,7 +115,7 @@
                 <!-- Producer Genres -->
                 {% if content.producer.genre_tags %}
                 <div class="mb-3">
-                    <small class="text-muted d-block mb-1">Specializes in:</small>
+                    <small class="text-muted d-block mb-1">{% trans "Specializes in:" %}</small>
                     {% for genre in content.producer.genre_tags %}
                     <span class="badge bg-secondary">{{ genre }}</span>
                     {% endfor %}
@@ -124,12 +125,14 @@
                 <!-- Visit Booth (CNT-002) -->
                 <a href="{% url 'booths:detail' content.producer.booth_slug %}"
                    class="btn btn-outline-primary w-100">
-                    Visit Producer Booth
+                    {% trans "Visit Producer Booth" %}
                 </a>
             </div>
         </div>
 
-        <!-- Submit Offer Button (CNT-004) -->
+        <!-- HIDDEN: Offer/LOI feature -->
+        <!--
+        Submit Offer Button (CNT-004)
         <div class="card">
             <div class="card-body">
                 {% if user.is_authenticated %}
@@ -150,7 +153,7 @@
                         </div>
                     {% endif %}
                 {% else %}
-                    <!-- Not logged in (CNT-004) -->
+                    Not logged in (CNT-004)
                     <a href="{% url 'accounts:login' %}?next={{ request.path }}"
                        class="btn btn-primary w-100 btn-lg">
                         <i class="bi bi-box-arrow-in-right"></i> Login to Submit Offer
@@ -161,13 +164,15 @@
                 {% endif %}
             </div>
         </div>
+        -->
+        <!-- END HIDDEN -->
     </div>
 </div>
 
 <!-- Back to Browse -->
 <div class="mt-4">
     <a href="{% url 'contents:browse' %}" class="btn btn-outline-secondary">
-        <i class="bi bi-arrow-left"></i> Back to Browse
+        <i class="bi bi-arrow-left"></i> {% trans "Back to Browse" %}
     </a>
 </div>
 {% endblock %}

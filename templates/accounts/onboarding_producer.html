@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Producer Onboarding - ShortDeal{% endblock %}
+{% block title %}{% trans "Producer Onboarding" %} - ShortDeal{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center">
     <div class="col-md-8 col-lg-6">
         <div class="card shadow-sm">
             <div class="card-body p-5">
-                <h2 class="text-center mb-4">Complete Your Producer Profile</h2>
+                <h2 class="text-center mb-4">{% trans "Complete Your Producer Profile" %}</h2>
                 <p class="text-center text-muted mb-4">
-                    Tell us about your company to start selling content on ShortDeal
+                    {% trans "Tell us about your company to start selling content on ShortDeal" %}
                 </p>
 
                 <form method="post" enctype="multipart/form-data">
@@ -29,7 +30,7 @@
                         {% if form.company_name.errors %}
                             <div class="text-danger small mt-1">{{ form.company_name.errors }}</div>
                         {% endif %}
-                        <small class="form-text text-muted">This will be displayed on your booth</small>
+                        <small class="form-text text-muted">{% trans "This will be displayed on your booth" %}</small>
                     </div>
 
                     <div class="mb-3">
@@ -79,10 +80,10 @@
                         {% endif %}
                     </div>
 
-                    <button type="submit" class="btn btn-primary w-100 mb-3">Complete Onboarding</button>
+                    <button type="submit" class="btn btn-primary w-100 mb-3">{% trans "Complete Onboarding" %}</button>
 
                     <p class="text-center text-muted small mb-0">
-                        You can update this information later in your profile settings
+                        {% trans "You can update this information later in your profile settings" %}
                     </p>
                 </form>
             </div>

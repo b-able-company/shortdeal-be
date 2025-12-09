@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Buyer Onboarding - ShortDeal{% endblock %}
+{% block title %}{% trans "Buyer Onboarding" %} - ShortDeal{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center">
     <div class="col-md-6 col-lg-5">
         <div class="card shadow-sm">
             <div class="card-body p-5">
-                <h2 class="text-center mb-4">Complete Your Buyer Profile</h2>
+                <h2 class="text-center mb-4">{% trans "Complete Your Buyer Profile" %}</h2>
                 <p class="text-center text-muted mb-4">
-                    Tell us about your company to start browsing content on ShortDeal
+                    {% trans "Tell us about your company to start browsing content on ShortDeal" %}
                 </p>
 
                 <form method="post">
@@ -41,10 +42,10 @@
                         {% endif %}
                     </div>
 
-                    <button type="submit" class="btn btn-primary w-100 mb-3">Complete Onboarding</button>
+                    <button type="submit" class="btn btn-primary w-100 mb-3">{% trans "Complete Onboarding" %}</button>
 
                     <p class="text-center text-muted small mb-0">
-                        You can update this information later in your profile settings
+                        {% trans "You can update this information later in your profile settings" %}
                     </p>
                 </form>
             </div>

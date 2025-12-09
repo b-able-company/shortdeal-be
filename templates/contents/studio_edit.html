@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Edit {{ content.title }} - Studio{% endblock %}
+{% block title %}{% trans "Edit" %} {{ content.title }} - {% trans "Studio" %}{% endblock %}
 
 {% block content %}
-<h2 class="mb-4">Edit Content</h2>
+<h2 class="mb-4">{% trans "Edit Content" %}</h2>
 
 <div class="row justify-content-center">
     <div class="col-lg-8">
@@ -14,23 +15,23 @@
                     <input type="hidden" name="action" value="update">
 
                     <div class="mb-3">
-                        <label for="title" class="form-label">Title <span class="text-danger">*</span></label>
+                        <label for="title" class="form-label">{% trans "Title" %} <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="title" name="title" value="{{ content.title }}" required maxlength="200">
                     </div>
 
                     <div class="mb-3">
-                        <label for="poster" class="form-label">Poster (Vertical)</label>
+                        <label for="poster" class="form-label">{% trans "Poster (Vertical)" %}</label>
                         {% if content.poster %}
                         <div class="mb-2">
                             <img src="{{ content.poster.url }}" alt="{{ content.title }}" style="max-width: 200px;" class="img-thumbnail">
                         </div>
                         {% endif %}
                         <input type="file" class="form-control" id="poster" name="poster" accept="image/*">
-                        <small class="text-muted">Leave empty to keep current poster</small>
+                        <small class="text-muted">{% trans "Leave empty to keep current poster" %}</small>
                     </div>
 
                     <div class="mb-3">
-                        <label for="teaser_video" class="form-label">Teaser Video</label>
+                        <label for="teaser_video" class="form-label">{% trans "Teaser Video" %}</label>
                         {% if content.teaser_video %}
                         <div class="mb-2">
                             <video controls style="max-width: 300px;" class="rounded">
@@ -39,18 +40,18 @@
                         </div>
                         {% endif %}
                         <input type="file" class="form-control" id="teaser_video" name="teaser_video" accept="video/*">
-                        <small class="text-muted">MP4/WebM recommended, max 200MB (leave empty to keep current)</small>
+                        <small class="text-muted">{% trans "MP4/WebM recommended, max 200MB (leave empty to keep current)" %}</small>
                     </div>
 
                     <div class="mb-3">
-                        <label for="description" class="form-label">Synopsis <span class="text-danger">*</span></label>
+                        <label for="description" class="form-label">{% trans "Synopsis" %} <span class="text-danger">*</span></label>
                         <textarea class="form-control" id="description" name="description" rows="6" required maxlength="2000">{{ content.description }}</textarea>
                     </div>
 
                     <div class="mb-3">
-                        <label for="rating" class="form-label">Age Rating <span class="text-danger">*</span></label>
+                        <label for="rating" class="form-label">{% trans "Age Rating" %} <span class="text-danger">*</span></label>
                         <select class="form-select" id="rating" name="rating" required>
-                            <option value="all" {% if content.rating == 'all' %}selected{% endif %}>All ages</option>
+                            <option value="all" {% if content.rating == 'all' %}selected{% endif %}>{% trans "All ages" %}</option>
                             <option value="12" {% if content.rating == '12' %}selected{% endif %}>12+</option>
                             <option value="15" {% if content.rating == '15' %}selected{% endif %}>15+</option>
                             <option value="19" {% if content.rating == '19' %}selected{% endif %}>19+</option>
@@ -59,11 +60,11 @@
 
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="price" class="form-label">Asking Price <span class="text-danger">*</span></label>
+                            <label for="price" class="form-label">{% trans "Asking Price" %} <span class="text-danger">*</span></label>
                             <input type="number" class="form-control" id="price" name="price" value="{{ content.price }}" step="0.01" min="0" required>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="currency" class="form-label">Currency</label>
+                            <label for="currency" class="form-label">{% trans "Currency" %}</label>
                             <select class="form-select" id="currency" name="currency">
                                 <option value="USD" {% if content.currency == 'USD' %}selected{% endif %}>USD</option>
                                 <option value="KRW" {% if content.currency == 'KRW' %}selected{% endif %}>KRW</option>
@@ -74,17 +75,17 @@
 
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="duration_seconds" class="form-label">Duration (seconds) <span class="text-danger">*</span></label>
+                            <label for="duration_seconds" class="form-label">{% trans "Duration (seconds)" %} <span class="text-danger">*</span></label>
                             <input type="number" class="form-control" id="duration_seconds" name="duration_seconds" value="{{ content.duration_seconds }}" min="1" required>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="release_target" class="form-label">Target Release Date</label>
+                            <label for="release_target" class="form-label">{% trans "Target Release Date" %}</label>
                             <input type="date" class="form-control" id="release_target" name="release_target" value="{{ content.release_target|date:'Y-m-d'|default:'' }}">
                         </div>
                     </div>
 
                     <div class="mb-4">
-                        <label class="form-label">Genres <span class="text-danger">*</span></label>
+                        <label class="form-label">{% trans "Genres" %} <span class="text-danger">*</span></label>
                         <div class="row g-2">
                             {% for genre in genre_choices %}
                             <div class="col-md-4 col-6">
@@ -99,8 +100,8 @@
                     </div>
 
                     <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-primary btn-lg">Update Content</button>
-                        <a href="{% url 'contents:studio_list' %}" class="btn btn-outline-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary btn-lg">{% trans "Update Content" %}</button>
+                        <a href="{% url 'contents:studio_list' %}" class="btn btn-outline-secondary">{% trans "Cancel" %}</a>
                     </div>
                 </form>
             </div>
@@ -109,14 +110,14 @@
         <!-- Delete Section -->
         <div class="card border-danger">
             <div class="card-header bg-danger text-white">
-                <h5 class="mb-0">Danger Zone</h5>
+                <h5 class="mb-0">{% trans "Danger Zone" %}</h5>
             </div>
             <div class="card-body">
-                <p class="mb-3">Once you delete this content, there is no going back.</p>
-                <form method="post" onsubmit="return confirm('Are you sure you want to delete this content? This action cannot be undone.');">
+                <p class="mb-3">{% trans "Once you delete this content, there is no going back." %}</p>
+                <form method="post" onsubmit="return confirm('{% trans "Are you sure you want to delete this content? This action cannot be undone." %}');">
                     {% csrf_token %}
                     <input type="hidden" name="action" value="delete">
-                    <button type="submit" class="btn btn-danger">Delete Content</button>
+                    <button type="submit" class="btn btn-danger">{% trans "Delete Content" %}</button>
                 </form>
             </div>
         </div>

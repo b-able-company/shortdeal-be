@@ -1,0 +1,142 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-09 11:56+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+msgid "ShortDeal"
+msgstr ""
+
+msgid "Home"
+msgstr ""
+
+msgid ""
+"<span style=\"color: #ff6b6b;\">Short-form</span> Content Trading Platform"
+msgstr ""
+
+msgid ""
+"A safe and transparent short-form content marketplace connecting producers "
+"and buyers."
+msgstr ""
+
+#, python-format
+msgid "Welcome, <strong>%(username)s</strong>!"
+msgstr ""
+
+msgid "Hot Content"
+msgstr ""
+
+msgid "View Tutorial"
+msgstr ""
+
+msgid "Sign In"
+msgstr ""
+
+msgid "Why ShortDeal?"
+msgstr ""
+
+msgid "For Producers"
+msgstr ""
+
+msgid "Easily upload your short-form content and sell to interested buyers."
+msgstr ""
+
+msgid "✓ Create and manage your booth"
+msgstr ""
+
+msgid "✓ Sell your content"
+msgstr ""
+
+msgid "✓ Track sales in real-time"
+msgstr ""
+
+msgid "For Buyers"
+msgstr ""
+
+msgid "Find and purchase high-quality short-form content all in one place."
+msgstr ""
+
+msgid "✓ Advanced search and filters"
+msgstr ""
+
+msgid "✓ Secure transactions"
+msgstr ""
+
+msgid "✓ Instant downloads"
+msgstr ""
+
+msgid "Safe Trading"
+msgstr ""
+
+msgid "Transparent offer system and automated contracts for peace of mind."
+msgstr ""
+
+msgid "✓ Deal management"
+msgstr ""
+
+msgid "How It Works"
+msgstr ""
+
+msgid "Create Account"
+msgstr ""
+
+msgid "Sign up as a producer or buyer"
+msgstr ""
+
+msgid "Upload or Search"
+msgstr ""
+
+msgid "Upload content or find what you need"
+msgstr ""
+
+msgid "Browse Content"
+msgstr ""
+
+msgid "Discover and explore available content"
+msgstr ""
+
+msgid "Complete Deal"
+msgstr ""
+
+msgid "Sign contract and finalize"
+msgstr ""
+
+msgid "Ready to Get Started?"
+msgstr ""
+
+msgid "Experience a new way to trade short-form content on ShortDeal"
+msgstr ""
+
+msgid "Get Started Now"
+msgstr ""
+
+msgid "My Content"
+msgstr ""
+
+msgid "Admin Dashboard"
+msgstr ""
+
+msgid "Profile"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Sign Out"
+msgstr ""
+
+msgid "Sign Up"
+msgstr ""

@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Sign Up - ShortDeal{% endblock %}
+{% block title %}{% trans "Sign Up" %} - ShortDeal{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center">
     <div class="col-md-6 col-lg-5">
         <div class="card shadow-sm">
             <div class="card-body p-5">
-                <h2 class="text-center mb-4">Join ShortDeal</h2>
-                <p class="text-center text-muted mb-4">Create your account and start trading short-form content</p>
+                <h2 class="text-center mb-4">{% trans "Join ShortDeal" %}</h2>
+                <p class="text-center text-muted mb-4">{% trans "Create your account and start trading short-form content" %}</p>
 
                 <form method="post">
                     {% csrf_token %}
@@ -20,7 +21,7 @@
                     {% endif %}
 
                     <div class="mb-3">
-                        <label for="{{ form.username.id_for_label }}" class="form-label">Username</label>
+                        <label for="{{ form.username.id_for_label }}" class="form-label">{% trans "Username" %}</label>
                         {{ form.username }}
                         {% if form.username.errors %}
                             <div class="text-danger small mt-1">{{ form.username.errors }}</div>
@@ -28,7 +29,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="{{ form.email.id_for_label }}" class="form-label">Email</label>
+                        <label for="{{ form.email.id_for_label }}" class="form-label">{% trans "Email" %}</label>
                         {{ form.email }}
                         {% if form.email.errors %}
                             <div class="text-danger small mt-1">{{ form.email.errors }}</div>
@@ -51,12 +52,12 @@
                                                 <label class="form-check-label w-100" for="role_{{ value }}">
                                                     {% if value == 'creator' %}
                                                         <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎥</div>
-                                                        <h5 class="mb-2">Producer</h5>
-                                                        <p class="small text-muted mb-0">Create and sell content</p>
+                                                        <h5 class="mb-2">{% trans "Producer" %}</h5>
+                                                        <p class="small text-muted mb-0">{% trans "Create and sell content" %}</p>
                                                     {% elif value == 'buyer' %}
                                                         <div style="font-size: 2rem; margin-bottom: 0.5rem;">🛒</div>
-                                                        <h5 class="mb-2">Buyer</h5>
-                                                        <p class="small text-muted mb-0">Browse and purchase content</p>
+                                                        <h5 class="mb-2">{% trans "Buyer" %}</h5>
+                                                        <p class="small text-muted mb-0">{% trans "Browse and purchase content" %}</p>
                                                     {% endif %}
                                                 </label>
                                             </div>
@@ -71,7 +72,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="{{ form.password1.id_for_label }}" class="form-label">Password</label>
+                        <label for="{{ form.password1.id_for_label }}" class="form-label">{% trans "Password" %}</label>
                         {{ form.password1 }}
                         {% if form.password1.errors %}
                             <div class="text-danger small mt-1">{{ form.password1.errors }}</div>
@@ -79,17 +80,17 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="{{ form.password2.id_for_label }}" class="form-label">Confirm Password</label>
+                        <label for="{{ form.password2.id_for_label }}" class="form-label">{% trans "Confirm Password" %}</label>
                         {{ form.password2 }}
                         {% if form.password2.errors %}
                             <div class="text-danger small mt-1">{{ form.password2.errors }}</div>
                         {% endif %}
                     </div>
 
-                    <button type="submit" class="btn btn-primary w-100 mb-3">Create Account</button>
+                    <button type="submit" class="btn btn-primary w-100 mb-3">{% trans "Create Account" %}</button>
 
                     <p class="text-center mb-0">
-                        Already have an account? <a href="{% url 'accounts:login' %}">Log in</a>
+                        {% trans "Already have an account?" %} <a href="{% url 'accounts:login' %}">{% trans "Log in" %}</a>
                     </p>
                 </form>
             </div>
