@@ -187,6 +187,7 @@ ShortDeal Team
 def send_password_reset_email(user, reset_url):
     """
     Send password reset email with token link
+    Uses SendGrid HTTP API if SENDGRID_API_KEY is set, otherwise falls back to SMTP
     """
     print(f"[EMAIL] Starting to send password reset email to {user.email}")
     subject = "Reset Your Password - ShortDeal"
@@ -211,10 +212,45 @@ Best regards,
 ShortDeal Team
 """
 
-    print(f"[EMAIL] Calling send_mail with:")
-    print(f"  - From: {settings.DEFAULT_FROM_EMAIL}")
-    print(f"  - To: {user.email}")
-    print(f"  - Subject: {subject}")
+    # Try SendGrid HTTP API first (to bypass Railway SMTP port blocking)
+    sendgrid_api_key = getattr(settings, 'SENDGRID_API_KEY', None) or settings.EMAIL_HOST_PASSWORD
+
+    if sendgrid_api_key and sendgrid_api_key.startswith('SG.'):
+        print(f"[EMAIL] Using SendGrid HTTP API")
+        try:
+            from sendgrid import SendGridAPIClient
+            from sendgrid.helpers.mail import Mail, Email, To, Content
+
+            sg_mail = Mail(
+                from_email=Email(settings.DEFAULT_FROM_EMAIL),
+                to_emails=To(user.email),
+                subject=subject,
+                plain_text_content=Content("text/plain", message)
+            )
+
+            sg = SendGridAPIClient(sendgrid_api_key)
+            print(f"[EMAIL] Sending via SendGrid API...")
+            response = sg.send(sg_mail)
+            print(f"[EMAIL] ✓ SendGrid API response: {response.status_code}")
+
+            if response.status_code >= 200 and response.status_code < 300:
+                print(f"[EMAIL] send_mail completed successfully via SendGrid API")
+                return
+            else:
+                print(f"[EMAIL] SendGrid API returned non-success status: {response.status_code}")
+                print(f"[EMAIL] Response body: {response.body}")
+                raise Exception(f"SendGrid API error: {response.status_code}")
+
+        except ImportError:
+            print(f"[EMAIL] SendGrid library not installed, falling back to SMTP")
+        except Exception as e:
+            print(f"[EMAIL] ✗ SendGrid API failed: {type(e).__name__}: {str(e)}")
+            import traceback
+            print(traceback.format_exc())
+            raise
+
+    # Fallback to SMTP
+    print(f"[EMAIL] Using SMTP")
     print(f"[EMAIL] SMTP Settings:")
     print(f"  - HOST: {settings.EMAIL_HOST}")
     print(f"  - PORT: {settings.EMAIL_PORT}")
@@ -222,7 +258,6 @@ ShortDeal Team
     print(f"  - USER: {settings.EMAIL_HOST_USER}")
 
     try:
-        # Add timeout to prevent infinite hang
         from django.core.mail import get_connection
         connection = get_connection(
             backend=settings.EMAIL_BACKEND,
@@ -231,7 +266,7 @@ ShortDeal Team
             username=settings.EMAIL_HOST_USER,
             password=settings.EMAIL_HOST_PASSWORD,
             use_tls=settings.EMAIL_USE_TLS,
-            timeout=30,  # 30 second timeout
+            timeout=30,
         )
         print(f"[EMAIL] Connection object created, attempting to open...")
         connection.open()
@@ -246,11 +281,11 @@ ShortDeal Team
             connection=connection,
         )
         connection.close()
-        print(f"[EMAIL] send_mail completed successfully")
+        print(f"[EMAIL] send_mail completed successfully via SMTP")
     except Exception as e:
         print(f"[EMAIL] ✗✗✗ EXCEPTION in send_mail ✗✗✗")
         print(f"[EMAIL] Error type: {type(e).__name__}")
         print(f"[EMAIL] Error message: {str(e)}")
         import traceback
         print(traceback.format_exc())
-        raise  # Re-raise to be caught by the view
+        raise
