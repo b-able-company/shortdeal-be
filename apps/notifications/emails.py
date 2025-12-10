@@ -215,15 +215,37 @@ ShortDeal Team
     print(f"  - From: {settings.DEFAULT_FROM_EMAIL}")
     print(f"  - To: {user.email}")
     print(f"  - Subject: {subject}")
+    print(f"[EMAIL] SMTP Settings:")
+    print(f"  - HOST: {settings.EMAIL_HOST}")
+    print(f"  - PORT: {settings.EMAIL_PORT}")
+    print(f"  - USE_TLS: {settings.EMAIL_USE_TLS}")
+    print(f"  - USER: {settings.EMAIL_HOST_USER}")
 
     try:
+        # Add timeout to prevent infinite hang
+        from django.core.mail import get_connection
+        connection = get_connection(
+            backend=settings.EMAIL_BACKEND,
+            host=settings.EMAIL_HOST,
+            port=settings.EMAIL_PORT,
+            username=settings.EMAIL_HOST_USER,
+            password=settings.EMAIL_HOST_PASSWORD,
+            use_tls=settings.EMAIL_USE_TLS,
+            timeout=30,  # 30 second timeout
+        )
+        print(f"[EMAIL] Connection object created, attempting to open...")
+        connection.open()
+        print(f"[EMAIL] Connection opened successfully!")
+
         send_mail(
             subject=subject,
             message=message,
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[user.email],
             fail_silently=False,
+            connection=connection,
         )
+        connection.close()
         print(f"[EMAIL] send_mail completed successfully")
     except Exception as e:
         print(f"[EMAIL] ✗✗✗ EXCEPTION in send_mail ✗✗✗")
