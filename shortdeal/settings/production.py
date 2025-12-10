@@ -117,19 +117,6 @@ EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
 DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'noreply@shortdeal.com')
 
-# Log email configuration (without password) for debugging
-# Use print for Railway deployment logs visibility
-print("=" * 80)
-print("EMAIL CONFIGURATION:")
-print(f"  BACKEND: {EMAIL_BACKEND}")
-print(f"  HOST: {EMAIL_HOST}")
-print(f"  PORT: {EMAIL_PORT}")
-print(f"  USE_TLS: {EMAIL_USE_TLS}")
-print(f"  HOST_USER: {'[SET]' if EMAIL_HOST_USER else '[NOT SET]'}")
-print(f"  HOST_PASSWORD: {'[SET]' if EMAIL_HOST_PASSWORD else '[NOT SET]'}")
-print(f"  DEFAULT_FROM_EMAIL: {DEFAULT_FROM_EMAIL}")
-print("=" * 80)
-
 # CORS settings for production
 CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', '').split(',')
 if not CORS_ALLOWED_ORIGINS or CORS_ALLOWED_ORIGINS == ['']:

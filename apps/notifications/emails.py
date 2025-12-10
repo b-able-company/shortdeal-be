@@ -187,11 +187,9 @@ ShortDeal Team
 def send_password_reset_email(user, reset_url):
     """
     Send password reset email with token link
-    Uses SendGrid HTTP API if SENDGRID_API_KEY is set, otherwise falls back to SMTP
+    Uses SendGrid HTTP API if available, otherwise falls back to SMTP
     """
-    print(f"[EMAIL] Starting to send password reset email to {user.email}")
     subject = "Reset Your Password - ShortDeal"
-
     username = user.company_name or user.username
 
     message = f"""
@@ -212,14 +210,10 @@ Best regards,
 ShortDeal Team
 """
 
-    # Try SendGrid HTTP API first (to bypass Railway SMTP port blocking)
+    # Try SendGrid HTTP API first (bypasses Railway SMTP port blocking)
     sendgrid_api_key = getattr(settings, 'SENDGRID_API_KEY', None) or settings.EMAIL_HOST_PASSWORD
 
-    print(f"[EMAIL] API Key check: {sendgrid_api_key[:10] if sendgrid_api_key else 'None'}...")
-    print(f"[EMAIL] Starts with SG.? {sendgrid_api_key.startswith('SG.') if sendgrid_api_key else False}")
-
     if sendgrid_api_key and sendgrid_api_key.startswith('SG.'):
-        print(f"[EMAIL] Using SendGrid HTTP API")
         try:
             from sendgrid import SendGridAPIClient
             from sendgrid.helpers.mail import Mail, Email, To, Content
@@ -232,64 +226,24 @@ ShortDeal Team
             )
 
             sg = SendGridAPIClient(sendgrid_api_key)
-            print(f"[EMAIL] Sending via SendGrid API...")
             response = sg.send(sg_mail)
-            print(f"[EMAIL] ✓ SendGrid API response: {response.status_code}")
 
             if response.status_code >= 200 and response.status_code < 300:
-                print(f"[EMAIL] send_mail completed successfully via SendGrid API")
                 return
             else:
-                print(f"[EMAIL] SendGrid API returned non-success status: {response.status_code}")
-                print(f"[EMAIL] Response body: {response.body}")
                 raise Exception(f"SendGrid API error: {response.status_code}")
 
         except ImportError:
-            print(f"[EMAIL] SendGrid library not installed, falling back to SMTP")
-        except Exception as e:
-            print(f"[EMAIL] ✗ SendGrid API failed: {type(e).__name__}: {str(e)}")
-            print(f"[EMAIL] Will try SMTP fallback...")
-            import traceback
-            print(traceback.format_exc())
-            # Don't raise - fall back to SMTP instead
+            pass  # Fall back to SMTP
+        except Exception:
+            # Fall back to SMTP if SendGrid fails
+            pass
 
     # Fallback to SMTP
-    print(f"[EMAIL] Using SMTP")
-    print(f"[EMAIL] SMTP Settings:")
-    print(f"  - HOST: {settings.EMAIL_HOST}")
-    print(f"  - PORT: {settings.EMAIL_PORT}")
-    print(f"  - USE_TLS: {settings.EMAIL_USE_TLS}")
-    print(f"  - USER: {settings.EMAIL_HOST_USER}")
-
-    try:
-        from django.core.mail import get_connection
-        connection = get_connection(
-            backend=settings.EMAIL_BACKEND,
-            host=settings.EMAIL_HOST,
-            port=settings.EMAIL_PORT,
-            username=settings.EMAIL_HOST_USER,
-            password=settings.EMAIL_HOST_PASSWORD,
-            use_tls=settings.EMAIL_USE_TLS,
-            timeout=30,
-        )
-        print(f"[EMAIL] Connection object created, attempting to open...")
-        connection.open()
-        print(f"[EMAIL] Connection opened successfully!")
-
-        send_mail(
-            subject=subject,
-            message=message,
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[user.email],
-            fail_silently=False,
-            connection=connection,
-        )
-        connection.close()
-        print(f"[EMAIL] send_mail completed successfully via SMTP")
-    except Exception as e:
-        print(f"[EMAIL] ✗✗✗ EXCEPTION in send_mail ✗✗✗")
-        print(f"[EMAIL] Error type: {type(e).__name__}")
-        print(f"[EMAIL] Error message: {str(e)}")
-        import traceback
-        print(traceback.format_exc())
-        raise
+    send_mail(
+        subject=subject,
+        message=message,
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        recipient_list=[user.email],
+        fail_silently=False,
+    )

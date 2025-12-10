@@ -205,17 +205,13 @@ def password_reset_request_view(request):
         return redirect('home')
 
     if request.method == 'POST':
-        print("=" * 80)
-        print("WEB PASSWORD RESET REQUEST RECEIVED")
         form = PasswordResetRequestForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data['email'].lower()
-            print(f"Email to reset: {email}")
 
             # Always show success message to prevent user enumeration
             try:
                 user = User.objects.get(email__iexact=email, is_active=True)
-                print(f"✓ User found: {user.username} (ID: {user.id})")
 
                 # Generate token
                 token_generator = PasswordResetTokenGenerator()
@@ -227,26 +223,17 @@ def password_reset_request_view(request):
                     f"/accounts/password-reset/confirm/{uid}/{token}/"
                 )
 
-                # Send email (with error handling)
+                # Send email (with error handling to prevent user enumeration)
                 try:
                     send_password_reset_email(user, reset_url)
-                    print(f"✓ Password reset email sent to {email}")
                     logger.info(f"Password reset email sent to {email}")
                 except Exception as e:
-                    print(f"✗ FAILED to send password reset email to {email}")
-                    print(f"✗ Error: {str(e)}")
-                    print(f"✗ Error type: {type(e).__name__}")
-                    import traceback
-                    print(traceback.format_exc())
                     logger.error(f"Failed to send password reset email to {email}: {str(e)}")
                     # Don't raise - still show success message to user
 
             except User.DoesNotExist:
-                print(f"✗ User not found for email: {email}")
                 logger.info(f"Password reset requested for non-existent email: {email}")
 
-            print("Redirecting with success message")
-            print("=" * 80)
             messages.success(
                 request,
                 'If the email exists, a reset link has been sent. Please check your inbox.'

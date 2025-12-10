@@ -284,14 +284,9 @@ class PasswordResetRequestView(APIView):
     )
     def post(self, request):
         """Send password reset email if user exists"""
-        print("=" * 80)
-        print("PASSWORD RESET REQUEST RECEIVED")
-        print(f"Request data: {request.data}")
-
         serializer = PasswordResetRequestSerializer(data=request.data)
 
         if not serializer.is_valid():
-            print(f"✗ Validation failed: {serializer.errors}")
             return error_response(
                 message="Invalid email format.",
                 errors=serializer.errors,
@@ -299,12 +294,10 @@ class PasswordResetRequestView(APIView):
             )
 
         email = serializer.validated_data['email']
-        print(f"Email to reset: {email}")
 
         # Always return success to prevent user enumeration
         try:
             user = User.objects.get(email__iexact=email, is_active=True)
-            print(f"✓ User found: {user.username} (ID: {user.id})")
 
             # Generate token
             token_generator = PasswordResetTokenGenerator()
@@ -315,27 +308,17 @@ class PasswordResetRequestView(APIView):
             frontend_url = os.getenv('FRONTEND_URL', request.build_absolute_uri('/'))
             reset_url = f"{frontend_url.rstrip('/')}/reset-password?uid={uid}&token={token}"
 
-            # Send email (with error handling)
+            # Send email (with error handling to prevent user enumeration)
             try:
                 send_password_reset_email(user, reset_url)
-                print(f"✓ Password reset email sent to {email}")
                 logger.info(f"Password reset email sent to {email}")
             except Exception as e:
-                print(f"✗ FAILED to send password reset email to {email}")
-                print(f"✗ Error: {str(e)}")
-                print(f"✗ Error type: {type(e).__name__}")
-                import traceback
-                print(traceback.format_exc())
                 logger.error(f"Failed to send password reset email to {email}: {str(e)}")
                 # Don't raise - still return success to prevent user enumeration
 
         except User.DoesNotExist:
-            # Log but don't reveal user doesn't exist
-            print(f"✗ User not found for email: {email}")
             logger.info(f"Password reset requested for non-existent email: {email}")
 
-        print("Returning success response")
-        print("=" * 80)
         return success_response(
             data={},
             message="If the email exists, a reset link has been sent."
