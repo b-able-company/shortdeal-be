@@ -1,8 +1,26 @@
+import logging
+import os
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes, force_str
 from django.contrib import messages
-from .forms import SignUpForm, LoginForm, ProducerOnboardingForm, BuyerOnboardingForm, ProfileUpdateForm, PasswordChangeForm
+from .models import User
+from .forms import (
+    SignUpForm,
+    LoginForm,
+    ProducerOnboardingForm,
+    BuyerOnboardingForm,
+    ProfileUpdateForm,
+    PasswordChangeForm,
+    PasswordResetRequestForm,
+    PasswordResetConfirmForm
+)
+from apps.notifications.emails import send_password_reset_email
+
+logger = logging.getLogger(__name__)
 
 
 def signup_view(request):
@@ -179,3 +197,85 @@ def settings_view(request):
         'profile_form': profile_form,
         'password_form': password_form,
     })
+
+
+def password_reset_request_view(request):
+    """Password reset request view"""
+    if request.user.is_authenticated:
+        return redirect('home')
+
+    if request.method == 'POST':
+        form = PasswordResetRequestForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email'].lower()
+
+            # Always show success message to prevent user enumeration
+            try:
+                user = User.objects.get(email__iexact=email, is_active=True)
+
+                # Generate token
+                token_generator = PasswordResetTokenGenerator()
+                token = token_generator.make_token(user)
+                uid = urlsafe_base64_encode(force_bytes(user.pk))
+
+                # Build reset URL for web UI
+                reset_url = request.build_absolute_uri(
+                    f"/accounts/password-reset/confirm/{uid}/{token}/"
+                )
+
+                # Send email
+                send_password_reset_email(user, reset_url)
+                logger.info(f"Password reset email sent to {email}")
+
+            except User.DoesNotExist:
+                logger.info(f"Password reset requested for non-existent email: {email}")
+
+            messages.success(
+                request,
+                'If the email exists, a reset link has been sent. Please check your inbox.'
+            )
+            return redirect('accounts:password_reset_request')
+    else:
+        form = PasswordResetRequestForm()
+
+    return render(request, 'accounts/password_reset_request.html', {'form': form})
+
+
+def password_reset_confirm_view(request, uidb64, token):
+    """Password reset confirm view"""
+    if request.user.is_authenticated:
+        return redirect('home')
+
+    # Validate token
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+
+    token_generator = PasswordResetTokenGenerator()
+
+    if user is not None and token_generator.check_token(user, token):
+        if request.method == 'POST':
+            form = PasswordResetConfirmForm(request.POST)
+            if form.is_valid():
+                # Set new password
+                user.set_password(form.cleaned_data['new_password1'])
+                user.save()
+
+                messages.success(
+                    request,
+                    'Password has been reset successfully. You can now log in with your new password.'
+                )
+                return redirect('accounts:login')
+        else:
+            form = PasswordResetConfirmForm()
+
+        return render(request, 'accounts/password_reset_confirm.html', {
+            'form': form,
+            'validlink': True,
+        })
+    else:
+        return render(request, 'accounts/password_reset_confirm.html', {
+            'validlink': False,
+        })

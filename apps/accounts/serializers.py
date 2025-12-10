@@ -4,6 +4,9 @@ Serializers for JWT authentication and user management
 from rest_framework import serializers
 from django.contrib.auth import authenticate
 from django.contrib.auth.password_validation import validate_password
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes, force_str
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import User
 from apps.core.validators import validate_genre_tags
@@ -226,3 +229,68 @@ class ChangePasswordSerializer(serializers.Serializer):
         user.set_password(self.validated_data['new_password'])
         user.save()
         return user
+
+
+class PasswordResetRequestSerializer(serializers.Serializer):
+    """Serializer for password reset request"""
+
+    email = serializers.EmailField(required=True)
+
+    def validate_email(self, value):
+        """Normalize email to lowercase for consistent lookup"""
+        return value.lower()
+
+
+class PasswordResetConfirmSerializer(serializers.Serializer):
+    """Serializer for password reset confirmation"""
+
+    uid = serializers.CharField(required=True)
+    token = serializers.CharField(required=True)
+    new_password = serializers.CharField(
+        required=True,
+        write_only=True,
+        validators=[validate_password],
+        style={'input_type': 'password'}
+    )
+    new_password_confirm = serializers.CharField(
+        required=True,
+        write_only=True,
+        style={'input_type': 'password'}
+    )
+
+    def validate(self, attrs):
+        """Validate token and password confirmation"""
+        # Check password match
+        if attrs['new_password'] != attrs['new_password_confirm']:
+            raise serializers.ValidationError({"new_password_confirm": "Passwords do not match."})
+
+        # Decode uid and get user
+        try:
+            uid = force_str(urlsafe_base64_decode(attrs['uid']))
+            user = User.objects.get(pk=uid)
+        except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+            raise serializers.ValidationError({"uid": "Invalid user ID."})
+
+        # Validate token
+        token_generator = PasswordResetTokenGenerator()
+        if not token_generator.check_token(user, attrs['token']):
+            raise serializers.ValidationError({"token": "Invalid or expired token."})
+
+        attrs['user'] = user
+        return attrs
+
+    def save(self):
+        """Update user password and optionally return tokens"""
+        user = self.validated_data['user']
+        user.set_password(self.validated_data['new_password'])
+        user.save()
+
+        # Return fresh JWT tokens for auto-login
+        refresh = RefreshToken.for_user(user)
+        return {
+            'user': user,
+            'tokens': {
+                'refresh': str(refresh),
+                'access': str(refresh.access_token),
+            }
+        }

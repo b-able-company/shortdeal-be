@@ -20,91 +20,85 @@ msgstr ""
 
 #: templates/accounts/login.html:4 templates/accounts/login.html:42
 msgid "Log In"
-msgstr "登录"
+msgstr ""
 
 #: templates/accounts/login.html:11
 msgid "Welcome Back"
-msgstr "欢迎回来"
+msgstr ""
 
 #: templates/accounts/login.html:12
 msgid "Log in to your ShortDeal account"
-msgstr "登录您的ShortDeal账户"
+msgstr ""
 
 #: templates/accounts/login.html:24 templates/accounts/profile.html:24
 #: templates/accounts/settings.html:23 templates/accounts/signup.html:24
 msgid "Username"
-msgstr "用户名"
+msgstr ""
 
 #: templates/accounts/login.html:32 templates/accounts/signup.html:75
 msgid "Password"
-msgstr "密码"
+msgstr ""
 
 #: templates/accounts/login.html:38
-#, fuzzy
-#| msgid "Current Password"
 msgid "Forgot password?"
-msgstr "当前密码"
+msgstr ""
 
 #: templates/accounts/login.html:45
 msgid "Don't have an account?"
-msgstr "还没有账户？"
+msgstr ""
 
 #: templates/accounts/login.html:45
 msgid "Sign up"
-msgstr "立即注册"
+msgstr ""
 
 #: templates/accounts/onboarding_buyer.html:4
 msgid "Buyer Onboarding"
-msgstr "内容采购方入门指南"
+msgstr ""
 
 #: templates/accounts/onboarding_buyer.html:11
 msgid "Complete Your Buyer Profile"
-msgstr "完成您的内容采购方资料"
+msgstr ""
 
 #: templates/accounts/onboarding_buyer.html:13
 msgid "Tell us about your company to start browsing content on ShortDeal"
-msgstr "告诉我们您的公司信息，开始在ShortDeal浏览短视频内容"
+msgstr ""
 
 #: templates/accounts/onboarding_buyer.html:45
 #: templates/accounts/onboarding_producer.html:83
 msgid "Complete Onboarding"
-msgstr "完成入职流程"
+msgstr ""
 
 #: templates/accounts/onboarding_buyer.html:48
 #: templates/accounts/onboarding_producer.html:86
 msgid "You can update this information later in your profile settings"
-msgstr "您可以稍后在您的个人资料设置中更新此信息"
+msgstr ""
 
 #: templates/accounts/onboarding_producer.html:4
 msgid "Producer Onboarding"
-msgstr "内容创作者入驻指南"
+msgstr ""
 
 #: templates/accounts/onboarding_producer.html:11
 msgid "Complete Your Producer Profile"
-msgstr "完成您的内容创作者个人资料"
+msgstr ""
 
 #: templates/accounts/onboarding_producer.html:13
 msgid "Tell us about your company to start selling content on ShortDeal"
-msgstr "告诉我们您的公司信息，开始在ShortDeal销售短视频内容"
+msgstr ""
 
 #: templates/accounts/onboarding_producer.html:33
 msgid "This will be displayed on your booth"
-msgstr "这将在您的创作者展位上显示"
+msgstr ""
 
 #: templates/accounts/password_reset_confirm.html:4
 #: templates/accounts/password_reset_confirm.html:42
 #: templates/accounts/password_reset_request.html:4
 #: templates/accounts/password_reset_request.html:11
-#, fuzzy
-#| msgid "New Password"
 msgid "Reset Password"
-msgstr "新密码"
+msgstr ""
 
 #: templates/accounts/password_reset_confirm.html:12
-#, fuzzy
-#| msgid "New Password"
 msgid "Set New Password"
-msgstr "新密码"
+msgstr ""
 
 #: templates/accounts/password_reset_confirm.html:14
 msgid "Please enter your new password below."
@@ -113,20 +107,18 @@ msgstr ""
 #: templates/accounts/password_reset_confirm.html:27
 #: templates/accounts/settings.html:125
 msgid "New Password"
-msgstr "新密码"
+msgstr ""
 
 #: templates/accounts/password_reset_confirm.html:35
 #: templates/accounts/settings.html:138
 msgid "Confirm New Password"
-msgstr "确认新密码"
+msgstr ""
 
 #: templates/accounts/password_reset_confirm.html:45
 #: templates/accounts/password_reset_confirm.html:63
 #: templates/accounts/password_reset_request.html:36
-#, fuzzy
-#| msgid "Back to Profile"
 msgid "Back to login"
-msgstr "返回个人资料"
+msgstr ""
 
 #: templates/accounts/password_reset_confirm.html:49
 msgid "Invalid Link"
@@ -156,176 +148,176 @@ msgstr ""
 
 #: templates/accounts/profile.html:4 templates/includes/navbar.html:110
 msgid "Profile"
-msgstr "个人资料"
+msgstr ""
 
 #: templates/accounts/profile.html:13 templates/accounts/settings.html:72
 msgid "Company Logo"
-msgstr "公司标志"
+msgstr ""
 
 #: templates/accounts/profile.html:29 templates/accounts/settings.html:35
 #: templates/accounts/signup.html:32 templates/core/admin_dashboard.html:101
 msgid "Email"
-msgstr "电子邮件"
+msgstr ""
 
 #: templates/accounts/profile.html:35 templates/accounts/settings.html:47
 msgid "Company Name"
-msgstr "公司名称"
+msgstr ""
 
 #: templates/accounts/profile.html:42 templates/accounts/settings.html:59
 msgid "Country"
-msgstr "国家"
+msgstr ""
 
 #: templates/accounts/profile.html:49 templates/contents/studio_create.html:78
 #: templates/contents/studio_edit.html:88
 #: templates/contents/studio_list.html:23
 msgid "Genres"
-msgstr "类型"
+msgstr ""
 
 #: templates/accounts/profile.html:60
 msgid "Phone"
-msgstr "电话"
+msgstr ""
 
 #: templates/accounts/profile.html:66
 msgid "Member Since"
-msgstr "自成为会员以来"
+msgstr ""
 
 #: templates/accounts/profile.html:73
 msgid "Edit Profile"
-msgstr "编辑个人资料"
+msgstr ""
 
 #: templates/accounts/profile.html:74
 msgid "Log Out"
-msgstr "退出"
+msgstr ""
 
 #: templates/accounts/settings.html:4 templates/includes/navbar.html:111
 msgid "Settings"
-msgstr "设置"
+msgstr ""
 
 #: templates/accounts/settings.html:9
 msgid "Account Settings"
-msgstr "账户设置"
+msgstr ""
 
 #: templates/accounts/settings.html:14
 msgid "Profile Information"
-msgstr "个人资料信息"
+msgstr ""
 
 #: templates/accounts/settings.html:76 templates/accounts/settings.html:77
 msgid "Current logo"
-msgstr "当前标志"
+msgstr ""
 
 #: templates/accounts/settings.html:91 templates/core/admin_dashboard.html:103
 msgid "Role"
-msgstr "角色"
+msgstr ""
 
 #: templates/accounts/settings.html:93
 msgid "Role cannot be changed"
-msgstr "角色无法更改"
+msgstr ""
 
 #: templates/accounts/settings.html:96
 msgid "Update Profile"
-msgstr "更新个人资料"
+msgstr ""
 
 #: templates/accounts/settings.html:104 templates/accounts/settings.html:154
 msgid "Change Password"
-msgstr "更改密码"
+msgstr ""
 
 #: templates/accounts/settings.html:113
 msgid "Current Password"
-msgstr "当前密码"
+msgstr ""
 
 #: templates/accounts/settings.html:128
 msgid "Minimum 8 characters"
-msgstr "最少8个字符"
+msgstr ""
 
 #: templates/accounts/settings.html:162
 msgid "Account Information"
-msgstr "账户信息"
+msgstr ""
 
 #: templates/accounts/settings.html:167
 msgid "Account Created"
-msgstr "账户已创建"
+msgstr ""
 
 #: templates/accounts/settings.html:171
 msgid "Last Login"
-msgstr "上次登录"
+msgstr ""
 
 #: templates/accounts/settings.html:175
 msgid "Onboarding Status"
-msgstr "入职状态"
+msgstr ""
 
 #: templates/accounts/settings.html:178
 msgid "Completed"
-msgstr "已完成"
+msgstr ""
 
 #: templates/accounts/settings.html:180 templates/core/admin_dashboard.html:211
 msgid "Pending"
-msgstr "待处理"
+msgstr ""
 
 #: templates/accounts/settings.html:189
 msgid "Back to Profile"
-msgstr "返回个人资料"
+msgstr ""
 
 #: templates/accounts/signup.html:4 templates/includes/navbar.html:121
 #: templates/tutorial.html:361
 msgid "Sign Up"
-msgstr "立即注册"
+msgstr ""
 
 #: templates/accounts/signup.html:11
 msgid "Join ShortDeal"
-msgstr "加入ShortDeal"
+msgstr ""
 
 #: templates/accounts/signup.html:12
 msgid "Create your account and start trading short-form content"
-msgstr "创建您的账户并开始交易短视频内容"
+msgstr ""
 
 #: templates/accounts/signup.html:55 templates/contents/detail.html:94
 #: templates/core/admin_dashboard.html:115
 #: templates/core/admin_dashboard.html:147
 #: templates/core/admin_dashboard.html:195
 msgid "Producer"
-msgstr "内容创作者"
+msgstr ""
 
 #: templates/accounts/signup.html:56
 msgid "Create and sell content"
-msgstr "创建并销售内容"
+msgstr ""
 
 #: templates/accounts/signup.html:59 templates/core/admin_dashboard.html:117
 #: templates/core/admin_dashboard.html:194
 msgid "Buyer"
-msgstr "内容采购方"
+msgstr ""
 
 #: templates/accounts/signup.html:60
 msgid "Browse and purchase content"
-msgstr "浏览并购买内容"
+msgstr ""
 
 #: templates/accounts/signup.html:83
 msgid "Confirm Password"
-msgstr "确认密码"
+msgstr ""
 
 #: templates/accounts/signup.html:90 templates/home.html:131
 msgid "Create Account"
-msgstr "创建账户"
+msgstr ""
 
 #: templates/accounts/signup.html:93
 msgid "Already have an account?"
-msgstr "已经有账号了吗？"
+msgstr ""
 
 #: templates/accounts/signup.html:93
 msgid "Log in"
-msgstr "登录"
+msgstr ""
 
 #: templates/base.html:7 templates/contents/browse.html:4
 #: templates/contents/detail.html:4 templates/home.html:6
 msgid "ShortDeal"
-msgstr "短视频交易"
+msgstr ""
 
 #: templates/booths/detail.html:4
 msgid "Producer Booth"
-msgstr "创作者展位"
+msgstr ""
 
 #: templates/booths/detail.html:35 templates/contents/detail.html:118
 msgid "Specializes in:"
-msgstr "擅长领域："
+msgstr ""
 
 #: templates/booths/detail.html:46 templates/core/admin_dashboard.html:193
 msgid "Content"
@@ -342,82 +334,82 @@ msgstr[1] ""
 #: templates/booths/detail.html:61
 #, python-format
 msgid "Content from %(company)s"
-msgstr "%(company)s的内容"
+msgstr ""
 
 #: templates/booths/detail.html:79 templates/contents/browse.html:83
 #: templates/contents/detail.html:22
 msgid "No Poster"
-msgstr "无海报"
+msgstr ""
 
 #: templates/booths/detail.html:110
 msgid "Page navigation"
-msgstr "页面导航"
+msgstr ""
 
 #: templates/booths/detail.html:114 templates/booths/detail.html:118
 #: templates/contents/browse.html:128 templates/contents/browse.html:133
 #: templates/contents/studio_list.html:78
 msgid "Previous"
-msgstr "上一步"
+msgstr ""
 
 #: templates/booths/detail.html:136 templates/booths/detail.html:140
 #: templates/contents/browse.html:154 templates/contents/browse.html:159
 #: templates/contents/studio_list.html:82
 msgid "Next"
-msgstr "下一步"
+msgstr ""
 
 #: templates/booths/detail.html:154 templates/contents/studio_list.html:91
 msgid "No content yet"
-msgstr "暂无内容"
+msgstr ""
 
 #: templates/booths/detail.html:155
 msgid "This producer hasn't uploaded any content yet"
-msgstr "该内容创作者尚未上传任何短视频内容"
+msgstr ""
 
 #: templates/booths/detail.html:164 templates/contents/detail.html:175
 msgid "Back to Browse"
-msgstr "返回浏览"
+msgstr ""
 
 #: templates/contents/browse.html:4 templates/contents/browse.html:63
 #: templates/home.html:171 templates/includes/navbar.html:15
 #: templates/tutorial.html:359
 msgid "Browse Content"
-msgstr "浏览内容"
+msgstr ""
 
 #: templates/contents/browse.html:12
 msgid "Filters"
-msgstr "筛选器"
+msgstr ""
 
 #: templates/contents/browse.html:18
 msgid "Search"
-msgstr "搜索"
+msgstr ""
 
 #: templates/contents/browse.html:21
 msgid "Title, producer, description"
-msgstr "标题，内容创作者，描述"
+msgstr ""
 
 #: templates/contents/browse.html:26
 msgid "Genre"
-msgstr "类型"
+msgstr ""
 
 #: templates/contents/browse.html:42
 msgid "Sort By"
-msgstr "按照排序"
+msgstr ""
 
 #: templates/contents/browse.html:45
 msgid "Newest First"
-msgstr "最新的在前"
+msgstr ""
 
 #: templates/contents/browse.html:48
 msgid "Oldest First"
-msgstr "按时间升序"
+msgstr ""
 
 #: templates/contents/browse.html:53
 msgid "Apply Filters"
-msgstr "应用筛选器"
+msgstr ""
 
 #: templates/contents/browse.html:54
 msgid "Reset"
-msgstr "重置"
+msgstr ""
 
 #: templates/contents/browse.html:64
 #, python-format
@@ -428,674 +420,669 @@ msgstr[1] ""
 
 #: templates/contents/browse.html:172
 msgid "No content found"
-msgstr "未找到内容"
+msgstr ""
 
 #: templates/contents/browse.html:173
 msgid "Try adjusting your search or filter criteria"
-msgstr "尝试调整您的搜索或筛选条件"
+msgstr ""
 
 #: templates/contents/browse.html:174
 msgid "Clear Filters"
-msgstr "清除筛选条件"
+msgstr ""
 
 #: templates/contents/detail.html:41
 msgid "Duration:"
-msgstr "时长："
+msgstr ""
 
 #: templates/contents/detail.html:42
 #, python-format
 msgid "%(seconds)s seconds"
-msgstr "%(seconds)s 秒"
+msgstr ""
 
 #: templates/contents/detail.html:48
 msgid "Target Release Date:"
-msgstr "目标发布日期："
+msgstr ""
 
 #: templates/contents/detail.html:55
 msgid "Published:"
-msgstr "已发布："
+msgstr ""
 
 #: templates/contents/detail.html:60
 msgid "Views:"
-msgstr "浏览量："
+msgstr ""
 
 #: templates/contents/detail.html:71 templates/contents/studio_create.html:29
 #: templates/contents/studio_edit.html:34
 msgid "Teaser Video"
-msgstr "预告片视频"
+msgstr ""
 
 #: templates/contents/detail.html:74
 msgid "Your browser does not support the video tag."
-msgstr "Your browser does not support the video tag."
+msgstr ""
 
 #: templates/contents/detail.html:81 templates/contents/studio_create.html:35
 #: templates/contents/studio_edit.html:47
 msgid "Synopsis"
-msgstr "概述"
+msgstr ""
 
 #: templates/contents/detail.html:128
 msgid "Visit Producer Booth"
-msgstr "访问内容创作者展位"
+msgstr ""
 
 #: templates/contents/studio_create.html:4
 #: templates/contents/studio_create.html:93
 #: templates/contents/studio_list.html:94
 msgid "Upload Content"
-msgstr "上传内容"
+msgstr ""
 
 #: templates/contents/studio_create.html:4
 #: templates/contents/studio_edit.html:4 templates/contents/studio_list.html:4
 msgid "Studio"
-msgstr "创作工作室"
+msgstr ""
 
 #: templates/contents/studio_create.html:7
 #: templates/contents/studio_list.html:10
 msgid "Upload New Content"
-msgstr "上传新的内容"
+msgstr ""
 
 #: templates/contents/studio_create.html:17
 #: templates/contents/studio_edit.html:18
 #: templates/contents/studio_list.html:21
 #: templates/core/admin_dashboard.html:146
 msgid "Title"
-msgstr "标题"
+msgstr ""
 
 #: templates/contents/studio_create.html:19
 msgid "2-200 characters"
-msgstr "2-200个字符"
+msgstr ""
 
 #: templates/contents/studio_create.html:23
 #: templates/contents/studio_edit.html:23
 msgid "Poster (Vertical)"
-msgstr "海报（竖版）"
+msgstr ""
 
 #: templates/contents/studio_create.html:25
 msgid "JPG/PNG, max 5MB, vertical format recommended"
-msgstr "JPG/PNG，最大5MB，建议使用竖版格式"
+msgstr ""
 
 #: templates/contents/studio_create.html:31
 msgid "MP4/WebM recommended, max 200MB"
-msgstr "MP4/WebM recommended, max 200MB"
+msgstr ""
 
 #: templates/contents/studio_create.html:37
 msgid "Max 2000 characters"
-msgstr "最多2000个字符"
+msgstr ""
 
 #: templates/contents/studio_create.html:41
 #: templates/contents/studio_edit.html:52
 msgid "Age Rating"
-msgstr "年龄分级"
+msgstr ""
 
 #: templates/contents/studio_create.html:43
 #: templates/contents/studio_edit.html:54
 msgid "All ages"
-msgstr "适合所有年龄"
+msgstr ""
 
 #: templates/contents/studio_create.html:52
 #: templates/contents/studio_edit.html:63
 msgid "Asking Price"
-msgstr "要价"
+msgstr ""
 
 #: templates/contents/studio_create.html:56
 #: templates/contents/studio_edit.html:67
 msgid "Currency"
-msgstr "货币"
+msgstr ""
 
 #: templates/contents/studio_create.html:67
 #: templates/contents/studio_edit.html:78
 msgid "Duration (seconds)"
-msgstr "时长（秒）"
+msgstr ""
 
 #: templates/contents/studio_create.html:71
 #: templates/contents/studio_edit.html:82
 msgid "Target Release Date"
-msgstr "目标发布日期"
+msgstr ""
 
 #: templates/contents/studio_create.html:73
 msgid "Desired release date"
-msgstr "期望发布日期"
+msgstr ""
 
 #: templates/contents/studio_create.html:79
 msgid "Select 1-3 genres"
-msgstr "选择1-3种类型"
+msgstr ""
 
 #: templates/contents/studio_create.html:94
 #: templates/contents/studio_edit.html:104
 msgid "Cancel"
-msgstr "取消"
+msgstr ""
 
 #: templates/contents/studio_edit.html:4 templates/contents/studio_list.html:63
 msgid "Edit"
-msgstr "编辑"
+msgstr ""
 
 #: templates/contents/studio_edit.html:7
 msgid "Edit Content"
-msgstr "编辑内容"
+msgstr ""
 
 #: templates/contents/studio_edit.html:30
 msgid "Leave empty to keep current poster"
-msgstr "保持为空以保留当前海报"
+msgstr ""
 
 #: templates/contents/studio_edit.html:43
 msgid "MP4/WebM recommended, max 200MB (leave empty to keep current)"
-msgstr "推荐使用MP4/WebM格式，最大不超过200MB（如不更改请留空）"
+msgstr ""
 
 #: templates/contents/studio_edit.html:103
 msgid "Update Content"
-msgstr "更新内容"
+msgstr ""
 
 #: templates/contents/studio_edit.html:113
 msgid "Danger Zone"
-msgstr "危险区域"
+msgstr ""
 
 #: templates/contents/studio_edit.html:116
 msgid "Once you delete this content, there is no going back."
-msgstr "一旦您删除了这个内容，就无法恢复。"
+msgstr ""
 
 #: templates/contents/studio_edit.html:117
 msgid ""
 "Are you sure you want to delete this content? This action cannot be undone."
-msgstr "您确定要删除这个短视频内容吗？此操作无法撤销。"
+msgstr ""
 
 #: templates/contents/studio_edit.html:120
 msgid "Delete Content"
-msgstr "删除内容"
+msgstr ""
 
 #: templates/contents/studio_list.html:4
 msgid "Manage Contents"
-msgstr "管理内容"
+msgstr ""
 
 #: templates/contents/studio_list.html:8
 msgid "My Contents"
-msgstr "我的内容"
+msgstr ""
 
 #: templates/contents/studio_list.html:22
 #: templates/core/admin_dashboard.html:196
 msgid "Price"
-msgstr "价格"
+msgstr ""
 
 #: templates/contents/studio_list.html:24
 msgid "Views"
-msgstr "浏览量"
+msgstr ""
 
 #: templates/contents/studio_list.html:25
 msgid "Offers"
-msgstr "优惠"
+msgstr ""
 
 #: templates/contents/studio_list.html:26
 #: templates/core/admin_dashboard.html:148
 #: templates/core/admin_dashboard.html:197
 msgid "Status"
-msgstr "状态"
+msgstr ""
 
 #: templates/contents/studio_list.html:27
 #: templates/core/admin_dashboard.html:149
 #: templates/core/admin_dashboard.html:198
 msgid "Created"
-msgstr "已创建"
+msgstr ""
 
 #: templates/contents/studio_list.html:28
 msgid "Actions"
-msgstr "操作"
+msgstr ""
 
 #: templates/contents/studio_list.html:55
 #: templates/core/admin_dashboard.html:164
 msgid "Public"
-msgstr "公开"
+msgstr ""
 
 #: templates/contents/studio_list.html:92
 msgid "Upload your first content to get started"
-msgstr "上传您的首个短视频内容以开始使用"
+msgstr ""
 
 #: templates/core/admin_dashboard.html:4 templates/core/admin_dashboard.html:8
 #: templates/includes/navbar.html:58
 msgid "Admin Dashboard"
-msgstr "管理员控制面板"
+msgstr ""
 
 #: templates/core/admin_dashboard.html:10
 msgid "Last 7 Days"
-msgstr "过去7天"
+msgstr ""
 
 #: templates/core/admin_dashboard.html:11
 msgid "Last 30 Days"
-msgstr "过去30天"
+msgstr ""
 
 #: templates/core/admin_dashboard.html:20
 msgid "Total Users"
-msgstr "总用户数"
+msgstr ""
 
 #: templates/core/admin_dashboard.html:23
 msgid "Producers:"
-msgstr "内容创作者："
+msgstr ""
 
 #: templates/core/admin_dashboard.html:23
 msgid "Buyers:"
-msgstr "采购方："
+msgstr ""
 
 #: templates/core/admin_dashboard.html:31
 msgid "Total Contents"
-msgstr "总内容"
+msgstr ""
 
 #: templates/core/admin_dashboard.html:42
 msgid "Total Offers"
-msgstr "总计报价"
+msgstr ""
 
 #: templates/core/admin_dashboard.html:45
 msgid "Pending:"
-msgstr "待处理："
+msgstr ""
 
 #: templates/core/admin_dashboard.html:53
 msgid "Total LOIs"
-msgstr "总的意向书"
+msgstr ""
 
 #: templates/core/admin_dashboard.html:66
 #, python-format
 msgid "Period Statistics (%(period)s)"
-msgstr "%(period)s期间统计"
+msgstr ""
 
 #: templates/core/admin_dashboard.html:71
 msgid "New Users"
-msgstr "新用户"
+msgstr ""
 
 #: templates/core/admin_dashboard.html:75
 msgid "New Contents"
-msgstr "新的内容"
+msgstr ""
 
 #: templates/core/admin_dashboard.html:79
 msgid "New Offers"
-msgstr "新的优惠"
+msgstr ""
 
 #: templates/core/admin_dashboard.html:83
 msgid "New LOIs"
-msgstr "新的意向书"
+msgstr ""
 
 #: templates/core/admin_dashboard.html:93
 msgid "Recent Users (Last 10)"
-msgstr "最近的用户（最后10位）"
+msgstr ""
 
 #: templates/core/admin_dashboard.html:100
 #: templates/core/admin_dashboard.html:145
 #: templates/core/admin_dashboard.html:192
 msgid "ID"
-msgstr "身份证号"
+msgstr ""
 
 #: templates/core/admin_dashboard.html:102
 msgid "Company"
-msgstr "公司"
+msgstr ""
 
 #: templates/core/admin_dashboard.html:104
 msgid "Joined"
-msgstr "已加入"
+msgstr ""
 
 #: templates/core/admin_dashboard.html:126
 msgid "No users yet"
-msgstr "暂无用户"
+msgstr ""
 
 #: templates/core/admin_dashboard.html:138
 msgid "Recent Contents (Last 10)"
-msgstr "最近的内容（最后10个）"
+msgstr ""
 
 #: templates/core/admin_dashboard.html:173
 msgid "No contents yet"
-msgstr "暂无内容"
+msgstr ""
 
 #: templates/core/admin_dashboard.html:185
 msgid "Recent Offers (Last 10)"
-msgstr "近期报价（最后10个）"
+msgstr ""
 
 #: templates/core/admin_dashboard.html:213
 msgid "Accepted"
-msgstr "已接受"
+msgstr ""
 
 #: templates/core/admin_dashboard.html:215
 msgid "Rejected"
-msgstr "已拒绝"
+msgstr ""
 
 #: templates/core/admin_dashboard.html:217
 msgid "Expired"
-msgstr "已过期"
+msgstr ""
 
 #: templates/core/admin_dashboard.html:224
 msgid "No offers yet"
-msgstr "暂无报价"
+msgstr ""
 
 #: templates/home.html:6
 msgid "Home"
-msgstr "首页"
+msgstr ""
 
 #: templates/home.html:14
 msgid ""
 "<span style=\"color: #ff6b6b;\">Short-form</span> Content Trading Platform"
-msgstr "<span style=\"color: #ff6b6b;\">短视频</span>内容交易平台"
+msgstr ""
 
 #: templates/home.html:17
 msgid ""
 "A safe and transparent short-form content marketplace connecting producers "
 "and buyers."
-msgstr "“一个安全透明的短视频内容市场，连接内容创作者和内容采购方。”"
+msgstr ""
 
 #: templates/home.html:22
 #, python-format
 msgid "Welcome, <strong>%(username)s</strong>!"
-msgstr "欢迎，<strong>%(username)s</strong>！"
+msgstr ""
 
 #: templates/home.html:28
 msgid "Hot Content"
-msgstr "热门内容"
+msgstr ""
 
 #: templates/home.html:31 templates/home.html:38
 msgid "View Tutorial"
-msgstr "查看教程"
+msgstr ""
 
 #: templates/home.html:35 templates/includes/navbar.html:118
 #: templates/tutorial.html:362
 msgid "Sign In"
-msgstr "登录"
+msgstr ""
 
 #: templates/home.html:51
 msgid "Why ShortDeal?"
-msgstr "为什么选择ShortDeal？"
+msgstr ""
 
 #: templates/home.html:59
 msgid "For Producers"
-msgstr "供内容创作者使用"
+msgstr ""
 
 #: templates/home.html:61
 msgid "Easily upload your short-form content and sell to interested buyers."
-msgstr "轻松上传您的短视频内容，销售给感兴趣的内容采购方。"
+msgstr ""
 
 #: templates/home.html:64
 msgid "✓ Create and manage your booth"
-msgstr "✓ 创建并管理您的创作者展位"
+msgstr ""
 
 #: templates/home.html:65
 msgid "✓ Sell your content"
-msgstr "✓ 销售您的内容"
+msgstr ""
 
 #: templates/home.html:66
 msgid "✓ Track sales in real-time"
-msgstr "✓ 实时跟踪销售情况"
+msgstr ""
 
 #: templates/home.html:77
 msgid "For Buyers"
-msgstr "供采购方"
+msgstr ""
 
 #: templates/home.html:79
 msgid "Find and purchase high-quality short-form content all in one place."
-msgstr "在同一平台上寻找并购买高质量的短视频内容。"
+msgstr ""
 
 #: templates/home.html:82
 msgid "✓ Advanced search and filters"
-msgstr "✓ 高级搜索和筛选"
+msgstr ""
 
 #: templates/home.html:83
 msgid "✓ Secure transactions"
-msgstr "✓ 安全交易"
+msgstr ""
 
 #: templates/home.html:84
 msgid "✓ Instant downloads"
-msgstr "✓ 即刻下载"
+msgstr ""
 
 #: templates/home.html:95
 msgid "Safe Trading"
-msgstr "安全交易"
+msgstr ""
 
 #: templates/home.html:97
 msgid "Transparent offer system and automated contracts for peace of mind."
-msgstr "Transparent offer system and automated contracts for peace of mind."
+msgstr ""
 
 #: templates/home.html:104
 msgid "✓ Deal management"
-msgstr "✓ 交易管理"
+msgstr ""
 
 #: templates/home.html:114
 msgid "How It Works"
-msgstr "操作流程"
+msgstr ""
 
 #: templates/home.html:132
 msgid "Sign up as a producer or buyer"
-msgstr "作为内容创作者或内容采购方立即注册"
+msgstr ""
 
 #: templates/home.html:148
 msgid "Upload or Search"
-msgstr "上传或搜索"
+msgstr ""
 
 #: templates/home.html:149
 msgid "Upload content or find what you need"
-msgstr "上传内容或寻找您所需的"
+msgstr ""
 
 #: templates/home.html:172
 msgid "Discover and explore available content"
-msgstr "发现并探索可用的内容"
+msgstr ""
 
 #: templates/home.html:188
 msgid "Complete Deal"
-msgstr "完成交易"
+msgstr ""
 
 #: templates/home.html:189
 msgid "Sign contract and finalize"
-msgstr "签订合同并最终确定"
+msgstr ""
 
 #: templates/home.html:197 templates/tutorial.html:356
 msgid "Ready to Get Started?"
-msgstr "准备好开始了吗？"
+msgstr ""
 
 #: templates/home.html:198
 msgid "Experience a new way to trade short-form content on ShortDeal"
-msgstr "在ShortDeal上体验短视频内容交易的新方式"
+msgstr ""
 
 #: templates/home.html:200
 msgid "Get Started Now"
-msgstr "立即开始"
+msgstr ""
 
 #: templates/includes/messages.html:7
 msgid "Close"
-msgstr "关闭"
+msgstr ""
 
 #: templates/includes/navbar.html:22
 msgid "My Content"
-msgstr "我的内容"
+msgstr ""
 
 #: templates/includes/navbar.html:113
 msgid "Sign Out"
-msgstr "登出"
+msgstr ""
 
 #: templates/tutorial.html:4 templates/tutorial.html:9
 msgid "How to Use ShortDeal"
-msgstr "How to Use ShortDeal"
+msgstr ""
 
 #: templates/tutorial.html:11
 msgid ""
 "Welcome to ShortDeal! This guide will help you get started with our short-"
 "form content trading platform."
-msgstr "欢迎来到ShortDeal！本指南将帮助您开始使用我们的短视频内容交易平台。"
+msgstr ""
 
 #: templates/tutorial.html:16
 msgid "🚀 Getting Started"
-msgstr "🚀 开始使用"
+msgstr ""
 
 #: templates/tutorial.html:19
 msgid "1. Create Your Account"
-msgstr "1. 创建您的账户"
+msgstr ""
 
 #: templates/tutorial.html:21
 msgid "First, you need to sign up for a ShortDeal account. Choose your role:"
-msgstr "首先，您需要为ShortDeal账户立即注册。请选择您的角色："
+msgstr ""
 
 #: templates/tutorial.html:24
 msgid "<strong>Producer:</strong> If you want to sell your short-form content"
-msgstr "<strong>内容创作者：</strong>如果您想要销售您的短视频内容"
+msgstr ""
 
 #: templates/tutorial.html:25
 msgid "<strong>Buyer:</strong> If you want to purchase short-form content"
-msgstr "<strong>内容采购方：</strong>如果您想购买短视频内容"
+msgstr ""
 
 #: templates/tutorial.html:28
 msgid "Sign Up Now"
-msgstr "Sign Up Now"
+msgstr ""
 
 #: templates/tutorial.html:36
 msgid "🎥 For Producers"
-msgstr "🎥 对于内容创作者"
+msgstr ""
 
 #: templates/tutorial.html:43 templates/tutorial.html:141
 msgid "Step 1: Complete Your Onboarding"
-msgstr "步骤1：完成您的入职流程"
+msgstr ""
 
 #: templates/tutorial.html:48
 msgid "After signing up as a Producer, you'll need to complete onboarding:"
-msgstr "作为内容创作者注册后，您需要完成入职流程："
+msgstr ""
 
 #: templates/tutorial.html:50 templates/tutorial.html:148
 msgid "Enter your company name"
-msgstr "Enter your company name"
+msgstr ""
 
 #: templates/tutorial.html:51
 msgid "Add a description of your business"
-msgstr "添加您的业务描述"
+msgstr ""
 
 #: templates/tutorial.html:52
 msgid "Set up your booth (your storefront on ShortDeal)"
-msgstr "在ShortDeal上设置您的创作者展位（您的店面）"
+msgstr ""
 
 #: templates/tutorial.html:54
 msgid ""
 "This information helps buyers understand who you are and what content you "
 "create."
-msgstr "“这些信息有助于内容采购方了解您是谁以及您创作的内容。”"
+msgstr ""
 
 #: templates/tutorial.html:63
 msgid "Step 2: Upload Your Content"
-msgstr "步骤二：上传您的内容"
+msgstr ""
 
 #: templates/tutorial.html:68
 msgid ""
 "Go to <strong>My Content</strong> in the navigation menu and click "
 "<strong>Upload New Content</strong>:"
 msgstr ""
-"在导航菜单中前往<strong>我的内容</strong>，然后点击<strong>上传新内容</"
-"strong>："
 
 #: templates/tutorial.html:70
 msgid "Add a compelling title and description"
-msgstr "添加一个引人入胜的标题和描述"
+msgstr ""
 
 #: templates/tutorial.html:71
 msgid "Upload your video file"
-msgstr "上传您的视频文件"
+msgstr ""
 
 #: templates/tutorial.html:72
 msgid "Add a thumbnail image (optional)"
-msgstr "添加缩略图（可选）"
+msgstr ""
 
 #: templates/tutorial.html:73
 msgid "Choose categories/tags"
-msgstr "选择类别/标签"
+msgstr ""
 
 #: templates/tutorial.html:74
 msgid "Set content status (Draft or Public)"
-msgstr "设置内容状态（草稿或公开）"
+msgstr ""
 
 #: templates/tutorial.html:76
 msgid ""
 "You can upload multiple pieces of content and manage them all from your "
 "dashboard."
-msgstr "您可以上传多个短视频内容，并通过您的工作台进行统一管理。"
+msgstr ""
 
 #: templates/tutorial.html:134
 msgid "🛒 For Buyers"
-msgstr "🛒 为内容采购方"
+msgstr ""
 
 #: templates/tutorial.html:146
 msgid "After signing up as a Buyer, complete your profile:"
-msgstr "作为内容采购方注册后，完成您的个人资料："
+msgstr ""
 
 #: templates/tutorial.html:149
 msgid "Describe your business and content needs"
-msgstr "描述您的业务和内容需求"
+msgstr ""
 
 #: templates/tutorial.html:151
 msgid "This helps producers understand who they're working with."
-msgstr "这有助于内容创作者了解他们正在与谁合作。"
+msgstr ""
 
 #: templates/tutorial.html:160
 msgid "Step 2: Browse and Search Content"
-msgstr "步骤2：浏览并搜索内容"
+msgstr ""
 
 #: templates/tutorial.html:165
 msgid "Find the perfect content for your needs:"
-msgstr "找到完美满足您需求的内容："
+msgstr ""
 
 #: templates/tutorial.html:167
 msgid "Browse all content from <strong>Browse Content</strong>"
-msgstr "从<strong>浏览内容</strong>查看所有内容"
+msgstr ""
 
 #: templates/tutorial.html:168
 msgid "Use search and filters to find specific content"
-msgstr "使用搜索和筛选功能查找特定内容"
+msgstr ""
 
 #: templates/tutorial.html:169
 msgid "Click on content to view details"
-msgstr "点击内容查看详情"
+msgstr ""
 
 #: templates/tutorial.html:170
 msgid "Visit producer booths to see their portfolio"
-msgstr "访问创作者展位查看他们的作品集"
+msgstr ""
 
 #: templates/tutorial.html:172
 msgid ""
 "You can browse content even without logging in, but you'll need an account "
 "to make offers."
-msgstr "即使未登录，您也可以浏览内容，但您需要一个账户才能提出报价。"
+msgstr ""
 
 #: templates/tutorial.html:235
 msgid "🌟 Key Features"
-msgstr "🌟 主要特性"
+msgstr ""
 
 #: templates/tutorial.html:240
 msgid "🔍 Advanced Search"
-msgstr "🔍 高级搜索"
+msgstr ""
 
 #: templates/tutorial.html:242
 msgid ""
 "Use filters to find exactly what you're looking for - by category, price "
 "range, producer, and more."
 msgstr ""
-"使用筛选器准确找到您正在寻找的内容 - 按类别、价格范围、内容创作者等进行搜索。"
 
 #: templates/tutorial.html:278
 msgid "🏪 Producer Booths"
-msgstr "🏪 创作者展位"
+msgstr ""
 
 #: templates/tutorial.html:280
 msgid ""
 "Each producer has their own booth showcasing all their content in one place."
-msgstr "每位内容创作者都有自己的创作者展位，一站式展示他们所有的短视频内容。"
+msgstr ""
 
 #: templates/tutorial.html:290
 msgid "❓ Frequently Asked Questions"
-msgstr "❓ 常见问题解答"
+msgstr ""
 
 #: templates/tutorial.html:295
 msgid "Can I be both a Producer and a Buyer?"
-msgstr "我可以同时成为内容创作者和内容采购方吗？"
+msgstr ""
 
 #: templates/tutorial.html:300
 msgid ""
 "Currently, each account can only have one role (Producer or Buyer). If you "
 "need both functions, you'll need to create separate accounts."
 msgstr ""
-"目前，每个账户只能拥有一个角色（内容创作者或内容采购方）。如果您需要两种功"
-"能，您需要创建单独的账户。"
 
 #: templates/tutorial.html:342
 msgid "Can I edit my content after uploading?"
-msgstr "我可以在上传后编辑我的内容吗？"
+msgstr ""
 
 #: templates/tutorial.html:347
 msgid "Yes! Producers can edit their content details at any time from the \\"
-msgstr "是的！内容创作者可以随时在工作台编辑他们的短视频内容详情。"
+msgstr ""
 
 #: templates/tutorial.html:357
 msgid "Join ShortDeal today and start trading short-form content!"
-msgstr "立即加入ShortDeal，开始交易短视频内容！"
+msgstr ""

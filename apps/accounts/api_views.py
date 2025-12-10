@@ -1,6 +1,11 @@
 """
 API views for JWT authentication and user management
 """
+import logging
+import os
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import force_bytes
 from rest_framework import generics, status
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -9,14 +14,20 @@ from drf_spectacular.utils import extend_schema, OpenApiResponse
 
 from apps.core.response import success_response, error_response
 from apps.core.permissions import IsProducer, IsBuyer
+from apps.notifications.emails import send_password_reset_email
+from .models import User
 from .serializers import (
     RegisterSerializer,
     LoginSerializer,
     UserSerializer,
     OnboardingProducerSerializer,
     OnboardingBuyerSerializer,
-    ChangePasswordSerializer
+    ChangePasswordSerializer,
+    PasswordResetRequestSerializer,
+    PasswordResetConfirmSerializer
 )
+
+logger = logging.getLogger(__name__)
 
 
 @extend_schema(tags=['Authentication'])
@@ -255,4 +266,94 @@ class LogoutView(APIView):
         """Logout user (token blacklisting handled by client)"""
         return success_response(
             message="Logout successful. Please discard your tokens."
+        )
+
+
+@extend_schema(tags=['Authentication'])
+class PasswordResetRequestView(APIView):
+    """Request password reset email"""
+    permission_classes = [AllowAny]
+    serializer_class = PasswordResetRequestSerializer
+
+    @extend_schema(
+        request=PasswordResetRequestSerializer,
+        responses={
+            200: OpenApiResponse(description='Password reset email sent (or email does not exist)'),
+            400: OpenApiResponse(description='Validation error')
+        }
+    )
+    def post(self, request):
+        """Send password reset email if user exists"""
+        serializer = PasswordResetRequestSerializer(data=request.data)
+
+        if not serializer.is_valid():
+            return error_response(
+                message="Invalid email format.",
+                errors=serializer.errors,
+                status_code=status.HTTP_400_BAD_REQUEST
+            )
+
+        email = serializer.validated_data['email']
+
+        # Always return success to prevent user enumeration
+        try:
+            user = User.objects.get(email__iexact=email, is_active=True)
+
+            # Generate token
+            token_generator = PasswordResetTokenGenerator()
+            token = token_generator.make_token(user)
+            uid = urlsafe_base64_encode(force_bytes(user.pk))
+
+            # Build reset URL
+            frontend_url = os.getenv('FRONTEND_URL', request.build_absolute_uri('/'))
+            reset_url = f"{frontend_url.rstrip('/')}/reset-password?uid={uid}&token={token}"
+
+            # Send email
+            send_password_reset_email(user, reset_url)
+
+            logger.info(f"Password reset email sent to {email}")
+
+        except User.DoesNotExist:
+            # Log but don't reveal user doesn't exist
+            logger.info(f"Password reset requested for non-existent email: {email}")
+
+        return success_response(
+            data={},
+            message="If the email exists, a reset link has been sent."
+        )
+
+
+@extend_schema(tags=['Authentication'])
+class PasswordResetConfirmView(APIView):
+    """Confirm password reset with token"""
+    permission_classes = [AllowAny]
+    serializer_class = PasswordResetConfirmSerializer
+
+    @extend_schema(
+        request=PasswordResetConfirmSerializer,
+        responses={
+            200: OpenApiResponse(description='Password reset successful'),
+            400: OpenApiResponse(description='Validation error or invalid token')
+        }
+    )
+    def post(self, request):
+        """Reset password with valid token"""
+        serializer = PasswordResetConfirmSerializer(data=request.data)
+
+        if serializer.is_valid():
+            result = serializer.save()
+            user_data = UserSerializer(result['user']).data
+
+            return success_response(
+                data={
+                    'user': user_data,
+                    'tokens': result['tokens']
+                },
+                message="Password has been reset successfully."
+            )
+
+        return error_response(
+            message="Password reset failed.",
+            errors=serializer.errors,
+            status_code=status.HTTP_400_BAD_REQUEST
         )
