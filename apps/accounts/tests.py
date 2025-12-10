@@ -1,6 +1,7 @@
 """
 Tests for password reset functionality
 """
+import json
 from django.test import TestCase, Client
 from django.urls import reverse
 from django.core import mail
@@ -8,6 +9,7 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.utils.http import urlsafe_base64_encode
 from django.utils.encoding import force_bytes
 from rest_framework import status
+from rest_framework.test import APIClient
 from .models import User
 
 
@@ -15,7 +17,7 @@ class PasswordResetAPITestCase(TestCase):
     """Test password reset API endpoints"""
 
     def setUp(self):
-        self.client = Client()
+        self.client = APIClient()
         self.user = User.objects.create_user(
             username='testuser',
             email='test@example.com',
@@ -29,11 +31,7 @@ class PasswordResetAPITestCase(TestCase):
         url = reverse('accounts_api:password_reset_request')
         data = {'email': 'test@example.com'}
 
-        response = self.client.post(
-            url,
-            data=data,
-            content_type='application/json'
-        )
+        response = self.client.post(url, data, format='json')
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertTrue(response.json()['success'])
@@ -45,11 +43,7 @@ class PasswordResetAPITestCase(TestCase):
         url = reverse('accounts_api:password_reset_request')
         data = {'email': 'TEST@example.com'}
 
-        response = self.client.post(
-            url,
-            data=data,
-            content_type='application/json'
-        )
+        response = self.client.post(url, data, format='json')
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(mail.outbox), 1)
@@ -59,11 +53,7 @@ class PasswordResetAPITestCase(TestCase):
         url = reverse('accounts_api:password_reset_request')
         data = {'email': 'nonexistent@example.com'}
 
-        response = self.client.post(
-            url,
-            data=data,
-            content_type='application/json'
-        )
+        response = self.client.post(url, data, format='json')
 
         # Should still return 200 to prevent user enumeration
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -76,11 +66,7 @@ class PasswordResetAPITestCase(TestCase):
         url = reverse('accounts_api:password_reset_request')
         data = {'email': 'notanemail'}
 
-        response = self.client.post(
-            url,
-            data=data,
-            content_type='application/json'
-        )
+        response = self.client.post(url, data, format='json')
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertFalse(response.json()['success'])
@@ -99,11 +85,7 @@ class PasswordResetAPITestCase(TestCase):
             'new_password_confirm': 'newpassword123'
         }
 
-        response = self.client.post(
-            url,
-            data=data,
-            content_type='application/json'
-        )
+        response = self.client.post(url, data, format='json')
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertTrue(response.json()['success'])
@@ -127,11 +109,7 @@ class PasswordResetAPITestCase(TestCase):
             'new_password_confirm': 'differentpassword123'
         }
 
-        response = self.client.post(
-            url,
-            data=data,
-            content_type='application/json'
-        )
+        response = self.client.post(url, data, format='json')
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertFalse(response.json()['success'])
@@ -150,11 +128,7 @@ class PasswordResetAPITestCase(TestCase):
             'new_password_confirm': '123'
         }
 
-        response = self.client.post(
-            url,
-            data=data,
-            content_type='application/json'
-        )
+        response = self.client.post(url, data, format='json')
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertFalse(response.json()['success'])
@@ -171,11 +145,7 @@ class PasswordResetAPITestCase(TestCase):
             'new_password_confirm': 'newpassword123'
         }
 
-        response = self.client.post(
-            url,
-            data=data,
-            content_type='application/json'
-        )
+        response = self.client.post(url, data, format='json')
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertFalse(response.json()['success'])
@@ -193,11 +163,7 @@ class PasswordResetAPITestCase(TestCase):
             'new_password_confirm': 'newpassword123'
         }
 
-        response = self.client.post(
-            url,
-            data=data,
-            content_type='application/json'
-        )
+        response = self.client.post(url, data, format='json')
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertFalse(response.json()['success'])
