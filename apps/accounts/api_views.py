@@ -308,10 +308,13 @@ class PasswordResetRequestView(APIView):
             frontend_url = os.getenv('FRONTEND_URL', request.build_absolute_uri('/'))
             reset_url = f"{frontend_url.rstrip('/')}/reset-password?uid={uid}&token={token}"
 
-            # Send email
-            send_password_reset_email(user, reset_url)
-
-            logger.info(f"Password reset email sent to {email}")
+            # Send email (with error handling)
+            try:
+                send_password_reset_email(user, reset_url)
+                logger.info(f"Password reset email sent to {email}")
+            except Exception as e:
+                logger.error(f"Failed to send password reset email to {email}: {str(e)}")
+                # Don't raise - still return success to prevent user enumeration
 
         except User.DoesNotExist:
             # Log but don't reveal user doesn't exist

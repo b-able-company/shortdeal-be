@@ -223,9 +223,13 @@ def password_reset_request_view(request):
                     f"/accounts/password-reset/confirm/{uid}/{token}/"
                 )
 
-                # Send email
-                send_password_reset_email(user, reset_url)
-                logger.info(f"Password reset email sent to {email}")
+                # Send email (with error handling)
+                try:
+                    send_password_reset_email(user, reset_url)
+                    logger.info(f"Password reset email sent to {email}")
+                except Exception as e:
+                    logger.error(f"Failed to send password reset email to {email}: {str(e)}")
+                    # Don't raise - still show success message to user
 
             except User.DoesNotExist:
                 logger.info(f"Password reset requested for non-existent email: {email}")
