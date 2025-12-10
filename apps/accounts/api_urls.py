@@ -10,7 +10,9 @@ from .api_views import (
     OnboardingProducerView,
     OnboardingBuyerView,
     ChangePasswordView,
-    LogoutView
+    LogoutView,
+    PasswordResetRequestView,
+    PasswordResetConfirmView
 )
 
 app_name = 'accounts_api'
@@ -21,6 +23,10 @@ urlpatterns = [
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+
+    # Password Reset
+    path('password-reset/request/', PasswordResetRequestView.as_view(), name='password_reset_request'),
+    path('password-reset/confirm/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
 
     # Profile
     path('me/', ProfileView.as_view(), name='profile'),

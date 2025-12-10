@@ -182,3 +182,38 @@ ShortDeal Team
         recipient_list=[producer.email],
         fail_silently=False,
     )
+
+
+def send_password_reset_email(user, reset_url):
+    """
+    Send password reset email with token link
+    """
+    subject = "Reset Your Password - ShortDeal"
+
+    username = user.company_name or user.username
+
+    message = f"""
+Hello {username},
+
+You have requested to reset your password for your ShortDeal account.
+
+Please click the link below to reset your password:
+{reset_url}
+
+This link will expire in 24 hours for security reasons.
+
+If you did not request a password reset, please ignore this email and your password will remain unchanged.
+
+Need help? Contact our support team.
+
+Best regards,
+ShortDeal Team
+"""
+
+    send_mail(
+        subject=subject,
+        message=message,
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        recipient_list=[user.email],
+        fail_silently=False,
+    )

@@ -34,6 +34,9 @@
                         {% if form.password.errors %}
                             <div class="text-danger small mt-1">{{ form.password.errors }}</div>
                         {% endif %}
+                        <div class="text-end mt-2">
+                            <a href="{% url 'accounts:password_reset_request' %}" class="small text-muted">{% trans "Forgot password?" %}</a>
+                        </div>
                     </div>
 
                     <button type="submit" class="btn btn-primary w-100 mb-3">{% trans "Log In" %}</button>

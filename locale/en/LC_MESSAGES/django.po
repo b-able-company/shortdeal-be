@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-09 11:56+0900\n"
+"POT-Creation-Date: 2025-12-10 11:46+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,126 +17,1072 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/accounts/login.html:4 templates/accounts/login.html:42
+msgid "Log In"
+msgstr ""
+
+#: templates/accounts/login.html:11
+msgid "Welcome Back"
+msgstr ""
+
+#: templates/accounts/login.html:12
+msgid "Log in to your ShortDeal account"
+msgstr ""
+
+#: templates/accounts/login.html:24 templates/accounts/profile.html:24
+#: templates/accounts/settings.html:23 templates/accounts/signup.html:24
+msgid "Username"
+msgstr ""
+
+#: templates/accounts/login.html:32 templates/accounts/signup.html:75
+msgid "Password"
+msgstr ""
+
+#: templates/accounts/login.html:38
+msgid "Forgot password?"
+msgstr ""
+
+#: templates/accounts/login.html:45
+msgid "Don't have an account?"
+msgstr ""
+
+#: templates/accounts/login.html:45
+msgid "Sign up"
+msgstr ""
+
+#: templates/accounts/onboarding_buyer.html:4
+msgid "Buyer Onboarding"
+msgstr ""
+
+#: templates/accounts/onboarding_buyer.html:11
+msgid "Complete Your Buyer Profile"
+msgstr ""
+
+#: templates/accounts/onboarding_buyer.html:13
+msgid "Tell us about your company to start browsing content on ShortDeal"
+msgstr ""
+
+#: templates/accounts/onboarding_buyer.html:45
+#: templates/accounts/onboarding_producer.html:83
+msgid "Complete Onboarding"
+msgstr ""
+
+#: templates/accounts/onboarding_buyer.html:48
+#: templates/accounts/onboarding_producer.html:86
+msgid "You can update this information later in your profile settings"
+msgstr ""
+
+#: templates/accounts/onboarding_producer.html:4
+msgid "Producer Onboarding"
+msgstr ""
+
+#: templates/accounts/onboarding_producer.html:11
+msgid "Complete Your Producer Profile"
+msgstr ""
+
+#: templates/accounts/onboarding_producer.html:13
+msgid "Tell us about your company to start selling content on ShortDeal"
+msgstr ""
+
+#: templates/accounts/onboarding_producer.html:33
+msgid "This will be displayed on your booth"
+msgstr ""
+
+#: templates/accounts/password_reset_confirm.html:4
+#: templates/accounts/password_reset_confirm.html:42
+#: templates/accounts/password_reset_request.html:4
+#: templates/accounts/password_reset_request.html:11
+msgid "Reset Password"
+msgstr ""
+
+#: templates/accounts/password_reset_confirm.html:12
+msgid "Set New Password"
+msgstr ""
+
+#: templates/accounts/password_reset_confirm.html:14
+msgid "Please enter your new password below."
+msgstr ""
+
+#: templates/accounts/password_reset_confirm.html:27
+#: templates/accounts/settings.html:125
+msgid "New Password"
+msgstr ""
+
+#: templates/accounts/password_reset_confirm.html:35
+#: templates/accounts/settings.html:138
+msgid "Confirm New Password"
+msgstr ""
+
+#: templates/accounts/password_reset_confirm.html:45
+#: templates/accounts/password_reset_confirm.html:63
+#: templates/accounts/password_reset_request.html:36
+msgid "Back to login"
+msgstr ""
+
+#: templates/accounts/password_reset_confirm.html:49
+msgid "Invalid Link"
+msgstr ""
+
+#: templates/accounts/password_reset_confirm.html:52
+msgid ""
+"The password reset link is invalid or has expired. Please request a new one."
+msgstr ""
+
+#: templates/accounts/password_reset_confirm.html:58
+msgid "Request New Link"
+msgstr ""
+
+#: templates/accounts/password_reset_request.html:13
+msgid ""
+"Enter your email address and we'll send you a link to reset your password."
+msgstr ""
+
+#: templates/accounts/password_reset_request.html:26
+msgid "Email Address"
+msgstr ""
+
+#: templates/accounts/password_reset_request.html:33
+msgid "Send Reset Link"
+msgstr ""
+
+#: templates/accounts/profile.html:4 templates/includes/navbar.html:110
+msgid "Profile"
+msgstr ""
+
+#: templates/accounts/profile.html:13 templates/accounts/settings.html:72
+msgid "Company Logo"
+msgstr ""
+
+#: templates/accounts/profile.html:29 templates/accounts/settings.html:35
+#: templates/accounts/signup.html:32 templates/core/admin_dashboard.html:101
+msgid "Email"
+msgstr ""
+
+#: templates/accounts/profile.html:35 templates/accounts/settings.html:47
+msgid "Company Name"
+msgstr ""
+
+#: templates/accounts/profile.html:42 templates/accounts/settings.html:59
+msgid "Country"
+msgstr ""
+
+#: templates/accounts/profile.html:49 templates/contents/studio_create.html:78
+#: templates/contents/studio_edit.html:88
+#: templates/contents/studio_list.html:23
+msgid "Genres"
+msgstr ""
+
+#: templates/accounts/profile.html:60
+msgid "Phone"
+msgstr ""
+
+#: templates/accounts/profile.html:66
+msgid "Member Since"
+msgstr ""
+
+#: templates/accounts/profile.html:73
+msgid "Edit Profile"
+msgstr ""
+
+#: templates/accounts/profile.html:74
+msgid "Log Out"
+msgstr ""
+
+#: templates/accounts/settings.html:4 templates/includes/navbar.html:111
+msgid "Settings"
+msgstr ""
+
+#: templates/accounts/settings.html:9
+msgid "Account Settings"
+msgstr ""
+
+#: templates/accounts/settings.html:14
+msgid "Profile Information"
+msgstr ""
+
+#: templates/accounts/settings.html:76 templates/accounts/settings.html:77
+msgid "Current logo"
+msgstr ""
+
+#: templates/accounts/settings.html:91 templates/core/admin_dashboard.html:103
+msgid "Role"
+msgstr ""
+
+#: templates/accounts/settings.html:93
+msgid "Role cannot be changed"
+msgstr ""
+
+#: templates/accounts/settings.html:96
+msgid "Update Profile"
+msgstr ""
+
+#: templates/accounts/settings.html:104 templates/accounts/settings.html:154
+msgid "Change Password"
+msgstr ""
+
+#: templates/accounts/settings.html:113
+msgid "Current Password"
+msgstr ""
+
+#: templates/accounts/settings.html:128
+msgid "Minimum 8 characters"
+msgstr ""
+
+#: templates/accounts/settings.html:162
+msgid "Account Information"
+msgstr ""
+
+#: templates/accounts/settings.html:167
+msgid "Account Created"
+msgstr ""
+
+#: templates/accounts/settings.html:171
+msgid "Last Login"
+msgstr ""
+
+#: templates/accounts/settings.html:175
+msgid "Onboarding Status"
+msgstr ""
+
+#: templates/accounts/settings.html:178
+msgid "Completed"
+msgstr ""
+
+#: templates/accounts/settings.html:180 templates/core/admin_dashboard.html:211
+msgid "Pending"
+msgstr ""
+
+#: templates/accounts/settings.html:189
+msgid "Back to Profile"
+msgstr ""
+
+#: templates/accounts/signup.html:4 templates/includes/navbar.html:121
+#: templates/tutorial.html:361
+msgid "Sign Up"
+msgstr ""
+
+#: templates/accounts/signup.html:11
+msgid "Join ShortDeal"
+msgstr ""
+
+#: templates/accounts/signup.html:12
+msgid "Create your account and start trading short-form content"
+msgstr ""
+
+#: templates/accounts/signup.html:55 templates/contents/detail.html:94
+#: templates/core/admin_dashboard.html:115
+#: templates/core/admin_dashboard.html:147
+#: templates/core/admin_dashboard.html:195
+msgid "Producer"
+msgstr ""
+
+#: templates/accounts/signup.html:56
+msgid "Create and sell content"
+msgstr ""
+
+#: templates/accounts/signup.html:59 templates/core/admin_dashboard.html:117
+#: templates/core/admin_dashboard.html:194
+msgid "Buyer"
+msgstr ""
+
+#: templates/accounts/signup.html:60
+msgid "Browse and purchase content"
+msgstr ""
+
+#: templates/accounts/signup.html:83
+msgid "Confirm Password"
+msgstr ""
+
+#: templates/accounts/signup.html:90 templates/home.html:131
+msgid "Create Account"
+msgstr ""
+
+#: templates/accounts/signup.html:93
+msgid "Already have an account?"
+msgstr ""
+
+#: templates/accounts/signup.html:93
+msgid "Log in"
+msgstr ""
+
+#: templates/base.html:7 templates/contents/browse.html:4
+#: templates/contents/detail.html:4 templates/home.html:6
 msgid "ShortDeal"
 msgstr ""
 
+#: templates/booths/detail.html:4
+msgid "Producer Booth"
+msgstr ""
+
+#: templates/booths/detail.html:35 templates/contents/detail.html:118
+msgid "Specializes in:"
+msgstr ""
+
+#: templates/booths/detail.html:46 templates/core/admin_dashboard.html:193
+msgid "Content"
+msgid_plural "Contents"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/booths/detail.html:50
+msgid "Booth View"
+msgid_plural "Booth Views"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/booths/detail.html:61
+#, python-format
+msgid "Content from %(company)s"
+msgstr ""
+
+#: templates/booths/detail.html:79 templates/contents/browse.html:83
+#: templates/contents/detail.html:22
+msgid "No Poster"
+msgstr ""
+
+#: templates/booths/detail.html:110
+msgid "Page navigation"
+msgstr ""
+
+#: templates/booths/detail.html:114 templates/booths/detail.html:118
+#: templates/contents/browse.html:128 templates/contents/browse.html:133
+#: templates/contents/studio_list.html:78
+msgid "Previous"
+msgstr ""
+
+#: templates/booths/detail.html:136 templates/booths/detail.html:140
+#: templates/contents/browse.html:154 templates/contents/browse.html:159
+#: templates/contents/studio_list.html:82
+msgid "Next"
+msgstr ""
+
+#: templates/booths/detail.html:154 templates/contents/studio_list.html:91
+msgid "No content yet"
+msgstr ""
+
+#: templates/booths/detail.html:155
+msgid "This producer hasn't uploaded any content yet"
+msgstr ""
+
+#: templates/booths/detail.html:164 templates/contents/detail.html:175
+msgid "Back to Browse"
+msgstr ""
+
+#: templates/contents/browse.html:4 templates/contents/browse.html:63
+#: templates/home.html:171 templates/includes/navbar.html:15
+#: templates/tutorial.html:359
+msgid "Browse Content"
+msgstr ""
+
+#: templates/contents/browse.html:12
+msgid "Filters"
+msgstr ""
+
+#: templates/contents/browse.html:18
+msgid "Search"
+msgstr ""
+
+#: templates/contents/browse.html:21
+msgid "Title, producer, description"
+msgstr ""
+
+#: templates/contents/browse.html:26
+msgid "Genre"
+msgstr ""
+
+#: templates/contents/browse.html:42
+msgid "Sort By"
+msgstr ""
+
+#: templates/contents/browse.html:45
+msgid "Newest First"
+msgstr ""
+
+#: templates/contents/browse.html:48
+msgid "Oldest First"
+msgstr ""
+
+#: templates/contents/browse.html:53
+msgid "Apply Filters"
+msgstr ""
+
+#: templates/contents/browse.html:54
+msgid "Reset"
+msgstr ""
+
+#: templates/contents/browse.html:64
+#, python-format
+msgid "%(counter)s result"
+msgid_plural "%(counter)s results"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/contents/browse.html:172
+msgid "No content found"
+msgstr ""
+
+#: templates/contents/browse.html:173
+msgid "Try adjusting your search or filter criteria"
+msgstr ""
+
+#: templates/contents/browse.html:174
+msgid "Clear Filters"
+msgstr ""
+
+#: templates/contents/detail.html:41
+msgid "Duration:"
+msgstr ""
+
+#: templates/contents/detail.html:42
+#, python-format
+msgid "%(seconds)s seconds"
+msgstr ""
+
+#: templates/contents/detail.html:48
+msgid "Target Release Date:"
+msgstr ""
+
+#: templates/contents/detail.html:55
+msgid "Published:"
+msgstr ""
+
+#: templates/contents/detail.html:60
+msgid "Views:"
+msgstr ""
+
+#: templates/contents/detail.html:71 templates/contents/studio_create.html:29
+#: templates/contents/studio_edit.html:34
+msgid "Teaser Video"
+msgstr ""
+
+#: templates/contents/detail.html:74
+msgid "Your browser does not support the video tag."
+msgstr ""
+
+#: templates/contents/detail.html:81 templates/contents/studio_create.html:35
+#: templates/contents/studio_edit.html:47
+msgid "Synopsis"
+msgstr ""
+
+#: templates/contents/detail.html:128
+msgid "Visit Producer Booth"
+msgstr ""
+
+#: templates/contents/studio_create.html:4
+#: templates/contents/studio_create.html:93
+#: templates/contents/studio_list.html:94
+msgid "Upload Content"
+msgstr ""
+
+#: templates/contents/studio_create.html:4
+#: templates/contents/studio_edit.html:4 templates/contents/studio_list.html:4
+msgid "Studio"
+msgstr ""
+
+#: templates/contents/studio_create.html:7
+#: templates/contents/studio_list.html:10
+msgid "Upload New Content"
+msgstr ""
+
+#: templates/contents/studio_create.html:17
+#: templates/contents/studio_edit.html:18
+#: templates/contents/studio_list.html:21
+#: templates/core/admin_dashboard.html:146
+msgid "Title"
+msgstr ""
+
+#: templates/contents/studio_create.html:19
+msgid "2-200 characters"
+msgstr ""
+
+#: templates/contents/studio_create.html:23
+#: templates/contents/studio_edit.html:23
+msgid "Poster (Vertical)"
+msgstr ""
+
+#: templates/contents/studio_create.html:25
+msgid "JPG/PNG, max 5MB, vertical format recommended"
+msgstr ""
+
+#: templates/contents/studio_create.html:31
+msgid "MP4/WebM recommended, max 200MB"
+msgstr ""
+
+#: templates/contents/studio_create.html:37
+msgid "Max 2000 characters"
+msgstr ""
+
+#: templates/contents/studio_create.html:41
+#: templates/contents/studio_edit.html:52
+msgid "Age Rating"
+msgstr ""
+
+#: templates/contents/studio_create.html:43
+#: templates/contents/studio_edit.html:54
+msgid "All ages"
+msgstr ""
+
+#: templates/contents/studio_create.html:52
+#: templates/contents/studio_edit.html:63
+msgid "Asking Price"
+msgstr ""
+
+#: templates/contents/studio_create.html:56
+#: templates/contents/studio_edit.html:67
+msgid "Currency"
+msgstr ""
+
+#: templates/contents/studio_create.html:67
+#: templates/contents/studio_edit.html:78
+msgid "Duration (seconds)"
+msgstr ""
+
+#: templates/contents/studio_create.html:71
+#: templates/contents/studio_edit.html:82
+msgid "Target Release Date"
+msgstr ""
+
+#: templates/contents/studio_create.html:73
+msgid "Desired release date"
+msgstr ""
+
+#: templates/contents/studio_create.html:79
+msgid "Select 1-3 genres"
+msgstr ""
+
+#: templates/contents/studio_create.html:94
+#: templates/contents/studio_edit.html:104
+msgid "Cancel"
+msgstr ""
+
+#: templates/contents/studio_edit.html:4 templates/contents/studio_list.html:63
+msgid "Edit"
+msgstr ""
+
+#: templates/contents/studio_edit.html:7
+msgid "Edit Content"
+msgstr ""
+
+#: templates/contents/studio_edit.html:30
+msgid "Leave empty to keep current poster"
+msgstr ""
+
+#: templates/contents/studio_edit.html:43
+msgid "MP4/WebM recommended, max 200MB (leave empty to keep current)"
+msgstr ""
+
+#: templates/contents/studio_edit.html:103
+msgid "Update Content"
+msgstr ""
+
+#: templates/contents/studio_edit.html:113
+msgid "Danger Zone"
+msgstr ""
+
+#: templates/contents/studio_edit.html:116
+msgid "Once you delete this content, there is no going back."
+msgstr ""
+
+#: templates/contents/studio_edit.html:117
+msgid ""
+"Are you sure you want to delete this content? This action cannot be undone."
+msgstr ""
+
+#: templates/contents/studio_edit.html:120
+msgid "Delete Content"
+msgstr ""
+
+#: templates/contents/studio_list.html:4
+msgid "Manage Contents"
+msgstr ""
+
+#: templates/contents/studio_list.html:8
+msgid "My Contents"
+msgstr ""
+
+#: templates/contents/studio_list.html:22
+#: templates/core/admin_dashboard.html:196
+msgid "Price"
+msgstr ""
+
+#: templates/contents/studio_list.html:24
+msgid "Views"
+msgstr ""
+
+#: templates/contents/studio_list.html:25
+msgid "Offers"
+msgstr ""
+
+#: templates/contents/studio_list.html:26
+#: templates/core/admin_dashboard.html:148
+#: templates/core/admin_dashboard.html:197
+msgid "Status"
+msgstr ""
+
+#: templates/contents/studio_list.html:27
+#: templates/core/admin_dashboard.html:149
+#: templates/core/admin_dashboard.html:198
+msgid "Created"
+msgstr ""
+
+#: templates/contents/studio_list.html:28
+msgid "Actions"
+msgstr ""
+
+#: templates/contents/studio_list.html:55
+#: templates/core/admin_dashboard.html:164
+msgid "Public"
+msgstr ""
+
+#: templates/contents/studio_list.html:92
+msgid "Upload your first content to get started"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:4 templates/core/admin_dashboard.html:8
+#: templates/includes/navbar.html:58
+msgid "Admin Dashboard"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:10
+msgid "Last 7 Days"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:11
+msgid "Last 30 Days"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:20
+msgid "Total Users"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:23
+msgid "Producers:"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:23
+msgid "Buyers:"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:31
+msgid "Total Contents"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:42
+msgid "Total Offers"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:45
+msgid "Pending:"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:53
+msgid "Total LOIs"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:66
+#, python-format
+msgid "Period Statistics (%(period)s)"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:71
+msgid "New Users"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:75
+msgid "New Contents"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:79
+msgid "New Offers"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:83
+msgid "New LOIs"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:93
+msgid "Recent Users (Last 10)"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:100
+#: templates/core/admin_dashboard.html:145
+#: templates/core/admin_dashboard.html:192
+msgid "ID"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:102
+msgid "Company"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:104
+msgid "Joined"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:126
+msgid "No users yet"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:138
+msgid "Recent Contents (Last 10)"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:173
+msgid "No contents yet"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:185
+msgid "Recent Offers (Last 10)"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:213
+msgid "Accepted"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:215
+msgid "Rejected"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:217
+msgid "Expired"
+msgstr ""
+
+#: templates/core/admin_dashboard.html:224
+msgid "No offers yet"
+msgstr ""
+
+#: templates/home.html:6
 msgid "Home"
 msgstr ""
 
+#: templates/home.html:14
 msgid ""
 "<span style=\"color: #ff6b6b;\">Short-form</span> Content Trading Platform"
 msgstr ""
 
+#: templates/home.html:17
 msgid ""
 "A safe and transparent short-form content marketplace connecting producers "
 "and buyers."
 msgstr ""
 
+#: templates/home.html:22
 #, python-format
 msgid "Welcome, <strong>%(username)s</strong>!"
 msgstr ""
 
+#: templates/home.html:28
 msgid "Hot Content"
 msgstr ""
 
+#: templates/home.html:31 templates/home.html:38
 msgid "View Tutorial"
 msgstr ""
 
+#: templates/home.html:35 templates/includes/navbar.html:118
+#: templates/tutorial.html:362
 msgid "Sign In"
 msgstr ""
 
+#: templates/home.html:51
 msgid "Why ShortDeal?"
 msgstr ""
 
+#: templates/home.html:59
 msgid "For Producers"
 msgstr ""
 
+#: templates/home.html:61
 msgid "Easily upload your short-form content and sell to interested buyers."
 msgstr ""
 
+#: templates/home.html:64
 msgid "✓ Create and manage your booth"
 msgstr ""
 
+#: templates/home.html:65
 msgid "✓ Sell your content"
 msgstr ""
 
+#: templates/home.html:66
 msgid "✓ Track sales in real-time"
 msgstr ""
 
+#: templates/home.html:77
 msgid "For Buyers"
 msgstr ""
 
+#: templates/home.html:79
 msgid "Find and purchase high-quality short-form content all in one place."
 msgstr ""
 
+#: templates/home.html:82
 msgid "✓ Advanced search and filters"
 msgstr ""
 
+#: templates/home.html:83
 msgid "✓ Secure transactions"
 msgstr ""
 
+#: templates/home.html:84
 msgid "✓ Instant downloads"
 msgstr ""
 
+#: templates/home.html:95
 msgid "Safe Trading"
 msgstr ""
 
+#: templates/home.html:97
 msgid "Transparent offer system and automated contracts for peace of mind."
 msgstr ""
 
+#: templates/home.html:104
 msgid "✓ Deal management"
 msgstr ""
 
+#: templates/home.html:114
 msgid "How It Works"
 msgstr ""
 
-msgid "Create Account"
-msgstr ""
-
+#: templates/home.html:132
 msgid "Sign up as a producer or buyer"
 msgstr ""
 
+#: templates/home.html:148
 msgid "Upload or Search"
 msgstr ""
 
+#: templates/home.html:149
 msgid "Upload content or find what you need"
 msgstr ""
 
-msgid "Browse Content"
-msgstr ""
-
+#: templates/home.html:172
 msgid "Discover and explore available content"
 msgstr ""
 
+#: templates/home.html:188
 msgid "Complete Deal"
 msgstr ""
 
+#: templates/home.html:189
 msgid "Sign contract and finalize"
 msgstr ""
 
+#: templates/home.html:197 templates/tutorial.html:356
 msgid "Ready to Get Started?"
 msgstr ""
 
+#: templates/home.html:198
 msgid "Experience a new way to trade short-form content on ShortDeal"
 msgstr ""
 
+#: templates/home.html:200
 msgid "Get Started Now"
 msgstr ""
 
+#: templates/includes/messages.html:7
+msgid "Close"
+msgstr ""
+
+#: templates/includes/navbar.html:22
 msgid "My Content"
 msgstr ""
 
-msgid "Admin Dashboard"
-msgstr ""
-
-msgid "Profile"
-msgstr ""
-
-msgid "Settings"
-msgstr ""
-
+#: templates/includes/navbar.html:113
 msgid "Sign Out"
 msgstr ""
 
-msgid "Sign Up"
+#: templates/tutorial.html:4 templates/tutorial.html:9
+msgid "How to Use ShortDeal"
+msgstr ""
+
+#: templates/tutorial.html:11
+msgid ""
+"Welcome to ShortDeal! This guide will help you get started with our short-"
+"form content trading platform."
+msgstr ""
+
+#: templates/tutorial.html:16
+msgid "🚀 Getting Started"
+msgstr ""
+
+#: templates/tutorial.html:19
+msgid "1. Create Your Account"
+msgstr ""
+
+#: templates/tutorial.html:21
+msgid "First, you need to sign up for a ShortDeal account. Choose your role:"
+msgstr ""
+
+#: templates/tutorial.html:24
+msgid "<strong>Producer:</strong> If you want to sell your short-form content"
+msgstr ""
+
+#: templates/tutorial.html:25
+msgid "<strong>Buyer:</strong> If you want to purchase short-form content"
+msgstr ""
+
+#: templates/tutorial.html:28
+msgid "Sign Up Now"
+msgstr ""
+
+#: templates/tutorial.html:36
+msgid "🎥 For Producers"
+msgstr ""
+
+#: templates/tutorial.html:43 templates/tutorial.html:141
+msgid "Step 1: Complete Your Onboarding"
+msgstr ""
+
+#: templates/tutorial.html:48
+msgid "After signing up as a Producer, you'll need to complete onboarding:"
+msgstr ""
+
+#: templates/tutorial.html:50 templates/tutorial.html:148
+msgid "Enter your company name"
+msgstr ""
+
+#: templates/tutorial.html:51
+msgid "Add a description of your business"
+msgstr ""
+
+#: templates/tutorial.html:52
+msgid "Set up your booth (your storefront on ShortDeal)"
+msgstr ""
+
+#: templates/tutorial.html:54
+msgid ""
+"This information helps buyers understand who you are and what content you "
+"create."
+msgstr ""
+
+#: templates/tutorial.html:63
+msgid "Step 2: Upload Your Content"
+msgstr ""
+
+#: templates/tutorial.html:68
+msgid ""
+"Go to <strong>My Content</strong> in the navigation menu and click "
+"<strong>Upload New Content</strong>:"
+msgstr ""
+
+#: templates/tutorial.html:70
+msgid "Add a compelling title and description"
+msgstr ""
+
+#: templates/tutorial.html:71
+msgid "Upload your video file"
+msgstr ""
+
+#: templates/tutorial.html:72
+msgid "Add a thumbnail image (optional)"
+msgstr ""
+
+#: templates/tutorial.html:73
+msgid "Choose categories/tags"
+msgstr ""
+
+#: templates/tutorial.html:74
+msgid "Set content status (Draft or Public)"
+msgstr ""
+
+#: templates/tutorial.html:76
+msgid ""
+"You can upload multiple pieces of content and manage them all from your "
+"dashboard."
+msgstr ""
+
+#: templates/tutorial.html:134
+msgid "🛒 For Buyers"
+msgstr ""
+
+#: templates/tutorial.html:146
+msgid "After signing up as a Buyer, complete your profile:"
+msgstr ""
+
+#: templates/tutorial.html:149
+msgid "Describe your business and content needs"
+msgstr ""
+
+#: templates/tutorial.html:151
+msgid "This helps producers understand who they're working with."
+msgstr ""
+
+#: templates/tutorial.html:160
+msgid "Step 2: Browse and Search Content"
+msgstr ""
+
+#: templates/tutorial.html:165
+msgid "Find the perfect content for your needs:"
+msgstr ""
+
+#: templates/tutorial.html:167
+msgid "Browse all content from <strong>Browse Content</strong>"
+msgstr ""
+
+#: templates/tutorial.html:168
+msgid "Use search and filters to find specific content"
+msgstr ""
+
+#: templates/tutorial.html:169
+msgid "Click on content to view details"
+msgstr ""
+
+#: templates/tutorial.html:170
+msgid "Visit producer booths to see their portfolio"
+msgstr ""
+
+#: templates/tutorial.html:172
+msgid ""
+"You can browse content even without logging in, but you'll need an account "
+"to make offers."
+msgstr ""
+
+#: templates/tutorial.html:235
+msgid "🌟 Key Features"
+msgstr ""
+
+#: templates/tutorial.html:240
+msgid "🔍 Advanced Search"
+msgstr ""
+
+#: templates/tutorial.html:242
+msgid ""
+"Use filters to find exactly what you're looking for - by category, price "
+"range, producer, and more."
+msgstr ""
+
+#: templates/tutorial.html:278
+msgid "🏪 Producer Booths"
+msgstr ""
+
+#: templates/tutorial.html:280
+msgid ""
+"Each producer has their own booth showcasing all their content in one place."
+msgstr ""
+
+#: templates/tutorial.html:290
+msgid "❓ Frequently Asked Questions"
+msgstr ""
+
+#: templates/tutorial.html:295
+msgid "Can I be both a Producer and a Buyer?"
+msgstr ""
+
+#: templates/tutorial.html:300
+msgid ""
+"Currently, each account can only have one role (Producer or Buyer). If you "
+"need both functions, you'll need to create separate accounts."
+msgstr ""
+
+#: templates/tutorial.html:342
+msgid "Can I edit my content after uploading?"
+msgstr ""
+
+#: templates/tutorial.html:347
+msgid "Yes! Producers can edit their content details at any time from the \\"
+msgstr ""
+
+#: templates/tutorial.html:357
+msgid "Join ShortDeal today and start trading short-form content!"
 msgstr ""

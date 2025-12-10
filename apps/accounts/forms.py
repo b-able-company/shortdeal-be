@@ -1,5 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
 from .models import User
 
 
@@ -331,3 +333,56 @@ class PasswordChangeForm(forms.Form):
         self.user.set_password(password)
         self.user.save()
         return self.user
+
+
+class PasswordResetRequestForm(forms.Form):
+    """Form for requesting password reset"""
+
+    email = forms.EmailField(
+        max_length=255,
+        required=True,
+        widget=forms.EmailInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter your email address'
+        }),
+        label='Email Address'
+    )
+
+
+class PasswordResetConfirmForm(forms.Form):
+    """Form for confirming password reset"""
+
+    new_password1 = forms.CharField(
+        label='New Password',
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter new password (minimum 8 characters)'
+        }),
+        min_length=8
+    )
+
+    new_password2 = forms.CharField(
+        label='Confirm New Password',
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Confirm new password'
+        })
+    )
+
+    def clean_new_password1(self):
+        password = self.cleaned_data.get('new_password1')
+        try:
+            validate_password(password)
+        except ValidationError as e:
+            raise forms.ValidationError(e.messages)
+        return password
+
+    def clean(self):
+        cleaned_data = super().clean()
+        new_password1 = cleaned_data.get('new_password1')
+        new_password2 = cleaned_data.get('new_password2')
+
+        if new_password1 and new_password2 and new_password1 != new_password2:
+            raise forms.ValidationError('The two password fields must match.')
+
+        return cleaned_data
