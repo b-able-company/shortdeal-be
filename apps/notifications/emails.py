@@ -215,6 +215,9 @@ ShortDeal Team
     # Try SendGrid HTTP API first (to bypass Railway SMTP port blocking)
     sendgrid_api_key = getattr(settings, 'SENDGRID_API_KEY', None) or settings.EMAIL_HOST_PASSWORD
 
+    print(f"[EMAIL] API Key check: {sendgrid_api_key[:10] if sendgrid_api_key else 'None'}...")
+    print(f"[EMAIL] Starts with SG.? {sendgrid_api_key.startswith('SG.') if sendgrid_api_key else False}")
+
     if sendgrid_api_key and sendgrid_api_key.startswith('SG.'):
         print(f"[EMAIL] Using SendGrid HTTP API")
         try:
@@ -245,9 +248,10 @@ ShortDeal Team
             print(f"[EMAIL] SendGrid library not installed, falling back to SMTP")
         except Exception as e:
             print(f"[EMAIL] ✗ SendGrid API failed: {type(e).__name__}: {str(e)}")
+            print(f"[EMAIL] Will try SMTP fallback...")
             import traceback
             print(traceback.format_exc())
-            raise
+            # Don't raise - fall back to SMTP instead
 
     # Fallback to SMTP
     print(f"[EMAIL] Using SMTP")
