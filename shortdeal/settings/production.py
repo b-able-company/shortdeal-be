@@ -88,6 +88,13 @@ EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
 DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'noreply@shortdeal.com')
 
+# Log email configuration (without password) for debugging
+import logging
+logger = logging.getLogger(__name__)
+logger.info(f"Email configuration: BACKEND={EMAIL_BACKEND}, HOST={EMAIL_HOST}, PORT={EMAIL_PORT}, "
+            f"TLS={EMAIL_USE_TLS}, USER={'[SET]' if EMAIL_HOST_USER else '[NOT SET]'}, "
+            f"PASSWORD={'[SET]' if EMAIL_HOST_PASSWORD else '[NOT SET]'}")
+
 # Logging configuration
 LOGGING = {
     'version': 1,
