@@ -205,13 +205,17 @@ def password_reset_request_view(request):
         return redirect('home')
 
     if request.method == 'POST':
+        print("=" * 80)
+        print("WEB PASSWORD RESET REQUEST RECEIVED")
         form = PasswordResetRequestForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data['email'].lower()
+            print(f"Email to reset: {email}")
 
             # Always show success message to prevent user enumeration
             try:
                 user = User.objects.get(email__iexact=email, is_active=True)
+                print(f"✓ User found: {user.username} (ID: {user.id})")
 
                 # Generate token
                 token_generator = PasswordResetTokenGenerator()
@@ -238,8 +242,11 @@ def password_reset_request_view(request):
                     # Don't raise - still show success message to user
 
             except User.DoesNotExist:
+                print(f"✗ User not found for email: {email}")
                 logger.info(f"Password reset requested for non-existent email: {email}")
 
+            print("Redirecting with success message")
+            print("=" * 80)
             messages.success(
                 request,
                 'If the email exists, a reset link has been sent. Please check your inbox.'
