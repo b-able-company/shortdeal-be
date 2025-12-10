@@ -76,25 +76,6 @@ MEDIA_URL = '/media/'
 DATA_UPLOAD_MAX_MEMORY_SIZE = 250 * 1024 * 1024  # 250MB max total request size
 FILE_UPLOAD_MAX_MEMORY_SIZE = 250 * 1024 * 1024  # 250MB per file in memory
 
-# Email configuration
-EMAIL_BACKEND = os.getenv(
-    'EMAIL_BACKEND',
-    'django.core.mail.backends.smtp.EmailBackend'
-)
-EMAIL_HOST = os.getenv('EMAIL_HOST', 'smtp.gmail.com')
-EMAIL_PORT = int(os.getenv('EMAIL_PORT', '587'))
-EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True') == 'True'
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', '')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
-DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'noreply@shortdeal.com')
-
-# Log email configuration (without password) for debugging
-import logging
-logger = logging.getLogger(__name__)
-logger.info(f"Email configuration: BACKEND={EMAIL_BACKEND}, HOST={EMAIL_HOST}, PORT={EMAIL_PORT}, "
-            f"TLS={EMAIL_USE_TLS}, USER={'[SET]' if EMAIL_HOST_USER else '[NOT SET]'}, "
-            f"PASSWORD={'[SET]' if EMAIL_HOST_PASSWORD else '[NOT SET]'}")
-
 # Logging configuration
 LOGGING = {
     'version': 1,
@@ -123,6 +104,31 @@ LOGGING = {
         },
     },
 }
+
+# Email configuration
+EMAIL_BACKEND = os.getenv(
+    'EMAIL_BACKEND',
+    'django.core.mail.backends.smtp.EmailBackend'
+)
+EMAIL_HOST = os.getenv('EMAIL_HOST', 'smtp.gmail.com')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT', '587'))
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True') == 'True'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', '')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'noreply@shortdeal.com')
+
+# Log email configuration (without password) for debugging
+import logging
+logger = logging.getLogger(__name__)
+logger.info(
+    f"Email configuration: "
+    f"BACKEND={EMAIL_BACKEND}, "
+    f"HOST={EMAIL_HOST}, "
+    f"PORT={EMAIL_PORT}, "
+    f"TLS={EMAIL_USE_TLS}, "
+    f"USER={'[SET]' if EMAIL_HOST_USER else '[NOT SET]'}, "
+    f"PASSWORD={'[SET]' if EMAIL_HOST_PASSWORD else '[NOT SET]'}"
+)
 
 # CORS settings for production
 CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', '').split(',')
