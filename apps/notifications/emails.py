@@ -188,6 +188,7 @@ def send_password_reset_email(user, reset_url):
     """
     Send password reset email with token link
     """
+    print(f"[EMAIL] Starting to send password reset email to {user.email}")
     subject = "Reset Your Password - ShortDeal"
 
     username = user.company_name or user.username
@@ -210,10 +211,24 @@ Best regards,
 ShortDeal Team
 """
 
-    send_mail(
-        subject=subject,
-        message=message,
-        from_email=settings.DEFAULT_FROM_EMAIL,
-        recipient_list=[user.email],
-        fail_silently=False,
-    )
+    print(f"[EMAIL] Calling send_mail with:")
+    print(f"  - From: {settings.DEFAULT_FROM_EMAIL}")
+    print(f"  - To: {user.email}")
+    print(f"  - Subject: {subject}")
+
+    try:
+        send_mail(
+            subject=subject,
+            message=message,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[user.email],
+            fail_silently=False,
+        )
+        print(f"[EMAIL] send_mail completed successfully")
+    except Exception as e:
+        print(f"[EMAIL] ✗✗✗ EXCEPTION in send_mail ✗✗✗")
+        print(f"[EMAIL] Error type: {type(e).__name__}")
+        print(f"[EMAIL] Error message: {str(e)}")
+        import traceback
+        print(traceback.format_exc())
+        raise  # Re-raise to be caught by the view
