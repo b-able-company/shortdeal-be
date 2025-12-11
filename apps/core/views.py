@@ -80,3 +80,11 @@ def tutorial_view(request):
     Shows how to use the ShortDeal platform
     """
     return render(request, 'tutorial.html')
+
+
+def company_intro_view(request):
+    """
+    Company introduction page view
+    Shows information about B.able Company
+    """
+    return render(request, 'company_intro.html')

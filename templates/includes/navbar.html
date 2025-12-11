@@ -15,6 +15,11 @@
                     <a class="nav-link" href="{% url 'contents:browse' %}">{% trans "Browse Content" %}</a>
                 </li>
 
+                <!-- Company Introduction -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'core:company_intro' %}">{% trans "About B.able" %}</a>
+                </li>
+
                 {% if user.is_authenticated %}
                     <!-- Producer specific menu -->
                     {% if user.role == 'creator' %}
