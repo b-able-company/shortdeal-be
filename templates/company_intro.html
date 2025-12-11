@@ -383,15 +383,46 @@
 
 {% block content %}
 <div class="container-fluid px-0">
+    {% get_current_language as LANGUAGE_CODE %}
+
     <!-- Hero Band -->
     <div class="company-hero">
         <div class="container">
+            {% if LANGUAGE_CODE == 'zh-hans' %}
+            <!-- Chinese Hero -->
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <span class="badge-custom">关于 B.able</span>
+                    <h1 class="hero-title">一个连接优质短剧内容的整合平台</h1>
+                    <p class="hero-subtitle">
+                        B.able Company 深耕发掘并策划多类型的韩国短剧IP，为位处全球的平台与制作方搭建沟通的桥梁。
+                    </p>
+                    <p class="hero-subtitle">
+                        ShortDeal 将帮助您轻松找到数据验证的优质内容和值得信赖的合作伙伴。
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="mailto:info@bable-company.com" class="btn btn-primary-custom">联系销售</a>
+                        <a href="https://www.bable-company.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary-custom">了解更多</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-4 mt-lg-0">
+                    <div class="hero-image-card">
+                        <img src="{% static 'img/bable_ci.png' %}" alt="B.able Company 品牌标识">
+                        <p class="hero-image-caption">B.able - 构建内容电商的未来</p>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <!-- English Hero -->
             <div class="row align-items-center">
                 <div class="col-lg-6 hero-content">
                     <span class="badge-custom">About B.able</span>
-                    <h1 class="hero-title">Leading the K-Content Commerce Revolution</h1>
+                    <h1 class="hero-title">Connecting Quality Short-Form Drama Content</h1>
                     <p class="hero-subtitle">
-                        B.able Company combines short-form content and e-commerce to create a new global commerce ecosystem, empowering K-brands worldwide.
+                        B.able Company discovers and curates diverse K-short drama IPs, connecting global platforms with producers.
+                    </p>
+                    <p class="hero-subtitle">
+                        ShortDeal helps you easily find verified content and trusted partners.
                     </p>
                     <div class="d-flex gap-3 flex-wrap">
                         <a href="mailto:info@bable-company.com" class="btn btn-primary-custom">Contact Sales</a>
@@ -405,12 +436,11 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
         </div>
     </div>
 
     <div class="container">
-        {% get_current_language as LANGUAGE_CODE %}
-
         {% if LANGUAGE_CODE == 'zh-hans' %}
             <!-- Chinese Content -->
                 <!-- About & Vision Split -->
