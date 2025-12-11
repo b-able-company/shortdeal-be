@@ -1,0 +1,673 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "About B.able Company" %} - {% trans "ShortDeal" %}{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Import Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+    /* Brand Colors from bable_ci.png */
+    :root {
+        --brand-charcoal: #231815;
+        --brand-orange: #e7501e;
+        --brand-gray: #d1d1d1;
+        --brand-light-bg: #fff8f5;
+        --brand-warm-bg: #f3f0ec;
+    }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        color: var(--brand-charcoal);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: -0.02em;
+    }
+
+    /* Hero Section */
+    .company-hero {
+        background: linear-gradient(135deg, #fff8f5, #f3f0ec);
+        padding: 60px 0;
+        border-radius: 16px;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 40px;
+    }
+
+    .company-hero::before {
+        content: '';
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background: linear-gradient(135deg, rgba(231, 80, 30, 0.1), rgba(231, 80, 30, 0.05));
+        border-radius: 50%;
+        filter: blur(60px);
+        top: -100px;
+        right: -100px;
+        z-index: 0;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .badge-custom {
+        display: inline-block;
+        padding: 6px 14px;
+        background-color: rgba(231, 80, 30, 0.1);
+        color: var(--brand-orange);
+        border-radius: 20px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        margin-bottom: 16px;
+        letter-spacing: 0.02em;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--brand-charcoal);
+        margin-bottom: 20px;
+        line-height: 1.2;
+    }
+
+    .hero-subtitle {
+        font-size: 1.125rem;
+        color: #666;
+        margin-bottom: 30px;
+        line-height: 1.6;
+    }
+
+    /* Image Card */
+    .hero-image-card {
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-image-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        max-height: 300px;
+        object-fit: contain;
+    }
+
+    .hero-image-caption {
+        text-align: center;
+        color: #999;
+        font-size: 0.875rem;
+        margin-top: 12px;
+    }
+
+    /* Language Tabs */
+    .language-tabs {
+        border-bottom: 2px solid #f0f0f0;
+        margin-bottom: 40px;
+    }
+
+    .language-tabs .nav-link {
+        color: #666;
+        border: none;
+        border-bottom: 3px solid transparent;
+        padding: 12px 24px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .language-tabs .nav-link:hover {
+        color: var(--brand-orange);
+    }
+
+    .language-tabs .nav-link.active {
+        color: var(--brand-orange);
+        border-bottom-color: var(--brand-orange);
+        background: transparent;
+    }
+
+    /* Content Sections */
+    .content-section {
+        padding: 60px 0;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 24px;
+        color: var(--brand-charcoal);
+    }
+
+    .section-text {
+        font-size: 1.0625rem;
+        line-height: 1.8;
+        color: #555;
+    }
+
+    /* Vision Badge */
+    .vision-accent {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--brand-orange);
+        font-weight: 600;
+        margin-bottom: 16px;
+    }
+
+    .vision-accent::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        background: var(--brand-orange);
+        border-radius: 50%;
+    }
+
+    /* Pillars Cards */
+    .pillar-card {
+        background: white;
+        border-radius: 14px;
+        padding: 32px 24px;
+        box-shadow: 0 2px 12px rgba(15, 23, 42, 0.08);
+        transition: all 0.3s ease;
+        height: 100%;
+        border: 1px solid #f0f0f0;
+    }
+
+    .pillar-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+    }
+
+    .pillar-icon {
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, rgba(231, 80, 30, 0.1), rgba(231, 80, 30, 0.05));
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        margin-bottom: 20px;
+    }
+
+    .pillar-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: var(--brand-charcoal);
+    }
+
+    .pillar-desc {
+        color: #666;
+        margin-bottom: 12px;
+        line-height: 1.6;
+    }
+
+    .pillar-metric {
+        color: var(--brand-orange);
+        font-weight: 600;
+        font-size: 0.9375rem;
+    }
+
+    /* Strengths Grid */
+    .strength-item {
+        background: white;
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+        border: 1px solid #f0f0f0;
+        height: 100%;
+    }
+
+    .strength-item h4 {
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: var(--brand-charcoal);
+        margin-bottom: 12px;
+    }
+
+    .strength-item p {
+        color: #666;
+        font-size: 0.9375rem;
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* Process Steps */
+    .process-steps {
+        display: flex;
+        gap: 20px;
+        margin-top: 40px;
+    }
+
+    .process-step {
+        flex: 1;
+        text-align: center;
+        position: relative;
+    }
+
+    .process-step::after {
+        content: '→';
+        position: absolute;
+        right: -20px;
+        top: 20px;
+        color: var(--brand-orange);
+        font-size: 1.5rem;
+    }
+
+    .process-step:last-child::after {
+        display: none;
+    }
+
+    .process-icon {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(135deg, var(--brand-orange), #ff8c5a);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 16px;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    .process-title {
+        font-weight: 700;
+        color: var(--brand-charcoal);
+        margin-bottom: 8px;
+    }
+
+    .process-desc {
+        font-size: 0.875rem;
+        color: #666;
+    }
+
+    /* CTA Section */
+    .cta-section {
+        background: linear-gradient(135deg, #fff8f5, #f3f0ec);
+        border-radius: 16px;
+        padding: 60px 40px;
+        text-align: center;
+        margin: 60px 0;
+    }
+
+    .cta-section h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: var(--brand-charcoal);
+    }
+
+    .cta-section p {
+        font-size: 1.125rem;
+        color: #666;
+        margin-bottom: 30px;
+    }
+
+    /* Buttons */
+    .btn-primary-custom {
+        background: var(--brand-orange);
+        border: none;
+        border-radius: 50px;
+        padding: 14px 32px;
+        font-weight: 600;
+        color: white;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(231, 80, 30, 0.2);
+    }
+
+    .btn-primary-custom:hover {
+        background: #d14318;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(231, 80, 30, 0.3);
+        color: white;
+    }
+
+    .btn-secondary-custom {
+        background: transparent;
+        border: 2px solid var(--brand-charcoal);
+        border-radius: 50px;
+        padding: 12px 32px;
+        font-weight: 600;
+        color: var(--brand-charcoal);
+        transition: all 0.3s ease;
+    }
+
+    .btn-secondary-custom:hover {
+        background: var(--brand-charcoal);
+        color: white;
+    }
+
+    /* Dividers */
+    .section-divider {
+        height: 1px;
+        background: linear-gradient(to right, transparent, #e0e0e0, transparent);
+        margin: 60px 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+        }
+
+        .process-steps {
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .process-step::after {
+            content: '↓';
+            right: auto;
+            top: auto;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .cta-section {
+            padding: 40px 24px;
+        }
+    }
+
+    /* Watermark for Vision Section */
+    .vision-watermark {
+        position: relative;
+    }
+
+    .vision-watermark::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: 200px;
+        background-image: url('{% static "img/bable_ci.png" %}');
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.05;
+        z-index: 0;
+        pointer-events: none;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-0">
+    <!-- Hero Band -->
+    <div class="company-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <span class="badge-custom">About B.able</span>
+                    <h1 class="hero-title">Leading the K-Content Commerce Revolution</h1>
+                    <p class="hero-subtitle">
+                        B.able Company combines short-form content and e-commerce to create a new global commerce ecosystem, empowering K-brands worldwide.
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="mailto:info@bable-company.com" class="btn btn-primary-custom">Contact Sales</a>
+                        <a href="https://www.bable-company.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary-custom">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-4 mt-lg-0">
+                    <div class="hero-image-card">
+                        <img src="{% static 'img/bable_ci.png' %}" alt="B.able Company Brand Identity">
+                        <p class="hero-image-caption">B.able - Building the future of content commerce</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Language Toggle -->
+        <ul class="nav language-tabs justify-content-center" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#lang-en" role="tab">EN</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#lang-cn" role="tab">中文</a>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <!-- English Content -->
+            <div class="tab-pane fade show active" id="lang-en" role="tabpanel">
+                <!-- About & Vision Split -->
+                <div class="content-section" id="about">
+                    <div class="row">
+                        <div class="col-lg-6 mb-4 mb-lg-0">
+                            <h2 class="section-title">About B.able Company</h2>
+                            <div class="section-text">
+                                <p>B.able Company is a K-content commerce company that leads a new commerce ecosystem by combining short-form content and e-commerce. With top talent from Korea and abroad, we develop innovative solutions and sales channels targeting the global market, strengthening the global competitiveness of K-brands.</p>
+                                <p>We generate sustainable sales through various channels, focusing on live commerce, short-form commerce, and content commerce, and maximize efficiency with optimized marketing strategies based on big data.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 vision-watermark">
+                            <span class="vision-accent">Our Vision</span>
+                            <h2 class="section-title">Building the Future Together</h2>
+                            <div class="section-text">
+                                <p>B.able Company leads the new commerce ecosystem through the innovative combination of short-form dramas and e-commerce.</p>
+                                <p>We strengthen the competitiveness of K-brands and build strong connections with consumers around the world through creative solutions and efficient marketing strategies targeting the global market.</p>
+                                <p>Join B.able Company as we build new fandoms through short, compelling content and drive sustainable global success.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <!-- What We Do (Pillars) -->
+                <div class="content-section">
+                    <h2 class="section-title text-center mb-5">What We Do</h2>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="pillar-card">
+                                <div class="pillar-icon">📹</div>
+                                <h3 class="pillar-title">Live Commerce</h3>
+                                <p class="pillar-desc">Real-time engagement with audiences through interactive live streaming, creating authentic brand experiences.</p>
+                                <p class="pillar-metric">↗ Higher conversion rates</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="pillar-card">
+                                <div class="pillar-icon">🎬</div>
+                                <h3 class="pillar-title">Short-form Commerce</h3>
+                                <p class="pillar-desc">Bite-sized, compelling content designed for maximum impact and shareability across social platforms.</p>
+                                <p class="pillar-metric">↗ Viral reach & engagement</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="pillar-card">
+                                <div class="pillar-icon">💡</div>
+                                <h3 class="pillar-title">Content Commerce</h3>
+                                <p class="pillar-desc">Strategic content creation and distribution that seamlessly integrates storytelling with commerce.</p>
+                                <p class="pillar-metric">↗ Brand loyalty & trust</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <!-- Global Strengths -->
+                <div class="content-section">
+                    <h2 class="section-title text-center mb-5">Our Global Strengths</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="strength-item">
+                                <h4>🌏 Global Talent</h4>
+                                <p>Top professionals from Korea and worldwide driving innovation</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="strength-item">
+                                <h4>📊 Data-driven Marketing</h4>
+                                <p>Big data analytics optimizing every campaign for maximum ROI</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="strength-item">
+                                <h4>🇰🇷 K-Brand Focus</h4>
+                                <p>Dedicated to elevating Korean brands on the global stage</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="strength-item">
+                                <h4>🔗 Omnichannel Reach</h4>
+                                <p>Seamless integration across multiple platforms and channels</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Chinese Content -->
+            <div class="tab-pane fade" id="lang-cn" role="tabpanel">
+                <!-- About & Vision Split -->
+                <div class="content-section">
+                    <div class="row">
+                        <div class="col-lg-6 mb-4 mb-lg-0">
+                            <h2 class="section-title">关于B.able公司</h2>
+                            <div class="section-text">
+                                <p>B.able公司是一家专注于K内容电商的公司, 致力于融合短视频内容和电子商务, 引领全新的电商生态系统。我们汇聚韩国及海外顶尖人才, 开发面向全球市场的创新解决方案和销售渠道, 提升K品牌的全球竞争力。</p>
+                                <p>我们通过多元化渠道实现可持续销售，重点关注直播电商、短视频电商和内容电商，并运用基于大数据优化的营销策略，最大限度地提高效率。</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 vision-watermark">
+                            <span class="vision-accent">我们的愿景</span>
+                            <h2 class="section-title">共创未来</h2>
+                            <div class="section-text">
+                                <p>B.able 公司致力于通过短视频剧集与电商的创新结合，引领全新的商业生态系统。</p>
+                                <p>我们通过创意解决方案和高效的全球市场营销策略，增强韩国品牌的竞争力，并与世界各地的消费者建立牢固的联系。</p>
+                                <p>加入 B.able 公司，与我们一起通过短小精悍、引人入胜的内容打造新的粉丝群体，并实现可持续的全球成功。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <!-- What We Do (Pillars) -->
+                <div class="content-section">
+                    <h2 class="section-title text-center mb-5">我们的业务</h2>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="pillar-card">
+                                <div class="pillar-icon">📹</div>
+                                <h3 class="pillar-title">直播电商</h3>
+                                <p class="pillar-desc">通过互动直播与观众实时互动，打造真实的品牌体验。</p>
+                                <p class="pillar-metric">↗ 更高的转化率</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="pillar-card">
+                                <div class="pillar-icon">🎬</div>
+                                <h3 class="pillar-title">短视频电商</h3>
+                                <p class="pillar-desc">简短有力的内容，在社交平台上实现最大影响力和传播性。</p>
+                                <p class="pillar-metric">↗ 病毒式传播与互动</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="pillar-card">
+                                <div class="pillar-icon">💡</div>
+                                <h3 class="pillar-title">内容电商</h3>
+                                <p class="pillar-desc">战略性内容创作与分发，将故事讲述与商业无缝结合。</p>
+                                <p class="pillar-metric">↗ 品牌忠诚度与信任</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <!-- Global Strengths -->
+                <div class="content-section">
+                    <h2 class="section-title text-center mb-5">我们的全球优势</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="strength-item">
+                                <h4>🌏 全球人才</h4>
+                                <p>来自韩国和全球的顶尖专业人士推动创新</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="strength-item">
+                                <h4>📊 数据驱动营销</h4>
+                                <p>大数据分析优化每一次活动以实现最大投资回报率</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="strength-item">
+                                <h4>🇰🇷 聚焦韩国品牌</h4>
+                                <p>致力于在全球舞台上提升韩国品牌</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="strength-item">
+                                <h4>🔗 全渠道覆盖</h4>
+                                <p>跨多个平台和渠道的无缝整合</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Save language preference to localStorage
+    document.querySelectorAll('.language-tabs .nav-link').forEach(tab => {
+        tab.addEventListener('click', function() {
+            const lang = this.getAttribute('href') === '#lang-en' ? 'en' : 'cn';
+            localStorage.setItem('companyIntroLang', lang);
+        });
+    });
+
+    // Restore language preference on page load
+    window.addEventListener('DOMContentLoaded', function() {
+        const savedLang = localStorage.getItem('companyIntroLang');
+        if (savedLang === 'cn') {
+            const cnTab = document.querySelector('[href="#lang-cn"]');
+            if (cnTab) {
+                const tab = new bootstrap.Tab(cnTab);
+                tab.show();
+            }
+        }
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+</script>
+{% endblock %}
