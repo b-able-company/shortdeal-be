@@ -87,6 +87,32 @@
                     </div>
                     {% endif %}
 
+                    {% if user.role == 'creator' and profile_form.genre_tags %}
+                    <div class="mb-3">
+                        <label class="form-label">
+                            {% trans "Genres" %} <span class="text-danger">*</span>
+                        </label>
+                        <div class="row">
+                            {% for choice in profile_form.genre_tags %}
+                            <div class="col-md-4 col-sm-6 mb-2">
+                                <div class="form-check">
+                                    {{ choice.tag }}
+                                    <label class="form-check-label" for="{{ choice.id_for_label }}">
+                                        {{ choice.choice_label }}
+                                    </label>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <small class="text-muted d-block">{{ profile_form.genre_tags.help_text }}</small>
+                        {% if profile_form.genre_tags.errors %}
+                        <div class="text-danger small mt-1">
+                            {{ profile_form.genre_tags.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+
                     <div class="mb-3">
                         <label class="form-label">{% trans "Role" %}</label>
                         <input type="text" class="form-control" value="{{ user.get_role_display }}" disabled>

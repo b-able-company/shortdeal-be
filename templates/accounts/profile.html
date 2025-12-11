@@ -70,7 +70,7 @@
                 <hr class="my-4">
 
                 <div class="d-flex gap-2">
-                    <a href="#" class="btn btn-outline-primary">{% trans "Edit Profile" %}</a>
+                    <a href="{% url 'accounts:settings' %}" class="btn btn-outline-primary">{% trans "Edit Profile" %}</a>
                     <a href="{% url 'accounts:logout' %}" class="btn btn-outline-secondary">{% trans "Log Out" %}</a>
                 </div>
             </div>
