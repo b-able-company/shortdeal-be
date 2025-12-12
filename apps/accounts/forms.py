@@ -202,6 +202,24 @@ class BuyerOnboardingForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     """Profile update form for settings page"""
 
+    GENRE_CHOICES = [
+        ('drama', 'Drama'),
+        ('comedy', 'Comedy'),
+        ('romance', 'Romance'),
+        ('action', 'Action'),
+        ('thriller', 'Thriller'),
+        ('horror', 'Horror'),
+        ('documentary', 'Documentary'),
+        ('education', 'Education'),
+        ('business', 'Business'),
+        ('lifestyle', 'Lifestyle'),
+        ('food', 'Food'),
+        ('travel', 'Travel'),
+        ('music', 'Music'),
+        ('sports', 'Sports'),
+        ('gaming', 'Gaming'),
+    ]
+
     username = forms.CharField(
         max_length=150,
         required=True,
@@ -250,15 +268,26 @@ class ProfileUpdateForm(forms.ModelForm):
         help_text='Upload your company logo (JPG or PNG, max 2MB)'
     )
 
+    genre_tags = forms.MultipleChoiceField(
+        choices=GENRE_CHOICES,
+        required=False,  # Not required because buyers don't have it
+        widget=forms.CheckboxSelectMultiple(attrs={
+            'class': 'form-check-input'
+        }),
+        label='Select Genres (up to 3)',
+        help_text='Choose 1-3 genres that best describe your content'
+    )
+
     class Meta:
         model = User
-        fields = ('username', 'email', 'company_name', 'country', 'logo')
+        fields = ('username', 'email', 'company_name', 'country', 'logo', 'genre_tags')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # Remove logo field for buyers (they don't have logo)
-        if self.instance and self.instance.role == 'buyer':
+        # Remove logo and genre_tags fields for non-creators
+        if self.instance and self.instance.role != 'creator':
             self.fields.pop('logo', None)
+            self.fields.pop('genre_tags', None)
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
@@ -278,6 +307,21 @@ class ProfileUpdateForm(forms.ModelForm):
             if logo.size > 2 * 1024 * 1024:  # 2MB
                 raise forms.ValidationError('Logo file size must be under 2MB.')
         return logo
+
+    def clean_genre_tags(self):
+        genre_tags = self.cleaned_data.get('genre_tags')
+        # Only validate for creators
+        if self.instance and self.instance.role == 'creator':
+            if genre_tags:
+                if len(genre_tags) < 1:
+                    raise forms.ValidationError('Please select at least 1 genre.')
+                if len(genre_tags) > 3:
+                    raise forms.ValidationError('Please select no more than 3 genres.')
+                return list(genre_tags)
+            else:
+                # If creator but no genres selected, return existing genres
+                return self.instance.genre_tags if self.instance.genre_tags else []
+        return genre_tags
 
 
 class PasswordChangeForm(forms.Form):

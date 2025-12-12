@@ -109,31 +109,6 @@
         margin-top: 12px;
     }
 
-    /* Language Tabs */
-    .language-tabs {
-        border-bottom: 2px solid #f0f0f0;
-        margin-bottom: 40px;
-    }
-
-    .language-tabs .nav-link {
-        color: #666;
-        border: none;
-        border-bottom: 3px solid transparent;
-        padding: 12px 24px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-    }
-
-    .language-tabs .nav-link:hover {
-        color: var(--brand-orange);
-    }
-
-    .language-tabs .nav-link.active {
-        color: var(--brand-orange);
-        border-bottom-color: var(--brand-orange);
-        background: transparent;
-    }
-
     /* Content Sections */
     .content-section {
         padding: 60px 0;
@@ -408,15 +383,46 @@
 
 {% block content %}
 <div class="container-fluid px-0">
+    {% get_current_language as LANGUAGE_CODE %}
+
     <!-- Hero Band -->
     <div class="company-hero">
         <div class="container">
+            {% if LANGUAGE_CODE == 'zh-hans' %}
+            <!-- Chinese Hero -->
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <span class="badge-custom">关于 B.able</span>
+                    <h1 class="hero-title">一个连接优质短剧内容的整合平台</h1>
+                    <p class="hero-subtitle">
+                        B.able Company 深耕发掘并策划多类型的韩国短剧IP，为位处全球的平台与制作方搭建沟通的桥梁。
+                    </p>
+                    <p class="hero-subtitle">
+                        ShortDeal 将帮助您轻松找到数据验证的优质内容和值得信赖的合作伙伴。
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="mailto:info@bable-company.com" class="btn btn-primary-custom">联系销售</a>
+                        <a href="https://www.bable-company.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary-custom">了解更多</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-4 mt-lg-0">
+                    <div class="hero-image-card">
+                        <img src="{% static 'img/bable_ci.png' %}" alt="B.able Company 品牌标识">
+                        <p class="hero-image-caption">B.able - 构建内容电商的未来</p>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <!-- English Hero -->
             <div class="row align-items-center">
                 <div class="col-lg-6 hero-content">
                     <span class="badge-custom">About B.able</span>
-                    <h1 class="hero-title">Leading the K-Content Commerce Revolution</h1>
+                    <h1 class="hero-title">Connecting Quality Short-Form Drama Content</h1>
                     <p class="hero-subtitle">
-                        B.able Company combines short-form content and e-commerce to create a new global commerce ecosystem, empowering K-brands worldwide.
+                        B.able Company discovers and curates diverse K-short drama IPs, connecting global platforms with producers.
+                    </p>
+                    <p class="hero-subtitle">
+                        ShortDeal helps you easily find verified content and trusted partners.
                     </p>
                     <div class="d-flex gap-3 flex-wrap">
                         <a href="mailto:info@bable-company.com" class="btn btn-primary-custom">Contact Sales</a>
@@ -430,116 +436,13 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
         </div>
     </div>
 
     <div class="container">
-        <!-- Language Toggle -->
-        <ul class="nav language-tabs justify-content-center" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" data-bs-toggle="tab" href="#lang-en" role="tab">EN</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#lang-cn" role="tab">中文</a>
-            </li>
-        </ul>
-
-        <!-- Tab Content -->
-        <div class="tab-content">
-            <!-- English Content -->
-            <div class="tab-pane fade show active" id="lang-en" role="tabpanel">
-                <!-- About & Vision Split -->
-                <div class="content-section" id="about">
-                    <div class="row">
-                        <div class="col-lg-6 mb-4 mb-lg-0">
-                            <h2 class="section-title">About B.able Company</h2>
-                            <div class="section-text">
-                                <p>B.able Company is a K-content commerce company that leads a new commerce ecosystem by combining short-form content and e-commerce. With top talent from Korea and abroad, we develop innovative solutions and sales channels targeting the global market, strengthening the global competitiveness of K-brands.</p>
-                                <p>We generate sustainable sales through various channels, focusing on live commerce, short-form commerce, and content commerce, and maximize efficiency with optimized marketing strategies based on big data.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 vision-watermark">
-                            <span class="vision-accent">Our Vision</span>
-                            <h2 class="section-title">Building the Future Together</h2>
-                            <div class="section-text">
-                                <p>B.able Company leads the new commerce ecosystem through the innovative combination of short-form dramas and e-commerce.</p>
-                                <p>We strengthen the competitiveness of K-brands and build strong connections with consumers around the world through creative solutions and efficient marketing strategies targeting the global market.</p>
-                                <p>Join B.able Company as we build new fandoms through short, compelling content and drive sustainable global success.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section-divider"></div>
-
-                <!-- What We Do (Pillars) -->
-                <div class="content-section">
-                    <h2 class="section-title text-center mb-5">What We Do</h2>
-                    <div class="row g-4">
-                        <div class="col-md-4">
-                            <div class="pillar-card">
-                                <div class="pillar-icon">📹</div>
-                                <h3 class="pillar-title">Live Commerce</h3>
-                                <p class="pillar-desc">Real-time engagement with audiences through interactive live streaming, creating authentic brand experiences.</p>
-                                <p class="pillar-metric">↗ Higher conversion rates</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="pillar-card">
-                                <div class="pillar-icon">🎬</div>
-                                <h3 class="pillar-title">Short-form Commerce</h3>
-                                <p class="pillar-desc">Bite-sized, compelling content designed for maximum impact and shareability across social platforms.</p>
-                                <p class="pillar-metric">↗ Viral reach & engagement</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="pillar-card">
-                                <div class="pillar-icon">💡</div>
-                                <h3 class="pillar-title">Content Commerce</h3>
-                                <p class="pillar-desc">Strategic content creation and distribution that seamlessly integrates storytelling with commerce.</p>
-                                <p class="pillar-metric">↗ Brand loyalty & trust</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section-divider"></div>
-
-                <!-- Global Strengths -->
-                <div class="content-section">
-                    <h2 class="section-title text-center mb-5">Our Global Strengths</h2>
-                    <div class="row g-4">
-                        <div class="col-md-6 col-lg-3">
-                            <div class="strength-item">
-                                <h4>🌏 Global Talent</h4>
-                                <p>Top professionals from Korea and worldwide driving innovation</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div class="strength-item">
-                                <h4>📊 Data-driven Marketing</h4>
-                                <p>Big data analytics optimizing every campaign for maximum ROI</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div class="strength-item">
-                                <h4>🇰🇷 K-Brand Focus</h4>
-                                <p>Dedicated to elevating Korean brands on the global stage</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div class="strength-item">
-                                <h4>🔗 Omnichannel Reach</h4>
-                                <p>Seamless integration across multiple platforms and channels</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
+        {% if LANGUAGE_CODE == 'zh-hans' %}
             <!-- Chinese Content -->
-            <div class="tab-pane fade" id="lang-cn" role="tabpanel">
                 <!-- About & Vision Split -->
                 <div class="content-section">
                     <div class="row">
@@ -628,34 +531,103 @@
                     </div>
                 </div>
 
-            </div>
-        </div>
+        {% else %}
+            <!-- English Content -->
+                <!-- About & Vision Split -->
+                <div class="content-section" id="about">
+                    <div class="row">
+                        <div class="col-lg-6 mb-4 mb-lg-0">
+                            <h2 class="section-title">About B.able Company</h2>
+                            <div class="section-text">
+                                <p>B.able Company is a K-content commerce company that leads a new commerce ecosystem by combining short-form content and e-commerce. With top talent from Korea and abroad, we develop innovative solutions and sales channels targeting the global market, strengthening the global competitiveness of K-brands.</p>
+                                <p>We generate sustainable sales through various channels, focusing on live commerce, short-form commerce, and content commerce, and maximize efficiency with optimized marketing strategies based on big data.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 vision-watermark">
+                            <span class="vision-accent">Our Vision</span>
+                            <h2 class="section-title">Building the Future Together</h2>
+                            <div class="section-text">
+                                <p>B.able Company leads the new commerce ecosystem through the innovative combination of short-form dramas and e-commerce.</p>
+                                <p>We strengthen the competitiveness of K-brands and build strong connections with consumers around the world through creative solutions and efficient marketing strategies targeting the global market.</p>
+                                <p>Join B.able Company as we build new fandoms through short, compelling content and drive sustainable global success.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <!-- What We Do (Pillars) -->
+                <div class="content-section">
+                    <h2 class="section-title text-center mb-5">What We Do</h2>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="pillar-card">
+                                <div class="pillar-icon">📹</div>
+                                <h3 class="pillar-title">Live Commerce</h3>
+                                <p class="pillar-desc">Real-time engagement with audiences through interactive live streaming, creating authentic brand experiences.</p>
+                                <p class="pillar-metric">↗ Higher conversion rates</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="pillar-card">
+                                <div class="pillar-icon">🎬</div>
+                                <h3 class="pillar-title">Short-form Commerce</h3>
+                                <p class="pillar-desc">Bite-sized, compelling content designed for maximum impact and shareability across social platforms.</p>
+                                <p class="pillar-metric">↗ Viral reach & engagement</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="pillar-card">
+                                <div class="pillar-icon">💡</div>
+                                <h3 class="pillar-title">Content Commerce</h3>
+                                <p class="pillar-desc">Strategic content creation and distribution that seamlessly integrates storytelling with commerce.</p>
+                                <p class="pillar-metric">↗ Brand loyalty & trust</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-divider"></div>
+
+                <!-- Global Strengths -->
+                <div class="content-section">
+                    <h2 class="section-title text-center mb-5">Our Global Strengths</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="strength-item">
+                                <h4>🌏 Global Talent</h4>
+                                <p>Top professionals from Korea and worldwide driving innovation</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="strength-item">
+                                <h4>📊 Data-driven Marketing</h4>
+                                <p>Big data analytics optimizing every campaign for maximum ROI</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="strength-item">
+                                <h4>🇰🇷 K-Brand Focus</h4>
+                                <p>Dedicated to elevating Korean brands on the global stage</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="strength-item">
+                                <h4>🔗 Omnichannel Reach</h4>
+                                <p>Seamless integration across multiple platforms and channels</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        {% endif %}
     </div>
 </div>
 {% endblock %}
 
 {% block extra_js %}
 <script>
-    // Save language preference to localStorage
-    document.querySelectorAll('.language-tabs .nav-link').forEach(tab => {
-        tab.addEventListener('click', function() {
-            const lang = this.getAttribute('href') === '#lang-en' ? 'en' : 'cn';
-            localStorage.setItem('companyIntroLang', lang);
-        });
-    });
-
-    // Restore language preference on page load
-    window.addEventListener('DOMContentLoaded', function() {
-        const savedLang = localStorage.getItem('companyIntroLang');
-        if (savedLang === 'cn') {
-            const cnTab = document.querySelector('[href="#lang-cn"]');
-            if (cnTab) {
-                const tab = new bootstrap.Tab(cnTab);
-                tab.show();
-            }
-        }
-    });
-
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
