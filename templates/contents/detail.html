@@ -45,16 +45,11 @@
                         <!-- Release Target -->
                         {% if content.release_target %}
                         <div class="mb-3">
-                            <small class="text-muted">{% trans "Target Release Date:" %}</small>
+                            {% get_current_language as LANGUAGE_CODE %}
+                            <small class="text-muted">{% if LANGUAGE_CODE == 'zh-hans' %}首发日{% else %}First Released Date{% endif %}:</small>
                             <p class="mb-0">{{ content.release_target|date:"Y-m-d" }}</p>
                         </div>
                         {% endif %}
-
-                        <!-- Published & Views -->
-                        <div class="mb-3">
-                            <small class="text-muted">{% trans "Published:" %}</small>
-                            <p class="mb-0">{{ content.created_at|date:"Y-m-d" }}</p>
-                        </div>
 
                         <div class="mb-3">
                             <small class="text-muted">{% trans "Views:" %}</small>
@@ -78,7 +73,8 @@
 
                     <!-- Synopsis Column -->
                     <div class="{% if content.teaser_video %}col-md-6{% else %}col-12{% endif %}">
-                        <h5>{% trans "Synopsis" %}</h5>
+                        {% get_current_language as LANGUAGE_CODE %}
+                        <h5>{% if LANGUAGE_CODE == 'zh-hans' %}剧情简介{% else %}Synopsis{% endif %}</h5>
                         <p class="text-justify" style="white-space: pre-wrap;">{{ content.description }}</p>
                     </div>
                 </div>
