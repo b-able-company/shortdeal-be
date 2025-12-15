@@ -11,7 +11,12 @@
     <div class="row align-items-center">
         <div class="col-lg-6">
             <h1 class="display-3 fw-bold mb-4">
-                {% blocktrans %}<span style="color: #ff6b6b;">Short-form</span> Content Trading Platform{% endblocktrans %}
+                {% get_current_language as LANGUAGE_CODE %}
+                {% if LANGUAGE_CODE == 'zh-hans' %}
+                    <span style="color: #ff6b6b;">短视频</span>内容整合平台
+                {% else %}
+                    <span style="color: #ff6b6b;">Short-form</span> Content Trading Platform
+                {% endif %}
             </h1>
             <p class="lead text-muted mb-4">
                 {% trans "A safe and transparent short-form content marketplace connecting producers and buyers." %}
@@ -98,7 +103,13 @@
                     <div style="font-size: 2.5rem; margin-bottom: 1rem;">🤝</div>
                     <h5 class="card-title">{% trans "Safe Trading" %}</h5>
                     <p class="card-text">
-                        {% trans "Transparent offer system and automated contracts for peace of mind." %}
+                        {% get_current_language as LANGUAGE_CODE %}
+                        {% if LANGUAGE_CODE == 'zh-hans' %}
+                            {# 현업 제공 중문 텍스트를 여기에 입력 #}
+                            透明的报价体系与自动化合同机制，让合作更安心。
+                        {% else %}
+                            Transparent offer system and automated contracts for peace of mind.
+                        {% endif %}
                     </p>
                     <ul class="list-unstyled small">
                         <!-- HIDDEN: Offer/LOI feature -->
@@ -205,31 +216,5 @@
     </a>
 </div>
 {% endif %}
-
-<!-- About B.able Company Section -->
-<div class="about-company-section mt-5 mb-5 p-5 rounded-lg" style="background: linear-gradient(135deg, #fff8f5, #f3f0ec); border: 2px solid #f0e6dc;">
-    <div class="row align-items-center">
-        <div class="col-lg-8">
-            <div class="d-flex align-items-center mb-3">
-                <span style="display: inline-block; width: 8px; height: 8px; background: #e7501e; border-radius: 50%; margin-right: 12px;"></span>
-                <h3 class="mb-0" style="color: #231815; font-weight: 700;">{% trans "About B.able Company" %}</h3>
-            </div>
-            <p class="lead mb-3" style="color: #555;">
-                {% trans "We lead the K-content commerce revolution by combining short-form dramas and e-commerce, creating innovative solutions for global markets." %}
-            </p>
-            <p class="mb-0" style="color: #666;">
-                {% trans "B.able Company strengthens the global competitiveness of K-brands through live commerce, short-form commerce, and content commerce, powered by data-driven marketing strategies." %}
-            </p>
-        </div>
-        <div class="col-lg-4 text-center mt-4 mt-lg-0">
-            <a href="{% url 'core:company_intro' %}" class="btn btn-lg w-100" style="background: #e7501e; color: white; border-radius: 50px; font-weight: 600; padding: 14px 32px; box-shadow: 0 4px 12px rgba(231, 80, 30, 0.2); transition: all 0.3s ease;">
-                {% trans "Learn More About Us" %} →
-            </a>
-            <p class="small mt-3 mb-0" style="color: #999;">
-                {% trans "Discover our vision and global strengths" %}
-            </p>
-        </div>
-    </div>
-</div>
 
 {% endblock %}
